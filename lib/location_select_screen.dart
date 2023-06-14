@@ -13,7 +13,15 @@ class _LocationSelectScreenState extends State<LocationSelectScreen> {
     return Scaffold(
       body: SafeArea(
         child: Column(
-          children: [],
+          children: [
+            ListView.builder(itemBuilder: (context, index) {
+              return Center(
+                child: ConstrainedBox(
+                    constraints:
+                        BoxConstraints(maxHeight: 199, minHeight: 199)),
+              );
+            })
+          ],
         ),
       ),
     );

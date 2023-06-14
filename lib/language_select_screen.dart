@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
+import 'package:flutter_svg/svg.dart';
 class LanguageSelectScreen extends StatefulWidget {
   const LanguageSelectScreen({super.key});
 
@@ -52,6 +52,11 @@ language
     }
 
     return Scaffold(
+      appBar: AppBar(
+        title: SizedBox(
+          child: SvgPicture.asset('assets/'),
+        ) ,
+      ),
       body: SafeArea(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
