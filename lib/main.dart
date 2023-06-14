@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'home_screen.dart';
+import 'language_select_screen.dart';
 
 
 
@@ -17,7 +18,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomeScreen(),
+     initialRoute: '/',
+     routes: {
+      '/': (context) => LanguageSelectScreen()
+     },
     );
   }
 }
