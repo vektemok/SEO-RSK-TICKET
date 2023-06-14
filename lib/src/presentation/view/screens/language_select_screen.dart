@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_svg/svg.dart';
+
+import '../../widgets/screen_switcher_button.dart';
 class LanguageSelectScreen extends StatefulWidget {
   const LanguageSelectScreen({super.key});
 
@@ -52,10 +54,22 @@ language
     }
 
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        title: SizedBox(
-          child: SvgPicture.asset('assets/'),
+
+        elevation: 0,
+        backgroundColor: Colors.white,
+        leading: IconButton(onPressed: (){}, icon: Icon(Icons.arrow_back, color: Colors.black,)),
+        centerTitle: true,
+        title: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: SizedBox(
+            height: 80,
+            child: SvgPicture.asset('assets/appbar_rsk.svg'),
+
+          ),
         ) ,
+        bottom: PreferredSize(child: Container(), preferredSize: Size(100,0)),
       ),
       body: SafeArea(
         child: Column(
@@ -104,8 +118,11 @@ language
                                 ),
                               ),
                             ))),
+
+
                   );
                 }),
+            ScreenSwitcherButton(title: 'Далее',)
           ],
         ),
       ),

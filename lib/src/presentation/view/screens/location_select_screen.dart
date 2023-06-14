@@ -18,7 +18,15 @@ class _LocationSelectScreenState extends State<LocationSelectScreen> {
               return Center(
                 child: ConstrainedBox(
                     constraints:
-                        BoxConstraints(maxHeight: 199, minHeight: 199)),
+                        BoxConstraints(maxHeight: 199, minHeight: 199),
+
+                child: Container(
+                  child: Center(
+                    child: Text('je'),
+                  ),
+                ),
+                ),
+
               );
             })
           ],
