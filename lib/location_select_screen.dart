@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 class LocationSelectScreen extends StatefulWidget {
   const LocationSelectScreen({Key? key}) : super(key: key);
 
@@ -11,6 +10,12 @@ class LocationSelectScreen extends StatefulWidget {
 class _LocationSelectScreenState extends State<LocationSelectScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      body: SafeArea(
+        child: Column(
+          children: [],
+        ),
+      ),
+    );
   }
 }
