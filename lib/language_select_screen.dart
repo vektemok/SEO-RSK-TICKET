@@ -9,14 +9,14 @@ class LanguageSelectScreen extends StatefulWidget {
 }
 
 class _LanguageSelectScreenState extends State<LanguageSelectScreen> {
+  int _currentIndex = 1;
 
-int _currentIndex = 1;
+  void changeLanguage(int index) {
+    setState(() {
+      _currentIndex = index;
+    });
+  }
 
-      void changeLanguage(int index){
-setState(() {
-   _currentIndex = index;
-});
-    }
   @override
   Widget build(BuildContext context) {
     List<String> language = [
@@ -37,9 +37,6 @@ language
 ''',
     ];
 
-
-
-
     void changeLang(int index) {
       switch (index) {
         case 0:
@@ -53,9 +50,6 @@ language
           break;
       }
     }
-
-
-
 
     return Scaffold(
       body: SafeArea(
@@ -79,30 +73,34 @@ language
                               onTap: () => changeLanguage(index),
                               child: Container(
                                 // margin: const EdgeInsets.fromLTRB(20, 0, 0, 20),
-                           
+
                                 width: double.infinity,
                                 decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(20),
-                                    color: index == _currentIndex? Colors.blue: Colors.white,
+                                    borderRadius: BorderRadius.circular(20),
+                                    color: index == _currentIndex
+                                        ? Colors.blue
+                                        : Colors.white,
                                     border: Border.all(
-                                        color: index == _currentIndex? Colors.blue: Colors.blue, width: 1)),
+                                        color: index == _currentIndex
+                                            ? Colors.blue
+                                            : Colors.blue,
+                                        width: 1)),
                                 child: Center(
-                                  
                                   child: Text(
-                                    
-                                    language[index], style: GoogleFonts.montserrat(
-                                  textStyle: TextStyle(color: index == _currentIndex? Colors.white: Colors.blue, fontWeight: FontWeight.w500)
-                                ),
-                                textAlign: TextAlign.center,
-                                ),
-                                
+                                    language[index],
+                                    style: GoogleFonts.montserrat(
+                                        textStyle: TextStyle(
+                                            color: index == _currentIndex
+                                                ? Colors.white
+                                                : Colors.blue,
+                                            fontWeight: FontWeight.w500)),
+                                    textAlign: TextAlign.center,
+                                  ),
                                 ),
                               ),
                             ))),
                   );
                 }),
-
-              
           ],
         ),
       ),

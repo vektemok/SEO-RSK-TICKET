@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+/home/egor/Загрузки/Group 33628 2.svgimport 'package:flutter/material.dart';
 
 import 'home_screen.dart';
 import 'language_select_screen.dart';
