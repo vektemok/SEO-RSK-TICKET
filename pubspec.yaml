@@ -45,6 +45,7 @@ flutter:
   assets:
     - assets/
     - assets/icons/
+    - assets/nav_bar_icons/
 
 
 

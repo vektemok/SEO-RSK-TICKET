@@ -11,16 +11,9 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-
-
-  List<Widget> _screens = [
-    CategoriesScreen()
-  ];
-
+  List<Widget> _screens = [CategoriesScreen()];
 
   int _currentIndex = 0;
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -31,20 +24,27 @@ class _MainScreenState extends State<MainScreen> {
         elevation: Theme.of(context).appBarTheme.elevation,
         centerTitle: Theme.of(context).appBarTheme.centerTitle,
         toolbarHeight: 80,
-   backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
+        backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
         title: SizedBox(
           height: 80,
           width: 150,
           child: SvgPicture.asset('assets/appbar_rsk.svg'),
         ),
       ),
-
       bottomNavigationBar: BottomNavigationBar(
+        showSelectedLabels: false,
+        showUnselectedLabels: false,
         items: [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Главная'),
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Мои талоны'),
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Увеомления'),
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Настройки '),
+          BottomNavigationBarItem(
+              icon: SvgPicture.asset('assets/nav_bar_icons/home.svg'),
+              activeIcon: SvgPicture.asset('assets/nav_bar_icons/home.svg'),
+              label: ''),
+          BottomNavigationBarItem(
+              icon:
+                  SvgPicture.asset('assets/nav_bar_icons/notification_na.svg'),
+              activeIcon:
+                  SvgPicture.asset('assets/nav_bar_icons/notification.svg'),
+              label: ''),
         ],
       ),
     );
