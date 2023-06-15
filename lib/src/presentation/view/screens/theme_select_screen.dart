@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:united102/src/presentation/widgets/screen_switcher_button.dart';
 
-class LocationSelectScreen extends StatefulWidget {
-  const LocationSelectScreen({Key? key}) : super(key: key);
+class ThemeSelectScreen extends StatefulWidget {
+  const ThemeSelectScreen({Key? key}) : super(key: key);
 
   @override
-  State<LocationSelectScreen> createState() => _LocationSelectScreenState();
+  State<ThemeSelectScreen> createState() => _ThemeSelectScreenState();
 }
 
-class _LocationSelectScreenState extends State<LocationSelectScreen> {
+class _ThemeSelectScreenState extends State<ThemeSelectScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,7 +35,11 @@ class _LocationSelectScreenState extends State<LocationSelectScreen> {
               SizedBox(
                 height: 10,
               ),
-              ThemeSelectList()
+              ThemeSelectList(),
+              SizedBox(
+                height: 30,
+              ),
+              ScreenSwitcherButton()
             ],
           ),
         ),
@@ -49,7 +54,7 @@ class _HeaderText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      'Пожалуйста выберите тему для интерфейса',
+      'Пожалуйста, выберите тему для интерфейса',
       textAlign: TextAlign.center,
       style: GoogleFonts.montserrat(
           textStyle: const TextStyle(

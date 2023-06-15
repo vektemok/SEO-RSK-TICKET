@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:united102/src/config/themes/white_theme.dart';
+import 'package:united102/src/presentation/view/screens/location_select_screen.dart';
 import 'package:united102/src/presentation/view/screens/theme_select_screen.dart';
 import 'src/presentation/view/screens/language_select_screen.dart';
 
@@ -19,10 +20,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: whiteTheme,
       debugShowCheckedModeBanner: false,
-     initialRoute: '/location_select',
+     initialRoute: '/LocationSelectScreen',
      routes: {
       '/': (context) => LanguageSelectScreen(),
-       '/location_select':(context)=> LocationSelectScreen()
+       '/location_select':(context)=> ThemeSelectScreen(),
+       '/LocationSelectScreen': (context) => LocationSelectScreen()
      },
     );
   }
