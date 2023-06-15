@@ -1,57 +1,41 @@
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
+class ScreenSwitcherButton extends StatelessWidget {
+  const ScreenSwitcherButton({Key? key}) : super(key: key);
 
-
-
-
-
-
-
-// NO USING
-
-
-
-
-
-
-
-// import 'package:flutter/material.dart';
-//
-//
-// class ScreenSwitcherButton extends StatelessWidget {
-//   final String title;
-//
-//
-//    ScreenSwitcherButton({Key? key, required this.title})
-//       : super(key: key);
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return InkWell(
-//
-//       child:  Padding(
-//         padding: const EdgeInsets.all(8.0),
-//         child: Container(
-// width: 260,
-//           height: 70,
-//
-//           decoration: BoxDecoration(
-// color: Colors.white
-//           ),
-//           child:
-//           Center(
-//             child: Row(
-//               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//               children: [
-//                 Align(
-//                   alignment: Alignment.center,
-//                   child: Text(title),
-//                 ),
-//                 Icon(Icons.arrow_forward_rounded)
-//               ],
-//             ),
-//           ) ,
-//         ),
-//       ),
-//     );
-//   }
-// }
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 266,
+      height: 58,
+      margin: const EdgeInsets.fromLTRB(39.53, 0, 23, 0),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(8.0),
+        gradient: const LinearGradient(
+          begin: Alignment(0, -1),
+          end: Alignment(0, 1),
+          colors: <Color>[Color(0xfc4097c5), Color(0xff0174b1)],
+          stops: <double>[0, 1],
+        ),
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Expanded(
+            child: Align(
+              alignment: Alignment.center,
+              child: Text(
+                'Далее',
+                style: GoogleFonts.montserrat(
+                    textStyle: const TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w500)),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
