@@ -14,24 +14,21 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  List<Widget> _screens = [CategoriesScreen(),
+  List<Widget> _screens = [
+    CategoriesScreen(),
     TicketScreen(),
     NotificationScreen(),
     SettingScreen()
-
-
-
-
   ];
 
   int _currentIndex = 0;
 
-
-  void onTap(int index){
+  void onTap(int index) {
     setState(() {
       _currentIndex = index;
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -60,25 +57,21 @@ class _MainScreenState extends State<MainScreen> {
               label: ''),
           //2
           BottomNavigationBarItem(
-              icon:
-                  SvgPicture.asset('assets/nav_bar_icons/ticket_na.svg'),
-              activeIcon:
-                  SvgPicture.asset('assets/nav_bar_icons/ticket.svg'),
+              icon: SvgPicture.asset('assets/nav_bar_icons/ticket_na.svg'),
+              activeIcon: SvgPicture.asset('assets/nav_bar_icons/ticket.svg'),
               label: ''),
           //3
           BottomNavigationBarItem(
-              icon: SvgPicture.asset('assets/nav_bar_icons/home.svg'),
-              activeIcon: SvgPicture.asset('assets/nav_bar_icons/home.svg'),
-              label: ''),
-          //4
-          BottomNavigationBarItem(
               icon:
-                  SvgPicture.asset('assets/nav_bar_icons/notification_na.svg'),
+                  SvgPicture.asset('assets/nav_bar_icons/notification.na.svg'),
               activeIcon:
                   SvgPicture.asset('assets/nav_bar_icons/notification.svg'),
               label: ''),
-
-
+          //4
+          BottomNavigationBarItem(
+              icon: Icon(Icons.confirmation_num_sharp),
+              activeIcon: Icon(Icons.add),
+              label: '')
         ],
       ),
     );
