@@ -20,11 +20,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: whiteTheme,
       debugShowCheckedModeBanner: false,
-     initialRoute: '/LocationSelectScreen',
+     initialRoute: '/language_select',
      routes: {
-      '/': (context) => LanguageSelectScreen(),
-       '/location_select':(context)=> ThemeSelectScreen(),
-       '/LocationSelectScreen': (context) => LocationSelectScreen()
+      '/language_select': (context) => LanguageSelectScreen(),
+       '/theme_select':(context)=> ThemeSelectScreen(),
+       '/location_select': (context) => LocationSelectScreen()
      },
     );
   }

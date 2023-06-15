@@ -43,7 +43,7 @@ class _LocationSelectScreenState extends State<LocationSelectScreen> {
             ),
 
 
-            ScreenSwitcherButton()
+            ScreenSwitcherButton(path: '',)
           ],
         ),
       ),

@@ -26,20 +26,20 @@ class _ThemeSelectScreenState extends State<ThemeSelectScreen> {
           child: SvgPicture.asset('assets/appbar_rsk.svg'),
         ),
       ),
-      body: const SafeArea(
+      body:  SafeArea(
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              _HeaderText(),
-              SizedBox(
+            children:  [
+             const _HeaderText(),
+              const SizedBox(
                 height: 10,
               ),
-              ThemeSelectList(),
-              SizedBox(
+              const ThemeSelectList(),
+              const SizedBox(
                 height: 30,
               ),
-              ScreenSwitcherButton()
+              ScreenSwitcherButton(path: 'location_select',)
             ],
           ),
         ),

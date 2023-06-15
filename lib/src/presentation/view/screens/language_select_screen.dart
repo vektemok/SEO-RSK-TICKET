@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:united102/src/presentation/widgets/screen_switcher_button.dart';
 
 class LanguageSelectScreen extends StatefulWidget {
   const LanguageSelectScreen({super.key});
@@ -119,40 +120,7 @@ language
                             ))),
                   );
                 }),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
-              child: Container(
-                width: 266,
-                height: 58,
-                margin: const EdgeInsets.fromLTRB(39.53, 0, 23, 0),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8.0),
-                  gradient: const LinearGradient(
-                    begin: Alignment(0, -1),
-                    end: Alignment(0, 1),
-                    colors: <Color>[Color(0xfc4097c5), Color(0xff0174b1)],
-                    stops: <double>[0, 1],
-                  ),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Expanded(
-                      child: Align(
-                        alignment: Alignment.center,
-                        child: Text(
-                          'Далее',
-                          style: GoogleFonts.montserrat(
-                              textStyle: const TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.w500)),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            )
+           ScreenSwitcherButton(path: 'theme_select')
           ],
         ),
       ),
