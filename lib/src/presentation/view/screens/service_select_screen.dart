@@ -1,30 +1,56 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:united102/src/presentation/widgets/app_bar.dart';
 import 'package:united102/src/presentation/widgets/screen_switcher_button.dart';
 
 import '../../widgets/icon_badge_widget.dart';
 
-class CategoriesScreen extends StatefulWidget {
-  const CategoriesScreen({Key? key}) : super(key: key);
+class ServiceSelectScreen extends StatefulWidget {
+  const ServiceSelectScreen({Key? key}) : super(key: key);
 
   @override
-  State<CategoriesScreen> createState() => _CategoriesScreenState();
+  State<ServiceSelectScreen> createState() => _ServiceSelectScreenState();
 }
 
-class _CategoriesScreenState extends State<CategoriesScreen> {
+class _ServiceSelectScreenState extends State<ServiceSelectScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
+        centerTitle: Theme.of(context).appBarTheme.centerTitle,
+        elevation: Theme.of(context).appBarTheme.elevation,
+        toolbarHeight: Theme.of(context).appBarTheme.toolbarHeight,
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: Icon(
+            CupertinoIcons.arrow_left,
+            color: Theme.of(context).iconTheme.color,
+            size: Theme.of(context).iconTheme.size,
+          ),
+        ),
+        title: SizedBox(
+          height: 80,
+          width: 150,
+          child: SvgPicture.asset('assets/appbar_rsk.svg'),
+        ),
+      ),
       body: SafeArea(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            _CategorySelectList(),
+            _HeaderText(),
+            SizedBox(
+              height: 10,
+            ),
+            _ServiceSelectList(),
             SizedBox(
               height: 20,
             ),
-            ScreenSwitcherButton(path: '/service_point'),
+            ScreenSwitcherButton(path: '/ServiceDescriptionScreen')
           ],
         ),
       ),
@@ -32,19 +58,23 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
   }
 }
 
-class _CategorySelectList extends StatefulWidget {
-  const _CategorySelectList({Key? key}) : super(key: key);
+
+class _ServiceSelectList extends StatefulWidget {
+  const _ServiceSelectList({Key? key}) : super(key: key);
 
   @override
-  State<_CategorySelectList> createState() => _CategorySelectListState();
+  State<_ServiceSelectList> createState() => _ServiceSelectListState();
 }
 
-class _CategorySelectListState extends State<_CategorySelectList> {
+class _ServiceSelectListState extends State<_ServiceSelectList> {
   List<String> _categories = [
-    'Физические лица',
-    'Юри'
-        'дическе лица',
-    'Платежные карты'
+'Отрытие корпаративного счета',
+'Отрытие корпаративного счета',
+'Отрытие корпаративного счета',
+'Отрытие корпаративного счета',
+'Отрытие корпаративного счета',
+'Отрытие корпаративного счета',
+
   ];
 
   int _currentIndex = 0;
@@ -80,16 +110,16 @@ class _CategorySelectListState extends State<_CategorySelectList> {
                             borderRadius: BorderRadius.circular(20),
                             gradient: index == _currentIndex
                                 ? const LinearGradient(
-                                    begin: Alignment(0, -1),
-                                    end: Alignment(0, 1),
-                                    colors: <Color>[
-                                      Color(0xfc4097c5),
-                                      Color(0xff0174b1)
-                                    ],
-                                    stops: <double>[0, 1],
-                                  )
+                              begin: Alignment(0, -1),
+                              end: Alignment(0, 1),
+                              colors: <Color>[
+                                Color(0xfc4097c5),
+                                Color(0xff0174b1)
+                              ],
+                              stops: <double>[0, 1],
+                            )
                                 : const LinearGradient(
-                                    colors: [Colors.white, Colors.white]),
+                                colors: [Colors.white, Colors.white]),
                             border: Border.all(
                                 color: index == _currentIndex
                                     ? Colors.blue
@@ -99,7 +129,7 @@ class _CategorySelectListState extends State<_CategorySelectList> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              IconBadgeWidget(index: index),
+
                               Text(
                                 _categories[index],
                                 style: GoogleFonts.montserrat(
@@ -119,3 +149,25 @@ class _CategorySelectListState extends State<_CategorySelectList> {
         });
   }
 }
+
+
+class _HeaderText extends StatelessWidget {
+  const _HeaderText({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      'Пожалуйста, выберите услугу',
+      textAlign: TextAlign.center,
+      style: GoogleFonts.montserrat(
+          textStyle: const TextStyle(
+            fontSize: 16,
+            color: Color.fromRGBO(51, 48, 48, 1),
+            fontWeight: FontWeight.w600,
+          )),
+    );
+  }
+}
+
+
+

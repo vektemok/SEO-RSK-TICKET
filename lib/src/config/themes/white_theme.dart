@@ -12,7 +12,11 @@ final ThemeData whiteTheme = ThemeData(
   ),
   iconTheme: IconThemeData(
     color: Colors.black,
-    size: 40
+    size: 25
   ),
+
+  bottomNavigationBarTheme: BottomNavigationBarThemeData(
+
+  )
 
 );
