@@ -24,7 +24,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
             SizedBox(
               height: 20,
             ),
-            ScreenSwitcherButton(path: 'path'),
+            ScreenSwitcherButton(path: '/service_point'),
           ],
         ),
       ),
