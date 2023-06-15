@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../widgets/screen_switcher_button.dart';
-
 class LanguageSelectScreen extends StatefulWidget {
   const LanguageSelectScreen({super.key});
 
@@ -43,13 +41,13 @@ language
     void changeLang(int index) {
       switch (index) {
         case 0:
-          print(' change lang en');
+          // print(' change lang en');
           break;
         case 1:
-          print('chagne lang kg');
+          // debugrint('chagne lang kg');
           break;
         case 2:
-          print(' change lang ru');
+          // print(' change lang ru');
           break;
       }
     }
@@ -126,7 +124,7 @@ language
               child: Container(
                 width: 266,
                 height: 58,
-                margin: EdgeInsets.fromLTRB(39.53, 0, 23, 0),
+                margin: const EdgeInsets.fromLTRB(39.53, 0, 23, 0),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8.0),
                   gradient: const LinearGradient(
@@ -145,13 +143,12 @@ language
                         child: Text(
                           'Далее',
                           style: GoogleFonts.montserrat(
-                              textStyle: TextStyle(
+                              textStyle: const TextStyle(
                                   color: Colors.white,
                                   fontWeight: FontWeight.w500)),
                         ),
                       ),
                     ),
-                    Container()
                   ],
                 ),
               ),
