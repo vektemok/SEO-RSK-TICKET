@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:united102/src/presentation/widgets/app_bar.dart';
+import 'package:united102/src/presentation/widgets/screen_switcher_button.dart';
 
 import '../../widgets/icon_badge_widget.dart';
 
@@ -40,7 +41,17 @@ class _ServiceSelectScreenState extends State<ServiceSelectScreen> {
       ),
       body: SafeArea(
         child: Column(
-          children: [],
+          children: [
+            _HeaderText(),
+            SizedBox(
+              height: 10,
+            ),
+            _ServiceSelectList(),
+            SizedBox(
+              height: 20,
+            ),
+            ScreenSwitcherButton(path: '/ServiceDescriptionScreen')
+          ],
         ),
       ),
     );
@@ -48,19 +59,22 @@ class _ServiceSelectScreenState extends State<ServiceSelectScreen> {
 }
 
 
-class _CategorySelectList extends StatefulWidget {
-  const _CategorySelectList({Key? key}) : super(key: key);
+class _ServiceSelectList extends StatefulWidget {
+  const _ServiceSelectList({Key? key}) : super(key: key);
 
   @override
-  State<_CategorySelectList> createState() => _CategorySelectListState();
+  State<_ServiceSelectList> createState() => _ServiceSelectListState();
 }
 
-class _CategorySelectListState extends State<_CategorySelectList> {
+class _ServiceSelectListState extends State<_ServiceSelectList> {
   List<String> _categories = [
-    'Физические лица',
-    'Юри'
-        'дическе лица',
-    'Платежные карты'
+'Отрытие корпаративного счета',
+'Отрытие корпаративного счета',
+'Отрытие корпаративного счета',
+'Отрытие корпаративного счета',
+'Отрытие корпаративного счета',
+'Отрытие корпаративного счета',
+
   ];
 
   int _currentIndex = 0;
@@ -115,7 +129,7 @@ class _CategorySelectListState extends State<_CategorySelectList> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              IconBadgeWidget(index: index),
+
                               Text(
                                 _categories[index],
                                 style: GoogleFonts.montserrat(
@@ -133,6 +147,25 @@ class _CategorySelectListState extends State<_CategorySelectList> {
                     ))),
           );
         });
+  }
+}
+
+
+class _HeaderText extends StatelessWidget {
+  const _HeaderText({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      'Пожалуйста, выберите услугу',
+      textAlign: TextAlign.center,
+      style: GoogleFonts.montserrat(
+          textStyle: const TextStyle(
+            fontSize: 16,
+            color: Color.fromRGBO(51, 48, 48, 1),
+            fontWeight: FontWeight.w600,
+          )),
+    );
   }
 }
 
