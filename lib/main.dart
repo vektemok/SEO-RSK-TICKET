@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:united102/src/config/themes/white_theme.dart';
 import 'package:united102/src/presentation/view/screens/location_select_screen.dart';
+import 'package:united102/src/presentation/view/screens/main_screen.dart';
 import 'package:united102/src/presentation/view/screens/theme_select_screen.dart';
 import 'src/presentation/view/screens/language_select_screen.dart';
 
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: whiteTheme,
       debugShowCheckedModeBanner: false,
-     initialRoute: '/language_select',
+home: MainScreen(),
      routes: {
       '/language_select': (context) => LanguageSelectScreen(),
        '/theme_select':(context)=> ThemeSelectScreen(),

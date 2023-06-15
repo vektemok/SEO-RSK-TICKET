@@ -9,5 +9,10 @@ final ThemeData whiteTheme = ThemeData(
     centerTitle: true,
     elevation: 0,
 
-  )
+  ),
+  iconTheme: IconThemeData(
+    color: Colors.black,
+    size: 40
+  ),
+
 );

@@ -22,8 +22,14 @@ class _ThemeSelectScreenState extends State<ThemeSelectScreen> {
         elevation: Theme.of(context).appBarTheme.elevation,
         toolbarHeight: Theme.of(context).appBarTheme.toolbarHeight,
         leading: IconButton(
-          onPressed: (){},
-          icon: Icon(CupertinoIcons.arrow_left),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: Icon(
+            CupertinoIcons.arrow_left,
+            color: Theme.of(context).iconTheme.color,
+            size: Theme.of(context).iconTheme.size,
+          ),
         ),
         title: SizedBox(
           height: 80,
@@ -31,12 +37,12 @@ class _ThemeSelectScreenState extends State<ThemeSelectScreen> {
           child: SvgPicture.asset('assets/appbar_rsk.svg'),
         ),
       ),
-      body:  SafeArea(
+      body: SafeArea(
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children:  [
-             const _HeaderText(),
+            children: [
+              const _HeaderText(),
               const SizedBox(
                 height: 10,
               ),
@@ -44,7 +50,9 @@ class _ThemeSelectScreenState extends State<ThemeSelectScreen> {
               const SizedBox(
                 height: 30,
               ),
-              ScreenSwitcherButton(path: '/location_select',)
+              ScreenSwitcherButton(
+                path: '/location_select',
+              )
             ],
           ),
         ),
@@ -83,12 +91,12 @@ class _ThemeSelectListState extends State<ThemeSelectList> {
 
   int _currentIndex = 0;
 
-  void _changeTheme(int index)
-  {
+  void _changeTheme(int index) {
     setState(() {
       _currentIndex = index;
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
