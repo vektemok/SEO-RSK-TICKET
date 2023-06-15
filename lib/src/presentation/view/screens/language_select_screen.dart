@@ -55,10 +55,10 @@ language
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        toolbarHeight: 130,
-        elevation: 0,
-        backgroundColor: Colors.white,
-        centerTitle: true,
+        toolbarHeight: Theme.of(context).appBarTheme.toolbarHeight,
+        elevation: Theme.of(context).appBarTheme.elevation,
+        backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
+        centerTitle: Theme.of(context).appBarTheme.centerTitle,
         title: Padding(
           padding: const EdgeInsets.all(8.0),
           child: SizedBox(
