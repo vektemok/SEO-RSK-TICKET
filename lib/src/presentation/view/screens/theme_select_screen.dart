@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -20,6 +21,10 @@ class _ThemeSelectScreenState extends State<ThemeSelectScreen> {
         centerTitle: Theme.of(context).appBarTheme.centerTitle,
         elevation: Theme.of(context).appBarTheme.elevation,
         toolbarHeight: Theme.of(context).appBarTheme.toolbarHeight,
+        leading: IconButton(
+          onPressed: (){},
+          icon: Icon(CupertinoIcons.arrow_left),
+        ),
         title: SizedBox(
           height: 80,
           width: 150,
@@ -39,7 +44,7 @@ class _ThemeSelectScreenState extends State<ThemeSelectScreen> {
               const SizedBox(
                 height: 30,
               ),
-              ScreenSwitcherButton(path: 'location_select',)
+              ScreenSwitcherButton(path: '/location_select',)
             ],
           ),
         ),

@@ -9,7 +9,7 @@ class ScreenSwitcherButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: (){
-        Navigator.pushNamed(context, 'path');
+        Navigator.pushNamed(context, path);
       },
       child: Container(
         width: 266,

@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_svg/svg.dart';
@@ -60,11 +61,13 @@ language
         elevation: Theme.of(context).appBarTheme.elevation,
         backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
         centerTitle: Theme.of(context).appBarTheme.centerTitle,
+
+
         title: Padding(
           padding: const EdgeInsets.all(8.0),
           child: SizedBox(
-            height: 150,
-            width: 120,
+            height: 180,
+            width: 150,
             child: SvgPicture.asset(
               'assets/appbar_rsk.svg',
             ),
@@ -95,7 +98,7 @@ language
 
                                 width: double.infinity,
                                 decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(20),
+                                    borderRadius: BorderRadius.circular(8),
                                     color: index == _currentIndex
                                         ? Colors.blue
                                         : Colors.white,
@@ -120,7 +123,8 @@ language
                             ))),
                   );
                 }),
-           ScreenSwitcherButton(path: 'theme_select')
+           SizedBox(height: 20,),
+           ScreenSwitcherButton(path: '/theme_select')
           ],
         ),
       ),
