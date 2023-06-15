@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../widgets/screen_switcher_button.dart';
+
 class LanguageSelectScreen extends StatefulWidget {
   const LanguageSelectScreen({super.key});
 
@@ -56,20 +57,20 @@ language
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-
+        toolbarHeight: 130,
         elevation: 0,
         backgroundColor: Colors.white,
-        leading: IconButton(onPressed: (){}, icon: Icon(Icons.arrow_back, color: Colors.black,)),
         centerTitle: true,
         title: Padding(
           padding: const EdgeInsets.all(8.0),
           child: SizedBox(
-            height: 80,
-            child: SvgPicture.asset('assets/appbar_rsk.svg'),
-
+            height: 150,
+            width: 120,
+            child: SvgPicture.asset(
+              'assets/appbar_rsk.svg',
+            ),
           ),
-        ) ,
-        bottom: PreferredSize(child: Container(), preferredSize: Size(100,0)),
+        ),
       ),
       body: SafeArea(
         child: Column(
@@ -118,11 +119,43 @@ language
                                 ),
                               ),
                             ))),
-
-
                   );
                 }),
-            ScreenSwitcherButton(title: 'Далее',)
+            Padding(
+              padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
+              child: Container(
+                width: 266,
+                height: 58,
+                margin: EdgeInsets.fromLTRB(39.53, 0, 23, 0),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(8.0),
+                  gradient: const LinearGradient(
+                    begin: Alignment(0, -1),
+                    end: Alignment(0, 1),
+                    colors: <Color>[Color(0xfc4097c5), Color(0xff0174b1)],
+                    stops: <double>[0, 1],
+                  ),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Expanded(
+                      child: Align(
+                        alignment: Alignment.center,
+                        child: Text(
+                          'Далее',
+                          style: GoogleFonts.montserrat(
+                              textStyle: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w500)),
+                        ),
+                      ),
+                    ),
+                    Container()
+                  ],
+                ),
+              ),
+            )
           ],
         ),
       ),

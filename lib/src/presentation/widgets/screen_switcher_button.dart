@@ -12,14 +12,29 @@ class ScreenSwitcherButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
 
-      child:  Container(
-        decoration: BoxDecoration(
+      child:  Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Container(
+width: 260,
+          height: 70,
 
+          decoration: BoxDecoration(
+color: Colors.white
+          ),
+          child:
+          Center(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Align(
+                  alignment: Alignment.center,
+                  child: Text(title),
+                ),
+                Icon(Icons.arrow_forward_rounded)
+              ],
+            ),
+          ) ,
         ),
-        child:
-        Center(
-          child: Text(title),
-        ) ,
       ),
     );
   }
