@@ -26,7 +26,7 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: _screens[_currentIndex],
-      backgroundColor: Colors.white,
+      backgroundColor: Theme.of(context).backgroundColor,
       appBar: AppBar(
         elevation: Theme.of(context).appBarTheme.elevation,
         centerTitle: Theme.of(context).appBarTheme.centerTitle,
