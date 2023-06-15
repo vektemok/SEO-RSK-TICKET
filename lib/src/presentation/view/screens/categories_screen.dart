@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:united102/src/presentation/widgets/screen_switcher_button.dart';
+
+import '../../widgets/icon_badge_widget.dart';
 
 class CategoriesScreen extends StatefulWidget {
   const CategoriesScreen({Key? key}) : super(key: key);
@@ -15,19 +18,19 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
     return Scaffold(
       body: SafeArea(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             _CategorySelectList(),
             SizedBox(
-              height: 10,
+              height: 20,
             ),
-            ScreenSwitcherButton(path: 'path')
+            ScreenSwitcherButton(path: 'path'),
           ],
         ),
       ),
     );
   }
 }
-
 
 class _CategorySelectList extends StatefulWidget {
   const _CategorySelectList({Key? key}) : super(key: key);
@@ -37,7 +40,12 @@ class _CategorySelectList extends StatefulWidget {
 }
 
 class _CategorySelectListState extends State<_CategorySelectList> {
-  List<String> _categories = ['Физические лица', 'Юредическе лица', 'Платежные карты'];
+  List<String> _categories = [
+    'Физические лица',
+    'Юри'
+        'дическе лица',
+    'Платежные карты'
+  ];
 
   int _currentIndex = 0;
 
@@ -58,10 +66,10 @@ class _CategorySelectListState extends State<_CategorySelectList> {
             child: Center(
                 child: ConstrainedBox(
                     constraints: const BoxConstraints(
-                        minHeight: 80,
-                        minWidth: 299,
-                        maxHeight: 80,
-                        maxWidth: 299),
+                        minHeight: 70,
+                        minWidth: 378,
+                        maxHeight: 70,
+                        maxWidth: 378),
                     child: GestureDetector(
                       onTap: () => _changeCategory(index),
                       child: Container(
@@ -70,24 +78,39 @@ class _CategorySelectListState extends State<_CategorySelectList> {
                         width: double.infinity,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(20),
-                            color: index == _currentIndex
-                                ? Colors.blue
-                                : Colors.white,
+                            gradient: index == _currentIndex
+                                ? const LinearGradient(
+                                    begin: Alignment(0, -1),
+                                    end: Alignment(0, 1),
+                                    colors: <Color>[
+                                      Color(0xfc4097c5),
+                                      Color(0xff0174b1)
+                                    ],
+                                    stops: <double>[0, 1],
+                                  )
+                                : const LinearGradient(
+                                    colors: [Colors.white, Colors.white]),
                             border: Border.all(
                                 color: index == _currentIndex
                                     ? Colors.blue
                                     : Colors.blue,
                                 width: 1)),
                         child: Center(
-                          child: Text(
-                            _categories[index],
-                            style: GoogleFonts.montserrat(
-                                textStyle: TextStyle(
-                                    color: index == _currentIndex
-                                        ? Colors.white
-                                        : Colors.blue,
-                                    fontWeight: FontWeight.w500)),
-                            textAlign: TextAlign.center,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              IconBadgeWidget(index: index),
+                              Text(
+                                _categories[index],
+                                style: GoogleFonts.montserrat(
+                                    textStyle: TextStyle(
+                                        color: index == _currentIndex
+                                            ? Colors.white
+                                            : Colors.blue,
+                                        fontWeight: FontWeight.w500)),
+                                textAlign: TextAlign.center,
+                              ),
+                            ],
                           ),
                         ),
                       ),
@@ -96,4 +119,3 @@ class _CategorySelectListState extends State<_CategorySelectList> {
         });
   }
 }
-

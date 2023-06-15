@@ -19,6 +19,9 @@ class _MainScreenState extends State<MainScreen> {
 
 
   int _currentIndex = 0;
+
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,8 +41,10 @@ class _MainScreenState extends State<MainScreen> {
 
       bottomNavigationBar: BottomNavigationBar(
         items: [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'home'),
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'home'),
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Главная'),
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Мои талоны'),
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Увеомления'),
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Настройки '),
         ],
       ),
     );
