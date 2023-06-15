@@ -11,26 +11,11 @@ class _LocationSelectScreenState extends State<LocationSelectScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+
+      ),
       body: SafeArea(
-        child: Column(
-          children: [
-            ListView.builder(itemBuilder: (context, index) {
-              return Center(
-                child: ConstrainedBox(
-                    constraints:
-                        BoxConstraints(maxHeight: 199, minHeight: 199),
-
-                child: Container(
-                  child: Center(
-                    child: Text('je'),
-                  ),
-                ),
-                ),
-
-              );
-            })
-          ],
-        ),
+        child: Column(),
       ),
     );
   }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:united102/src/presentation/view/screens/location_select_screen.dart';
 import 'src/presentation/view/screens/language_select_screen.dart';
 
 
@@ -16,9 +17,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-     initialRoute: '/',
+     initialRoute: '/location_select',
      routes: {
-      '/': (context) => LanguageSelectScreen()
+      '/': (context) => LanguageSelectScreen(),
+       '/location_select':(context)=> LocationSelectScreen()
      },
     );
   }
