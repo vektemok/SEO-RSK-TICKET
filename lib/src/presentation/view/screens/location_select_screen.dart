@@ -12,9 +12,14 @@ class _LocationSelectScreenState extends State<LocationSelectScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
+        centerTitle: Theme.of(context).appBarTheme.centerTitle,
+        elevation: Theme.of(context).appBarTheme.elevation,
 
+        toolbarHeight: Theme.of(context).appBarTheme.toolbarHeight,
       ),
       body: SafeArea(
+
         child: Column(),
       ),
     );

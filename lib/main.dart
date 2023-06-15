@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:united102/src/config/themes/white_theme.dart';
 import 'package:united102/src/presentation/view/screens/location_select_screen.dart';
 import 'src/presentation/view/screens/language_select_screen.dart';
 
@@ -16,6 +17,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: whiteTheme,
       debugShowCheckedModeBanner: false,
      initialRoute: '/location_select',
      routes: {
