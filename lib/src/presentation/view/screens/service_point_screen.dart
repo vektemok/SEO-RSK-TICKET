@@ -32,7 +32,9 @@ class _ServicePointScreenState extends State<ServicePointScreen> {
            Container(
              width: double.infinity,
              height: 500,
-             child: Expanded(child: ListView.builder(itemBuilder: (context, index){
+             child: Expanded(child: ListView.builder(
+                 itemCount: 10,
+                 itemBuilder: (context, index){
                return Container(
                  color: Colors.black,
                );

@@ -3,6 +3,7 @@ import 'package:united102/src/config/themes/white_theme.dart';
 import 'package:united102/src/presentation/view/screens/location_select_screen.dart';
 import 'package:united102/src/presentation/view/screens/main_screen.dart';
 import 'package:united102/src/presentation/view/screens/service_point_screen.dart';
+import 'package:united102/src/presentation/view/screens/service_select_screen.dart';
 import 'package:united102/src/presentation/view/screens/theme_select_screen.dart';
 import 'src/presentation/view/screens/language_select_screen.dart';
 
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
 
       theme: whiteTheme,
       debugShowCheckedModeBanner: false,
-home: ServicePointScreen(),
+home: ServiceSelectScreen(),
      routes: {
 
       '/language_select': (context) => LanguageSelectScreen(),
