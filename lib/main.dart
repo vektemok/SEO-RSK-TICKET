@@ -23,6 +23,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
 home: MainScreen(),
      routes: {
+
       '/language_select': (context) => LanguageSelectScreen(),
        '/theme_select':(context)=> ThemeSelectScreen(),
        '/location_select': (context) => LocationSelectScreen()
