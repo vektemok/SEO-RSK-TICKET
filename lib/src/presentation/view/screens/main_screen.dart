@@ -21,11 +21,13 @@ class _MainScreenState extends State<MainScreen> {
     SettingScreen()
   ];
 
+  List<bool> _isActive = [true, false, false, false];
   int _currentIndex = 0;
 
   void onTap(int index) {
     setState(() {
       _currentIndex = index;
+      _isActive = List<bool>.generate(_isActive.length, (int i) => i == index);
     });
   }
 
@@ -52,26 +54,59 @@ class _MainScreenState extends State<MainScreen> {
         items: [
           //1
           BottomNavigationBarItem(
-              icon: SvgPicture.asset('assets/nav_bar_icons/home_na.svg'),
-              activeIcon: SvgPicture.asset('assets/nav_bar_icons/home.svg'),
+              icon: _isActive[0]
+                  ? SizedBox(
+                      width: 82,
+                      height: 72,
+                      child: SvgPicture.asset('assets/nav_bar_icons/home.svg'))
+                  : SizedBox(
+                      width: 82,
+                      height: 72,
+                      child:
+                          SvgPicture.asset('assets/nav_bar_icons/home_na.svg')),
               label: ''),
           //2
           BottomNavigationBarItem(
-              icon: SvgPicture.asset('assets/nav_bar_icons/ticket_na.svg'),
-              activeIcon: SvgPicture.asset('assets/nav_bar_icons/ticket.svg'),
+              icon: _isActive[1]
+                  ? SizedBox(
+                      width: 82,
+                      height: 72,
+                      child:
+                          SvgPicture.asset('assets/nav_bar_icons/ticket.svg'))
+                  : SizedBox(
+                      width: 82,
+                      height: 72,
+                      child: SvgPicture.asset(
+                          'assets/nav_bar_icons/ticket_na.svg')),
               label: ''),
           //3
           BottomNavigationBarItem(
-              icon:
-                  SvgPicture.asset('assets/nav_bar_icons/notification.na.svg'),
-              activeIcon:
-                  SvgPicture.asset('assets/nav_bar_icons/notification.svg'),
+              icon: _isActive[2]
+                  ? SizedBox(
+                      width: 82,
+                      height: 72,
+                      child: SvgPicture.asset(
+                          'assets/nav_bar_icons/notification.svg'))
+                  : SizedBox(
+                      width: 82,
+                      height: 72,
+                      child: SvgPicture.asset(
+                          'assets/nav_bar_icons/notification_na.svg')),
               label: ''),
           //4
           BottomNavigationBarItem(
-              icon: Icon(Icons.confirmation_num_sharp),
-              activeIcon: Icon(Icons.add),
-              label: '')
+            icon: _isActive[3]
+                ? SizedBox(
+                    width: 82,
+                    height: 72,
+                    child: SvgPicture.asset('assets/nav_bar_icons/home_na.svg'))
+                : SizedBox(
+                    width: 82,
+                    height: 72,
+                    child:
+                        SvgPicture.asset('assets/nav_bar_icons/home_na.svg')),
+            label: '',
+          )
         ],
       ),
     );
