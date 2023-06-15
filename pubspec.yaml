@@ -23,6 +23,7 @@ dependencies:
 
 
   injectable: ^2.1.2
+  flutter_screenutil: ^5.8.4
   
 
 dev_dependencies:
@@ -44,6 +45,7 @@ flutter:
 
   assets:
     - assets/
+    - assets/images/
     - assets/icons/
     - assets/nav_bar_icons/
 
