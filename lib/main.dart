@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
       '/language_select': (context) => LanguageSelectScreen(),
        '/theme_select':(context)=> ThemeSelectScreen(),
        '/location_select': (context) => LocationSelectScreen(),
-       '/service_point':(context)=> ServicePointScreen(),
+       // '/service_point':(context)=> ServicePointScreen(),
        '/DocumentListScreen' :(context) => DocumentListScreen()
      },
         );
