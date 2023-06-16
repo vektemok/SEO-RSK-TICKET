@@ -21,3 +21,13 @@ TextStyle descriptionTextStyle = GoogleFonts.montserrat(
   fontWeight: FontWeight.w500,
   fontSize: 18.sp,
 ));
+
+
+
+TextStyle tooltipTextStyle = GoogleFonts.montserrat(
+  textStyle: TextStyle(
+    color: const Color.fromRGBO(0, 0, 0, 0.5),
+    fontWeight: FontWeight.w300,
+    fontSize: 12.sp
+  )
+);

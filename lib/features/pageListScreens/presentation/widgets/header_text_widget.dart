@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:united102/iternal/helpers/text_style.dart';
+import 'package:united102/iternal/helpers/style_helper.dart';
 
 class HeaderTextWidget extends StatelessWidget {
   String title;
@@ -8,10 +8,12 @@ class HeaderTextWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      title,
-      textAlign: TextAlign.center,
-      style: headerTextStyle
+    return Center(
+      child: Text(
+        title,
+        textAlign: TextAlign.center,
+        style: headerTextStyle
+      ),
     );
 
   }

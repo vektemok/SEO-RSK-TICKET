@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:united102/reservation_screens/data_entry_screen.dart';
+import 'package:united102/features/reservationScreens/presentation/screens/SpecialNeedsScreen/special_needs_screen.dart';
 import 'package:united102/src/config/themes/white_theme.dart';
 import 'package:united102/src/presentation/view/screens/document_list_screen.dart';
 import 'package:united102/src/presentation/view/screens/location_select_screen.dart';
@@ -19,6 +19,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
+
       designSize: const Size(430, 932),
       minTextAdapt: true,
       splitScreenMode: true,
@@ -37,7 +38,7 @@ class MyApp extends StatelessWidget {
           },
         );
       },
-      child: DataEntryScreen(),
+      child: SpecialNeedsScreen(),
     );
   }
 }
