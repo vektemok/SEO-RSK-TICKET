@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:united102/iternal/helpers/style_helper.dart';
 
 class SpecialNeedsScreen extends StatefulWidget {
@@ -18,7 +20,13 @@ class _SpecialNeedsScreenState extends State<SpecialNeedsScreen> {
     false,
   ];
 
-
+  List<String> invalidString = [
+    'Нет',
+    'Да, физическая',
+    'Да, зрительная',
+    'Да, слуховая',
+    'Другое',
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -57,27 +65,39 @@ class _SpecialNeedsScreenState extends State<SpecialNeedsScreen> {
           child: Padding(
             padding: EdgeInsets.fromLTRB(30, 0, 30, 0),
             child: Column(
-                children: [
+              children: [
                 _HeaderText(),
-            ListView.builder(
-                shrinkWrap: true,
-                itemCount: isChecked.length,
-                itemBuilder: (context, index){
-                  return Checkbox(
-                      splashRadius: 20,
-
-
-                      value: isChecked[index] , onChanged: (bool? value){
-                    setState(() {
-                      isChecked[index] = value!;
-                    });
-                  });
-                }),
-            ],
+SvgPicture.asset('assets/specialNeedsSvg/disability.svg'),
+                ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: isChecked.length,
+                    itemBuilder: (context, index) {
+                      return Row(
+                        children: [
+                          Checkbox(
+                              splashRadius: 20,
+                              value: isChecked[index],
+                              onChanged: (bool? value) {
+                                setState(() {
+                                  isChecked[index] = value!;
+                                });
+                              }),
+                          Text(invalidString[index], style: GoogleFonts
+                              .montserrat(
+                            textStyle: TextStyle(
+                              color: const Color.fromRGBO(51, 48, 48, 1),
+                              fontWeight: FontWeight.w500,
+                              fontSize: 14.sp,
+                            ),))
+                        ],
+                      );
+                    }),
+              ],
+            ),
           ),
         ),
       ),
-    ),);
+    );
   }
 }
 
@@ -88,13 +108,27 @@ class _HeaderText extends StatelessWidget {
   Widget build(BuildContext context) {
     String description =
         'Пожалуйста, укажите, если у вас есть особые потребности в связи с инвалидностью, беременностью или пенсионерством:';
-    return Text(
-      description,
-      style: descriptionTextStyle,
-    );
+    return Text(description,
+        style: GoogleFonts.montserrat(
+          textStyle: TextStyle(
+            color: const Color.fromRGBO(51, 48, 48, 1),
+            fontWeight: FontWeight.w500,
+            fontSize: 15.sp,
+          ),
+        ));
   }
 }
 
+
+class SpecialNeedText extends StatelessWidget {
+  String asset;
+   SpecialNeedText({Key? key, required this.asset}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return SvgPicture.asset(asset);
+  }
+}
 
 // class ListInvalidCheck extends StatefulWidget {
 //   const ListInvalidCheck({Key? key}) : super(key: key);

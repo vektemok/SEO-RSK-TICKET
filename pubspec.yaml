@@ -48,6 +48,7 @@ flutter:
     - assets/images/
     - assets/icons/
     - assets/nav_bar_icons/
+    - asset/specialNeedsSvg/
 
 
 
