@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:united102/reservation_screens/data_entry_screen.dart';
 import 'package:united102/src/config/themes/white_theme.dart';
 import 'package:united102/src/presentation/view/screens/document_list_screen.dart';
 import 'package:united102/src/presentation/view/screens/location_select_screen.dart';
 import 'package:united102/src/presentation/view/screens/theme_select_screen.dart';
+
 import 'features/splashScreen/presentation/screens/SplashScreen/splash_screen.dart';
 import 'src/presentation/view/screens/language_select_screen.dart';
 
-
-void main(){
-  runApp(const  MyApp());
+void main() {
+  runApp(const MyApp());
 }
-
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -24,23 +24,20 @@ class MyApp extends StatelessWidget {
       splitScreenMode: true,
       builder: (context, child) {
         return MaterialApp(
-          
           debugShowCheckedModeBanner: false,
           title: 'First Method',
           theme: whiteTheme,
           home: child,
-           routes: {
-
-      '/language_select': (context) => LanguageSelectScreen(),
-       '/theme_select':(context)=> ThemeSelectScreen(),
-       '/location_select': (context) => LocationSelectScreen(),
-       // '/service_point':(context)=> ServicePointScreen(),
-       '/DocumentListScreen' :(context) => DocumentListScreen()
-     },
+          routes: {
+            '/language_select': (context) => LanguageSelectScreen(),
+            '/theme_select': (context) => ThemeSelectScreen(),
+            '/location_select': (context) => LocationSelectScreen(),
+            // '/service_point':(context)=> ServicePointScreen(),
+            '/DocumentListScreen': (context) => DocumentListScreen()
+          },
         );
       },
-      child:  SplashScreen(),
-      
+      child: DataEntryScreen(),
     );
   }
 }

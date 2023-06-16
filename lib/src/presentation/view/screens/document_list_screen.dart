@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:united102/src/presentation/widgets/header_widget.dart';
+import 'package:united102/src/presentation/widgets/header_text_widget.dart';
 
 
 class DocumentListScreen extends StatelessWidget {
@@ -38,7 +38,7 @@ class DocumentListScreen extends StatelessWidget {
             SizedBox(
               height: 40,
             ),
-            HeaderWidget(title: 'Список требуемых документов'),
+            HeaderTextWidget(title: 'Список требуемых документов'),
             SizedBox(
               height: 15,
             ),

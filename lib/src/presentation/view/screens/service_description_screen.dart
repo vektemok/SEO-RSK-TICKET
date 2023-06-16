@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:united102/src/presentation/widgets/header_widget.dart';
+import 'package:united102/src/presentation/widgets/header_text_widget.dart';
 import 'package:united102/src/presentation/widgets/screen_switcher_button.dart';
 
 class ServiceDescriptionScreen extends StatefulWidget {
@@ -46,7 +46,7 @@ class _ServiceDescriptionScreenState extends State<ServiceDescriptionScreen> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                HeaderWidget(
+                HeaderTextWidget(
                     title: 'Операция по \n'
                         ' корпоративному счету'),
                 SizedBox(
