@@ -46,8 +46,8 @@ class _TicketBookingSuccessScreenState extends State<TicketBookingSuccessScreen>
         child: Column(
           children: [
  SizedBox(
-   height: 96.r ,
-   width: 96.r,
+   height: 96.h ,
+   width: 96.w,
    child: SvgPicture.asset('assets/icons/ticket_completed.svg'),
  )
           ],
