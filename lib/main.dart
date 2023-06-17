@@ -15,7 +15,9 @@ import 'features/ticketHistoryScreens/presentation/screens/UnifyingHistoryScreen
 
 void main() {
   runZonedGuarded(() {
-    runApp(const MyApp());
+    runApp(const MyApp(
+
+    ));
   }, (error, stack) {});
 }
 
