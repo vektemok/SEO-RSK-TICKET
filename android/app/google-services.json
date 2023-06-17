@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "617035942335",
+    "project_id": "seo-rsk-bank",
+    "storage_bucket": "seo-rsk-bank.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:617035942335:android:b2b8212f103a2cc501b90a",
+        "android_client_info": {
+          "package_name": "com.example.united102"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "617035942335-r57gjsuegbu04f7fff2ot05jt05vde6g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAaRbR4a-kf9JsR3EwTj5eFKnWn1LNjbYs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "617035942335-r57gjsuegbu04f7fff2ot05jt05vde6g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

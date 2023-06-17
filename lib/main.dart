@@ -12,12 +12,16 @@ import 'features/reservationScreens/presentation/screens/TicketBookingSuccessScr
 import 'features/reservationScreens/presentation/screens/TicketViewScreen/ticket_view_screen.dart';
 import 'features/splashScreen/presentation/screens/SplashScreen/splash_screen.dart';
 import 'features/ticketHistoryScreens/presentation/screens/UnifyingHistoryScreen/unifying_history_screen.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
-void main() {
-  runZonedGuarded(() {
-    runApp(const MyApp(
-
-    ));
+void main() async {
+  runZonedGuarded(() async {
+    WidgetsFlutterBinding.ensureInitialized();
+    await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+    );
+    runApp(const MyApp());
   }, (error, stack) {});
 }
 
