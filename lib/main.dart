@@ -10,6 +10,7 @@ import 'package:united102/main_screen.dart';
 import 'features/reservationScreens/presentation/screens/DataEntryScreen/data_entry_screen.dart';
 import 'features/reservationScreens/presentation/screens/TicketBookingSuccessScreen/ticket_booking_success_screen.dart';
 import 'features/reservationScreens/presentation/screens/TicketViewScreen/ticket_view_screen.dart';
+import 'features/settingScreens/presentation/SettingScreen/setting_screen.dart';
 import 'features/splashScreen/presentation/screens/SplashScreen/splash_screen.dart';
 import 'features/ticketHistoryScreens/presentation/screens/UnifyingHistoryScreen/unifying_history_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -54,7 +55,7 @@ class MyApp extends StatelessWidget {
           },
         );
       },
-      child: MainScreen(),
+      child: SettingScreen(),
     );
   }
 }
