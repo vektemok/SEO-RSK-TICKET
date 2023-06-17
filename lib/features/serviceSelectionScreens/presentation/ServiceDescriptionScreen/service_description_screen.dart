@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:united102/features/pageListScreens/presentation/widgets/header_text_widget.dart';
-import 'package:united102/src/presentation/widgets/screen_switcher_button.dart';
+import 'package:united102/features/widgets/screen_switcher_button.dart';
 
 class ServiceDescriptionScreen extends StatefulWidget {
   const ServiceDescriptionScreen({Key? key}) : super(key: key);

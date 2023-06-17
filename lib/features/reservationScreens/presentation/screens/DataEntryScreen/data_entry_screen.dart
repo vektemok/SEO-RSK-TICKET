@@ -4,7 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:united102/iternal/helpers/style_helper.dart';
 import 'package:united102/features/pageListScreens/presentation/widgets/header_text_widget.dart';
 
-import '../../../../../src/presentation/widgets/screen_switcher_button.dart';
+import '../../../../widgets/screen_switcher_button.dart';
 
 class DataEntryScreen extends StatefulWidget {
   const DataEntryScreen({Key? key}) : super(key: key);

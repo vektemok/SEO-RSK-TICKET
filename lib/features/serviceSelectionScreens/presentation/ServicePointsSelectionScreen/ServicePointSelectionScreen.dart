@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:united102/src/presentation/widgets/screen_switcher_button.dart';
+import 'package:united102/features/widgets/screen_switcher_button.dart';
 
-class ServicePointScreen extends StatefulWidget {
-  const ServicePointScreen({Key? key}) : super(key: key);
+class ServicePointSelectionScreen extends StatefulWidget {
+  const ServicePointSelectionScreen({Key? key}) : super(key: key);
 
   @override
-  State<ServicePointScreen> createState() => _ServicePointScreenState();
+  State<ServicePointSelectionScreen> createState() => _ServicePointSelectionScreenState();
 }
 
-class _ServicePointScreenState extends State<ServicePointScreen> {
+class _ServicePointSelectionScreenState extends State<ServicePointSelectionScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

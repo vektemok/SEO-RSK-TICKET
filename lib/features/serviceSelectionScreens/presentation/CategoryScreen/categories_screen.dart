@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:united102/src/presentation/widgets/screen_switcher_button.dart';
+import 'package:united102/features/widgets/screen_switcher_button.dart';
 
-import '../../widgets/icon_badge_widget.dart';
+import '../../../widgets/icon_badge_widget.dart';
 
 class CategoriesScreen extends StatefulWidget {
   const CategoriesScreen({Key? key}) : super(key: key);

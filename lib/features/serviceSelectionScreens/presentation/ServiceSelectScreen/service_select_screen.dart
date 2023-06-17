@@ -2,10 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:united102/src/presentation/widgets/app_bar.dart';
-import 'package:united102/src/presentation/widgets/screen_switcher_button.dart';
+import 'package:united102/features/widgets/app_bar.dart';
+import 'package:united102/features/widgets/screen_switcher_button.dart';
 
-import '../../widgets/icon_badge_widget.dart';
+import '../../../widgets/icon_badge_widget.dart';
 
 class ServiceSelectScreen extends StatefulWidget {
   const ServiceSelectScreen({Key? key}) : super(key: key);

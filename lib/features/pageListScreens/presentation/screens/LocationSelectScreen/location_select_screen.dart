@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:united102/src/presentation/widgets/screen_switcher_button.dart';
+import 'package:united102/features/widgets/screen_switcher_button.dart';
 
 class LocationSelectScreen extends StatefulWidget {
   const LocationSelectScreen({Key? key}) : super(key: key);

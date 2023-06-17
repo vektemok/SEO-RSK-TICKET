@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:united102/src/presentation/view/screens/notification_screen.dart';
-import 'package:united102/src/presentation/view/screens/setting_screen.dart';
-import 'package:united102/src/presentation/view/screens/ticket_screen.dart';
-
-import 'categories_screen.dart';
+import 'features/ticketHistoryScreens/presentation/screens/UnifyingHistoryScreen/unifying_history_screen.dart';
+import 'features/serviceSelectionScreens/presentation/CategoryScreen/categories_screen.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
@@ -16,9 +13,9 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   List<Widget> _screens = [
     CategoriesScreen(),
-    TicketScreen(),
-    NotificationScreen(),
-    SettingScreen()
+    UnifyingHistoryScreen(),
+    // NotificationScreen(),
+    // SettingScreen()
   ];
 
   List<bool> _isActive = [true, false, false, false];

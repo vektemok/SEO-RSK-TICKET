@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:united102/iternal/helpers/style_helper.dart';
-import 'package:united102/src/presentation/widgets/screen_switcher_button.dart';
+import 'package:united102/features/widgets/screen_switcher_button.dart';
 
 class SpecialNeedsScreen extends StatefulWidget {
   const SpecialNeedsScreen({Key? key}) : super(key: key);
