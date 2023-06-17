@@ -91,8 +91,18 @@ class _TicketActionListState extends State<_TicketActionList> {
     'assets/icons/arrow_back.svg',
   ];
   int _currentIndex = 0;
+
+
   void onTap(int index){
+
+
     setState(() {
+      switch(_currentIndex){
+        case 0:{
+Navigator.pushNamed(context, '/TicketViewScreen');
+        }
+      }
+
       _currentIndex = index;
     });
   }

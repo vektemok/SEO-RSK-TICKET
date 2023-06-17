@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:united102/features/widgets/app_bar.dart';
@@ -42,6 +43,9 @@ class _ServiceSelectScreenState extends State<ServiceSelectScreen> {
       body: SafeArea(
         child: Column(
           children: [
+            SizedBox(
+              height: 30.h,
+            ),
             _HeaderText(),
             SizedBox(
               height: 10,

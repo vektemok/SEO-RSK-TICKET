@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:united102/features/reservationScreens/presentation/screens/SpecialNeedsScreen/special_needs_screen.dart';
+import 'package:united102/features/serviceSelectionScreens/presentation/ServiceDescriptionScreen/service_description_screen.dart';
+import 'package:united102/features/serviceSelectionScreens/presentation/ServiceSelectScreen/service_select_screen.dart';
 import 'package:united102/iternal/themes/white_theme.dart';
 import 'package:united102/features/serviceSelectionScreens/presentation/DocumentListScreen/document_list_screen.dart';
 import 'package:united102/main_screen.dart';
 import 'features/reservationScreens/presentation/screens/DataEntryScreen/data_entry_screen.dart';
+import 'features/reservationScreens/presentation/screens/TicketBookingSuccessScreen/ticket_booking_success_screen.dart';
 import 'features/reservationScreens/presentation/screens/TicketViewScreen/ticket_view_screen.dart';
 import 'features/splashScreen/presentation/screens/SplashScreen/splash_screen.dart';
 import 'features/ticketHistoryScreens/presentation/screens/UnifyingHistoryScreen/unifying_history_screen.dart';
@@ -29,6 +32,14 @@ class MyApp extends StatelessWidget {
           theme: whiteTheme,
           home: child,
           routes: {
+            '/ServiceSelectScreen' :(context) => ServiceSelectScreen(),
+ '/ServiceDescriptionScreen' :(context) => ServiceDescriptionScreen(),
+            '/DocumentListScreen': (context) => DocumentListScreen(),
+            'MainScreen': (context) => MainScreen(),
+            '/DataEntryScreen':(context) => DataEntryScreen(),
+            '/SpecialNeedsScreen':(context)=> SpecialNeedsScreen(),
+            '/TicketBookingSuccessScreen':(context)=>TicketBookingSuccessScreen(),
+            '/TicketViewScreen':(context)=> TicketViewScreen()
           },
         );
       },

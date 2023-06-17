@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:united102/features/pageListScreens/presentation/widgets/header_text_widget.dart';
@@ -50,9 +51,13 @@ class _ServiceDescriptionScreenState extends State<ServiceDescriptionScreen> {
                     title: 'Операция по \n'
                         ' корпоративному счету'),
                 SizedBox(
-                  height: 20,
+                  height: 20.h,
                 ),
                 DescriptionService(),
+                SizedBox(
+                  height: 40.h,
+                ),
+
                 ElevatedButton.icon(
                     onPressed: () {
                       Navigator.pushNamed(context, '/DocumentListScreen');
@@ -74,8 +79,11 @@ class _ServiceDescriptionScreenState extends State<ServiceDescriptionScreen> {
                         fontSize: 16,
                       ),
                     )),
+                SizedBox(
+                  height: 10.h,
+                ),
                 ScreenSwitcherButton(
-                  path: '',
+                  path: '/DataEntryScreen',
                 )
               ],
             ),

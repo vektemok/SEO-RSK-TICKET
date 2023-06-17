@@ -5,14 +5,14 @@ import 'package:united102/features/widgets/screen_switcher_button.dart';
 
 import '../../../widgets/icon_badge_widget.dart';
 
-class CategoriesScreen extends StatefulWidget {
-  const CategoriesScreen({Key? key}) : super(key: key);
+class CategoriesSelectScreen extends StatefulWidget {
+  const CategoriesSelectScreen({Key? key}) : super(key: key);
 
   @override
-  State<CategoriesScreen> createState() => _CategoriesScreenState();
+  State<CategoriesSelectScreen> createState() => _CategoriesSelectScreenState();
 }
 
-class _CategoriesScreenState extends State<CategoriesScreen> {
+class _CategoriesSelectScreenState extends State<CategoriesSelectScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,7 +24,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
             SizedBox(
               height: 20,
             ),
-            ScreenSwitcherButton(path: '/service_point'),
+            ScreenSwitcherButton(path: '/ServiceSelectScreen'),
           ],
         ),
       ),
@@ -42,8 +42,7 @@ class _CategorySelectList extends StatefulWidget {
 class _CategorySelectListState extends State<_CategorySelectList> {
   List<String> _categories = [
     'Физические лица',
-    'Юри'
-        'дическе лица',
+    'Юридическе лица',
     'Платежные карты'
   ];
 
