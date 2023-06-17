@@ -5,7 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 
 
-// Р
+
 
 class TicketViewScreen extends StatelessWidget {
   const TicketViewScreen({Key? key}) : super(key: key);

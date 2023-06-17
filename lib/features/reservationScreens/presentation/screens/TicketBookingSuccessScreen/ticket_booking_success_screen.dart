@@ -101,6 +101,7 @@ class _TicketActionListState extends State<_TicketActionList> {
         case 0:{
 Navigator.pushNamed(context, '/TicketViewScreen');
         }
+        break;
       }
 
       _currentIndex = index;
