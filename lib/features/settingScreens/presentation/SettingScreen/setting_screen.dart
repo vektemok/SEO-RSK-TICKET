@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:google_fonts/google_fonts.dart';
+
+import '../../../../app/routes/routes.dart';
 
 class SettingScreen extends StatelessWidget {
   const SettingScreen({Key? key}) : super(key: key);
@@ -25,6 +29,24 @@ class SettingScreen extends StatelessWidget {
       'assets/setting_icons/intelligence.svg',
       'assets/setting_icons/notification.svg',
     ];
+
+    List<String> pushPath = [
+      Routes.locationSettingRoute,
+      Routes.languageSettingRoute,
+      Routes.themeSettingRoute,
+      Routes.qaSettingRoute,
+      Routes.intelligenceSettingRoute,
+      Routes.notificationSettingRoute,
+    ];
+
+
+    void pushScreen(int index){
+  for(int i =0; i <= settingName.length; i++ ){
+    if(i == index){
+      context.go(pushPath[index]);
+    }
+  }
+    }
 
     final TextStyle settingTextStyle =
         GoogleFonts.montserrat(textStyle: const TextStyle(color: Colors.black));
@@ -54,27 +76,39 @@ class SettingScreen extends StatelessWidget {
               itemBuilder: (context, index) {
                 return Padding(
                   padding: const EdgeInsets.fromLTRB(0, 5, 0, 5),
-                  child: Container(
-                    width: 350.w,
-                    height: 54.h,
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        border: Border.all(
-                            color: const Color.fromRGBO(150, 150, 150, 1),
-                            width: 0.5),
-                        borderRadius: BorderRadius.circular(8.r)),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        SizedBox(
-                            height: 22.h,
-                            width: 30.w,
-                            child: SvgPicture.asset(settingIcons[index])),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        Text(settingName[index], style: settingTextStyle),
-                      ],
+                  child: InkWell(
+                    onTap: () => pushScreen(index),
+                    child: Container(
+                      width: 350.w,
+                      height: 54.h,
+                      decoration: BoxDecoration(
+                     boxShadow: [
+                       BoxShadow(
+                         // color:  Color(0x3f000000),
+                         //
+                         // offset:  Offset(0, 4),
+                         // blurRadius:  2,
+
+                       )
+                     ],
+                          color: Colors.white,
+                          border: Border.all(
+                              color: const Color.fromRGBO(150, 150, 150, 1),
+                              width: 0.5),
+                          borderRadius: BorderRadius.circular(8.r)),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          SizedBox(
+                              height: 22.h,
+                              width: 30.w,
+                              child: SvgPicture.asset(settingIcons[index])),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Text(settingName[index], style: settingTextStyle),
+                        ],
+                      ),
                     ),
                   ),
                 );
