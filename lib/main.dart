@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
       designSize: const Size(430, 932),
       minTextAdapt: true,
       splitScreenMode: true,
-      builder: (context, child) {
+      builder: (context, child) {git
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'First Method',
@@ -55,7 +55,10 @@ class MyApp extends StatelessWidget {
           },
         );
       },
+
       child: SettingScreen(),
+
+
     );
   }
 }
