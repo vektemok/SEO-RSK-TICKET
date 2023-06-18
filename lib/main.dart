@@ -19,15 +19,20 @@ import 'firebase_options.dart';
 void main() async {
   runZonedGuarded(() async {
     WidgetsFlutterBinding.ensureInitialized();
+    await ScreenUtil.ensureScreenSize();
     await Firebase.initializeApp(
       options: DefaultFirebaseOptions.currentPlatform,
     );
     runApp(const MyApp());
-  }, (error, stack) {});
+  }, (error, stack) {
+    print('Ошибка запуска $error');
+  });
 }
 
+
+
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +40,7 @@ class MyApp extends StatelessWidget {
       designSize: const Size(430, 932),
       minTextAdapt: true,
       splitScreenMode: true,
-      builder: (context, child) {git
+      builder: (context, child) {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'First Method',
@@ -62,3 +67,5 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+
