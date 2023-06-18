@@ -36,17 +36,7 @@ CategoriesSelectScreen(),
     return Scaffold(
       body: _screens[_currentIndex],
       backgroundColor: Theme.of(context).backgroundColor,
-      appBar: AppBar(
-        elevation: Theme.of(context).appBarTheme.elevation,
-        centerTitle: Theme.of(context).appBarTheme.centerTitle,
-        toolbarHeight: 80,
-        backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
-        title: SizedBox(
-          height: 80,
-          width: 150,
-          child: SvgPicture.asset('assets/appbar_rsk.svg'),
-        ),
-      ),
+
       bottomNavigationBar: BottomNavigationBar(
         onTap: onTap,
         showSelectedLabels: false,
