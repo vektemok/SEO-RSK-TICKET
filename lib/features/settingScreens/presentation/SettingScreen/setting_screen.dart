@@ -6,6 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../../app/routes/routes.dart';
+import '../../../../iternal/helpers/style_helper.dart';
 
 class SettingScreen extends StatelessWidget {
   const SettingScreen({Key? key}) : super(key: key);
@@ -48,8 +49,7 @@ class SettingScreen extends StatelessWidget {
   }
     }
 
-    final TextStyle settingTextStyle =
-        GoogleFonts.montserrat(textStyle: const TextStyle(color: Colors.black));
+
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -84,10 +84,10 @@ class SettingScreen extends StatelessWidget {
                       decoration: BoxDecoration(
                      boxShadow: [
                        BoxShadow(
-                         // color:  Color(0x3f000000),
-                         //
-                         // offset:  Offset(0, 4),
-                         // blurRadius:  2,
+                         color:  Color(0x3f000000),
+
+                         offset:  Offset(0, 4),
+                         blurRadius:  2,
 
                        )
                      ],

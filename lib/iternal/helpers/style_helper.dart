@@ -31,3 +31,6 @@ TextStyle tooltipTextStyle = GoogleFonts.montserrat(
     fontSize: 12.sp
   )
 );
+
+final TextStyle settingTextStyle =
+GoogleFonts.montserrat(textStyle: const TextStyle(color: Colors.black));
