@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
+import '../../../../../iternal/helpers/utils.dart';
+
 class ThirdScreen extends StatefulWidget {
   const ThirdScreen({super.key});
 
@@ -35,6 +37,9 @@ class _ThirdScreenState extends State<ThirdScreen> {
               style: TextStyle(fontSize: 24.sp),
             ),
           ),
+          // CustomButtonCard(bRadius: 8.r, width: 230.w, height: 50.h, onPressed: () { 
+
+          //  }, title: 'Начать', textStyle: null, backColor: null, color: null,),
           Image.asset(
             "assets/images/page5.png",
             fit: BoxFit.cover,
