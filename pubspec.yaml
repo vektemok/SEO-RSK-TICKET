@@ -20,10 +20,18 @@ dependencies:
   google_fonts: ^5.0.0
   flutter_svg: ^2.0.7
 
+  #Firebase tools
+  firebase_core: ^2.14.0
+  firebase_auth: ^4.6.3
+
+
+  #Routes
+  go_router: ^8.0.5
 
 
   injectable: ^2.1.2
   flutter_screenutil: ^5.8.4
+  dropdown_button2: ^2.1.4
   
 
 dev_dependencies:
@@ -48,6 +56,8 @@ flutter:
     - assets/images/
     - assets/icons/
     - assets/nav_bar_icons/
+    - assets/specialNeedsSvg/
+    - assets/setting_icons/
 
 
 
