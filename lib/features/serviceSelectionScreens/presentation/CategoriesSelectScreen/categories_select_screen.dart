@@ -16,6 +16,22 @@ class _CategoriesSelectScreenState extends State<CategoriesSelectScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        toolbarHeight: 80,
+        elevation: Theme.of(context).appBarTheme.elevation,
+        backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
+        centerTitle: Theme.of(context).appBarTheme.centerTitle,
+        title: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: SizedBox(
+            height: 180,
+            width: 150,
+            child: SvgPicture.asset(
+              'assets/appbar_rsk.svg',
+            ),
+          ),
+        ),
+      ),
       body: SafeArea(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

@@ -13,7 +13,7 @@ import '../../features/settingScreens/presentation/QASettingScreen/qa_setting_sc
 
 class AppRouter {
   static final GoRouter router = GoRouter(routes: [
-    GoRoute(path: '/', builder: (context, state) => const QASettingScreen()),
+    GoRoute(path: '/', builder: (context, state) => const MainScreen()),
     GoRoute(
         path: Routes.settingRoute,
         builder: (context, state) => SettingScreen()),
@@ -33,8 +33,8 @@ class AppRouter {
     GoRoute(
         path: Routes.notificationSettingRoute,
         builder: (context, state) => const NotificationScreen()),
-    // GoRoute(path: Routes.qaSettingRoute,
-    // builder: (context, state) => const QASettingScreen()
-    // )
+    GoRoute(path: Routes.qaSettingRoute,
+    builder: (context, state) => const QASettingScreen()
+    )
   ]);
 }
