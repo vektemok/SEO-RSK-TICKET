@@ -51,7 +51,7 @@ class SettingScreen extends StatelessWidget {
 
 
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Theme.of(context).backgroundColor,
       appBar: AppBar(
         toolbarHeight: 80,
         elevation: Theme.of(context).appBarTheme.elevation,
@@ -86,7 +86,7 @@ class SettingScreen extends StatelessWidget {
                        BoxShadow(
                          color:  Color(0x3f000000),
 
-                         offset:  Offset(0, 4),
+                         offset:  Offset(0, 2),
                          blurRadius:  2,
 
                        )

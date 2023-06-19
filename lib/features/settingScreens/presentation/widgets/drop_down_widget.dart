@@ -110,7 +110,7 @@ class CustomDropdownButton2 extends StatelessWidget {
           elevation: buttonElevation,
         ),
         iconStyleData: IconStyleData(
-          icon: icon ?? const Icon(Icons.arrow_forward_ios_outlined),
+          icon: icon ?? const Icon(Icons.arrow_drop_down_outlined),
           iconSize: iconSize ?? 12,
           iconEnabledColor: iconEnabledColor,
           iconDisabledColor: iconDisabledColor,

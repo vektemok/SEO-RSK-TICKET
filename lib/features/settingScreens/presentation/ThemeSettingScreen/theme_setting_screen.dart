@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:united102/features/pageListScreens/presentation/widgets/header_text_widget.dart';
-
+import 'package:united102/features/settingScreens/presentation/widgets/header_setting_widget.dart';
+import 'package:go_router/go_router.dart';
 import '../widgets/drop_down_widget.dart';
 
 class ThemeSettingScreen extends StatefulWidget {
@@ -20,6 +22,27 @@ class _ThemeSettingScreenState extends State<ThemeSettingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        toolbarHeight: 80,
+        elevation: Theme.of(context).appBarTheme.elevation,
+        backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
+        centerTitle: Theme.of(context).appBarTheme.centerTitle,
+        leading: IconButton(onPressed: (){
+          context.go('/');
+        }, icon: Icon(Icons.arrow_back_ios_sharp, color: Colors.black,)),
+
+        title: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: SizedBox(
+            height: 180,
+            width: 150,
+            child: SvgPicture.asset(
+              'assets/appbar_rsk.svg',
+            ),
+          ),
+        ),
+      ),
+      backgroundColor: Theme.of(context).backgroundColor,
       body: SafeArea(
         child: Center(
           child: Column(
@@ -27,7 +50,8 @@ class _ThemeSettingScreenState extends State<ThemeSettingScreen> {
               SizedBox(
                 height: 10,
               ),
-              HeaderTextWidget(title: 'Пожалуйся, выберете тему'),
+            HeaderSettingWidget(title: 'Пожалуйста, выберите \n'
+                ' тему'),
               SizedBox(
                 height: 20,
               ),

@@ -1,20 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:united102/features/settingScreens/presentation/QASettingScreen/qa_model.dart';
 
 
 
-class Item {
-  Item({
-    required this.expandedValue,
-    required this.headerValue,
-    this.isExpanded = false,
-  });
 
-
-
-  String expandedValue;
-  String headerValue;
-  bool isExpanded;
-}
 
 class QASettingScreen extends StatefulWidget {
   const QASettingScreen({Key? key}) : super(key: key);
@@ -26,42 +15,27 @@ class QASettingScreen extends StatefulWidget {
 class _QASettingScreenState extends State<QASettingScreen> {
   @override
   Widget build(BuildContext context) {
-
-    const List<String> _data = [];
-
-    // return Scaffold(
-    //   body: SafeArea(
-    //     child: ListView.builder(
-    //         itemCount: 7,
-    //         itemBuilder: (context, index){
-    //       return ExpansionPanelList(
-    //         children:_data.map<ExpansionPanel>((Item item) {
-    //           return ExpansionPanel(
-    //             headerBuilder: (BuildContext context, bool isExpanded) {
-    //               return ListTile(
-    //                 title: Text(item.headerValue),
-    //               );
-    //             },
-    //             body: ListTile(
-    //                 title: Text(item.expandedValue),
-    //                 subtitle:
-    //                 const Text('To delete this panel, tap the trash can icon'),
-    //                 trailing: const Icon(Icons.delete),
-    //               ),
-    //             isExpanded: item.isExpanded,
-    //           );
-    //         }).toList(),
-    //       );
-    //     }),
-    //   ),
-    // )
-    return Scaffold();
+    return Scaffold(
+      backgroundColor: Theme.of(context).backgroundColor,
+      body: SafeArea(
+        child: ExpansionPanelList(
+          elevation: 0,
+          children: qaDescription.map((item) => ExpansionPanel(headerBuilder: (_, isExpanded)=> Container(
+            child: Text(item['title']),
+          ), body: Container(
+            child: Center(
+              child: Text(item['description']),
+            ),
+          ))).toList(),
+        ),
+      ),
+    );
   }
 }
 
 
 
 
-// stores ExpansionPanel state information
+
 
 

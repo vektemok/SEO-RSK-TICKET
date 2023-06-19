@@ -9,9 +9,11 @@ import 'package:united102/features/settingScreens/presentation/LocationSettingSc
 import 'package:united102/features/settingScreens/presentation/ThemeSettingScreen/theme_setting_screen.dart';
 import 'package:united102/main_screen.dart';
 
+import '../../features/settingScreens/presentation/QASettingScreen/qa_setting_screen.dart';
+
 class AppRouter {
   static final GoRouter router = GoRouter(routes: [
-    GoRoute(path: '/', builder: (context, state) => const MainScreen()),
+    GoRoute(path: '/', builder: (context, state) => const QASettingScreen()),
     GoRoute(
         path: Routes.settingRoute,
         builder: (context, state) => SettingScreen()),
@@ -30,6 +32,9 @@ class AppRouter {
         builder: (context, state) => const IntelligenceSettingScreen()),
     GoRoute(
         path: Routes.notificationSettingRoute,
-        builder: (context, state) => const NotificationScreen())
+        builder: (context, state) => const NotificationScreen()),
+    // GoRoute(path: Routes.qaSettingRoute,
+    // builder: (context, state) => const QASettingScreen()
+    // )
   ]);
 }
