@@ -104,6 +104,7 @@ class CustomDropdownButton2 extends StatelessWidget {
                 borderRadius: BorderRadius.circular(14),
                 border: Border.all(
                   color: Colors.black45,
+                  width: 0.5
                 ),
               ),
           elevation: buttonElevation,

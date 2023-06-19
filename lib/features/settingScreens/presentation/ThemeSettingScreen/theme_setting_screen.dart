@@ -32,7 +32,7 @@ class _ThemeSettingScreenState extends State<ThemeSettingScreen> {
                 height: 20,
               ),
               CustomDropdownButton2(
-                hint: 'Выберите локацию',
+                hint: 'Выберите тему',
                 dropdownItems: items,
                 value: selectedValue,
                 onChanged: (value) {

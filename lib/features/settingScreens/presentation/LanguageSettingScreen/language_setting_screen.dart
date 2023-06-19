@@ -33,7 +33,7 @@ class _LanguageSettingScreenState extends State<LanguageSettingScreen> {
                 height: 10,
               ),
               CustomDropdownButton2(
-                hint: 'Выберите локацию',
+                hint: 'Выберите язык',
                 dropdownItems: items,
                 value: selectedValue,
                 onChanged: (value) {
