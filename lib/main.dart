@@ -43,6 +43,7 @@ class MyApp extends StatelessWidget {
                   debugShowCheckedModeBanner: false,
                   title: 'First Method',
                   theme: state.currentTheme,
+                  themeMode: ThemeMode.system,
                   routerConfig: AppRouter.router,
                   localizationsDelegates: const [
                     AppLocalizations.delegate,

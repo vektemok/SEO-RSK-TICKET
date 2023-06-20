@@ -17,6 +17,7 @@ class _CategoriesSelectScreenState extends State<CategoriesSelectScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).backgroundColor,
       appBar: AppBar(
         toolbarHeight: 80,
         elevation: Theme.of(context).appBarTheme.elevation,

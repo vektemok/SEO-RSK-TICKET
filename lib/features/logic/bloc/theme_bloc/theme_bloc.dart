@@ -11,9 +11,20 @@ part 'theme_state.dart';
 
 class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {
   ThemeBloc() : super(WhiteThemeState(currentTheme: whiteTheme)) {
-    on<ChangeWhiteTheme>(
-        (event, emit) => emit(WhiteThemeState(currentTheme: whiteTheme)));
-    on<ChangeBlackTheme>(
-        (event, emit) => emit(BlackThemeState(currentTheme: blackTheme)));
+ on<ChangeBlackTheme>((event, emit){
+   if(state is WhiteThemeState){
+     emit(BlackThemeState(currentTheme: blackTheme));
+   }else{
+     emit(BlackThemeState(currentTheme: blackTheme));
+   }
+ });
+
+ on<ChangeWhiteTheme>((event, emit){
+   if(state is BlackThemeState){
+     emit(WhiteThemeState(currentTheme: whiteTheme));
+   }else{
+     emit(WhiteThemeState(currentTheme: whiteTheme));
+   }
+ });
   }
 }
