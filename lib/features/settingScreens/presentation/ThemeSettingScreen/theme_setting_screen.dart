@@ -3,8 +3,9 @@ import 'package:flutter_svg/svg.dart';
 import 'package:united102/features/pageListScreens/presentation/widgets/header_text_widget.dart';
 import 'package:united102/features/settingScreens/presentation/widgets/header_setting_widget.dart';
 import 'package:go_router/go_router.dart';
+import '../../../logic/bloc/theme_bloc/theme_bloc.dart';
 import '../widgets/drop_down_widget.dart';
-
+import 'package:flutter_bloc/flutter_bloc.dart';
 class ThemeSettingScreen extends StatefulWidget {
   const ThemeSettingScreen({Key? key}) : super(key: key);
 
@@ -19,9 +20,17 @@ class _ThemeSettingScreenState extends State<ThemeSettingScreen> {
   ];
   String? selectedValue;
 
+  
+
   @override
   Widget build(BuildContext context) {
+    return BlocProvider(
+  create: (context) => ThemeBloc(),
+  child: BlocBuilder<ThemeBloc, ThemeState>(
+  builder: (context, state) {
+
     return Scaffold(
+
       appBar: AppBar(
         toolbarHeight: 80,
         elevation: Theme.of(context).appBarTheme.elevation,
@@ -55,20 +64,30 @@ class _ThemeSettingScreenState extends State<ThemeSettingScreen> {
               SizedBox(
                 height: 20,
               ),
-              CustomDropdownButton2(
-                hint: 'Выберите тему',
-                dropdownItems: items,
-                value: selectedValue,
-                onChanged: (value) {
-                  setState(() {
-                    selectedValue = value;
-                  });
-                },
+              InkWell(
+
+                child: CustomDropdownButton2(
+                  hint: 'Выберите тему',
+                  dropdownItems: items,
+                  value: selectedValue,
+
+                  onChanged: (value) {
+                    setState(() {
+                      selectedValue = value;
+                    });
+                  },
+                ),
               ),
+              ElevatedButton(onPressed: (){
+                BlocProvider.of<ThemeBloc>(context).add(ChangeBlackTheme());
+              }, child: Text('black'))
             ],
           ),
         ),
       ),
     );
+  },
+),
+);
   }
 }

@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:united102/features/widgets/screen_switcher_button.dart';
 
 import '../../../widgets/icon_badge_widget.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class CategoriesSelectScreen extends StatefulWidget {
   const CategoriesSelectScreen({Key? key}) : super(key: key);
@@ -16,6 +17,7 @@ class _CategoriesSelectScreenState extends State<CategoriesSelectScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).backgroundColor,
       appBar: AppBar(
         toolbarHeight: 80,
         elevation: Theme.of(context).appBarTheme.elevation,
