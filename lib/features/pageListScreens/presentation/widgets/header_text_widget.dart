@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:united102/iternal/helpers/style_helper.dart';
 
+// ignore: must_be_immutable
 class HeaderTextWidget extends StatelessWidget {
   String title;
    HeaderTextWidget({Key? key, required this.title}) : super(key: key);

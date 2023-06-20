@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:united102/features/serviceSelectionScreens/presentation/CategoriesSelectScreen/categories_select_screen.dart';
 import '../../notificationScreens/presentation/NotificationScreen/notification_screen.dart';
 import '../../settingScreens/presentation/SettingScreen/setting_screen.dart';
