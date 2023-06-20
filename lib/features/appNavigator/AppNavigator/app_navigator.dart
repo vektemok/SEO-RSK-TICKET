@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:united102/features/serviceSelectionScreens/presentation/CategoriesSelectScreen/categories_select_screen.dart';
-import 'features/notificationScreens/presentation/NotificationScreen/notification_screen.dart';
-import 'features/settingScreens/presentation/SettingScreen/setting_screen.dart';
-import 'features/ticketHistoryScreens/presentation/screens/UnifyingHistoryScreen/unifying_history_screen.dart';
+import '../../notificationScreens/presentation/NotificationScreen/notification_screen.dart';
+import '../../settingScreens/presentation/SettingScreen/setting_screen.dart';
+import '../../ticketHistoryScreens/presentation/screens/UnifyingHistoryScreen/unifying_history_screen.dart';
 
 
 class AppNavigator extends StatefulWidget {

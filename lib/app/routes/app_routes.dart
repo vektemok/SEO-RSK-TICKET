@@ -7,7 +7,7 @@ import 'package:united102/features/settingScreens/presentation/LanguageSettingSc
 import 'package:united102/features/settingScreens/presentation/SettingScreen/setting_screen.dart';
 import 'package:united102/features/settingScreens/presentation/LocationSettingScreen/location_setting_screen.dart';
 import 'package:united102/features/settingScreens/presentation/ThemeSettingScreen/theme_setting_screen.dart';
-import 'package:united102/main_screen.dart';
+import 'package:united102/features/appNavigator/AppNavigator/app_navigator.dart';
 
 import '../../features/settingScreens/presentation/QASettingScreen/qa_setting_screen.dart';
 
