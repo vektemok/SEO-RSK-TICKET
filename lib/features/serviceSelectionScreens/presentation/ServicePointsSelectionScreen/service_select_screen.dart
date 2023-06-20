@@ -5,7 +5,6 @@ import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:united102/features/widgets/screen_switcher_button.dart';
 
-
 class ServiceSelectScreen extends StatefulWidget {
   const ServiceSelectScreen({Key? key}) : super(key: key);
 
@@ -44,12 +43,12 @@ class _ServiceSelectScreenState extends State<ServiceSelectScreen> {
             SizedBox(
               height: 30.h,
             ),
-            _HeaderText(),
-            SizedBox(
+            const _HeaderText(),
+            const SizedBox(
               height: 10,
             ),
-            _ServiceSelectList(),
-            SizedBox(
+            const _ServiceSelectList(),
+            const SizedBox(
               height: 20,
             ),
             ScreenSwitcherButton(path: '/ServiceDescriptionScreen')

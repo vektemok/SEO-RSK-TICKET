@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+// ignore: must_be_immutable
 class ScreenSwitcherButton extends StatelessWidget {
   String path;
+  
    ScreenSwitcherButton({Key? key, required this.path}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: (){
-        Navigator.pushNamed(context, path);
+        context.go(path);
       },
       child: Container(
         width: 266,

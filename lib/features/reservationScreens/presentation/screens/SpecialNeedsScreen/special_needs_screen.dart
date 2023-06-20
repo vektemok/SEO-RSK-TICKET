@@ -161,6 +161,7 @@ class _HeaderText extends StatelessWidget {
   }
 }
 
+// ignore: must_be_immutable
 class SpecialNeedText extends StatelessWidget {
   String asset;
 
@@ -176,6 +177,7 @@ class SpecialNeedText extends StatelessWidget {
   }
 }
 
+// ignore: must_be_immutable
 class ListInvalidCheck extends StatefulWidget {
   List<String> valueList;
   List<bool> isChecked;

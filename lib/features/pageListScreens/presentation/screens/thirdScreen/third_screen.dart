@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../../../../iternal/helpers/utils.dart';
+import '../../../../../app/routes/routes.dart';
+import '../../../../widgets/screen_switcher_button.dart';
 
 class ThirdScreen extends StatefulWidget {
   const ThirdScreen({super.key});
@@ -37,9 +38,13 @@ class _ThirdScreenState extends State<ThirdScreen> {
               style: TextStyle(fontSize: 24.sp),
             ),
           ),
-          // CustomButtonCard(bRadius: 8.r, width: 230.w, height: 50.h, onPressed: () { 
 
-          //  }, title: 'Начать', textStyle: null, backColor: null, color: null,),
+          Positioned(
+            bottom: 200,
+            left: 40,
+            child: 
+          ScreenSwitcherButton(path: Routes.appNavigator,)),
+        
           Image.asset(
             "assets/images/page5.png",
             fit: BoxFit.cover,
