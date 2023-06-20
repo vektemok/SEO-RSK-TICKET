@@ -1,6 +1,18 @@
 part of 'theme_bloc.dart';
 
 @immutable
-abstract class ThemeState {}
+abstract class ThemeState {
+  ThemeState({required this.currentTheme});
 
-class ThemeInitial extends ThemeState {}
+  final ThemeData currentTheme;
+}
+
+
+
+class BlackThemeState extends ThemeState {
+  BlackThemeState({required super.currentTheme});
+}
+
+class WhiteThemeState extends ThemeState {
+  WhiteThemeState({required super.currentTheme});
+}
