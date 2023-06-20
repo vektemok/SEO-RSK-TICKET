@@ -14,15 +14,11 @@ class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {
  on<ChangeBlackTheme>((event, emit){
    if(state is WhiteThemeState){
      emit(BlackThemeState(currentTheme: blackTheme));
-   }else{
-     emit(BlackThemeState(currentTheme: blackTheme));
    }
  });
 
  on<ChangeWhiteTheme>((event, emit){
    if(state is BlackThemeState){
-     emit(WhiteThemeState(currentTheme: whiteTheme));
-   }else{
      emit(WhiteThemeState(currentTheme: whiteTheme));
    }
  });

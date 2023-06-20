@@ -32,18 +32,22 @@ class MyApp extends StatelessWidget {
         providers: [
           BlocProvider(create: (BuildContext context) => ThemeBloc())
         ],
-        child: ScreenUtilInit(
-          designSize: const Size(430, 932),
-          minTextAdapt: true,
-          splitScreenMode: true,
-          builder: (context, child) {
-            return BlocBuilder<ThemeBloc, ThemeState>(
-              builder: (context, state) {
+        child: BlocConsumer<ThemeBloc, ThemeState>(
+          listener: (context, state) {
+         if(state is BlackThemeState){
+           debugPrint('$state');
+         }
+          },
+          builder: (context, state) {
+            return ScreenUtilInit(
+              designSize: const Size(430, 932),
+              minTextAdapt: true,
+              splitScreenMode: true,
+              builder: (context, child) {
                 return MaterialApp.router(
                   debugShowCheckedModeBanner: false,
-                  title: 'First Method',
-                  theme: state.currentTheme,
-                  themeMode: ThemeMode.system,
+                 title: 'First Method',
+                 theme: state.currentTheme,
                   routerConfig: AppRouter.router,
                   localizationsDelegates: const [
                     AppLocalizations.delegate,

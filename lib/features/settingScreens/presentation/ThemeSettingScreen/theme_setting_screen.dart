@@ -29,6 +29,13 @@ class _ThemeSettingScreenState extends State<ThemeSettingScreen> {
   child: BlocBuilder<ThemeBloc, ThemeState>(
   builder: (context, state) {
 
+    return BlocConsumer<ThemeBloc, ThemeState>(
+  listener: (context, state) {
+    if(state is BlackThemeState){
+
+    }
+  },
+  builder: (context, state) {
     return Scaffold(
 
       appBar: AppBar(
@@ -86,6 +93,8 @@ class _ThemeSettingScreenState extends State<ThemeSettingScreen> {
         ),
       ),
     );
+  },
+);
   },
 ),
 );
