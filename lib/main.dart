@@ -5,6 +5,7 @@ import 'package:united102/iternal/themes/white_theme.dart';
 import 'app/routes/app_routes.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() async {
   runZonedGuarded(() async {
@@ -33,7 +34,18 @@ class MyApp extends StatelessWidget {
             title: 'First Method',
             theme: whiteTheme,
             routerConfig: AppRouter.router,
+            localizationsDelegates: [
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
+            ],
+            supportedLocales: [
+              Locale('en'), // English
+              Locale('kg'), // Spanish
+              Locale('ru'), // Spanish
+            ],
           );
+
         },
       );
 }
