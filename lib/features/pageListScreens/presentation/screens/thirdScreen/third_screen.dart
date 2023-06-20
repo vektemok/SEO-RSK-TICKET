@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
+import 'package:united102/features/widgets/screen_switcher_button.dart';
+import 'package:united102/app/routes/routes.dart';
 class ThirdScreen extends StatefulWidget {
   const ThirdScreen({Key? key}) : super(key: key);
 
@@ -31,6 +32,7 @@ class _ThirdScreenState extends State<ThirdScreen> {
             Container(
               child: Column(
                 children: [
+                  ScreenSwitcherButton(path: Routes.appNavigator)
                 ],
               ),
             )

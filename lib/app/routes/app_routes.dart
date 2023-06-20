@@ -15,7 +15,7 @@ class AppRouter {
   static final GoRouter router = GoRouter(routes: [
    
     
-    GoRoute(path: '/', builder: (context, state) => const PageListScreen()),
+    GoRoute(path: '/', builder: (context, state) => const AppNavigator()),
     GoRoute(
         path: Routes.settingRoute,
         builder: (context, state) => SettingScreen()),
@@ -39,5 +39,6 @@ class AppRouter {
     builder: (context, state) => const QASettingScreen()
     ),
     GoRoute(path: Routes.appNavigator, builder: (context, state) =>  const AppNavigator(),),
+
   ]);
 }

@@ -1,140 +1,132 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:united102/iternal/helpers/color_helper.dart';
 
-class NotificationScreen extends StatelessWidget {
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_swipe_action_cell/core/cell.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:united102/features/notificationScreens/presentation/NotificationScreen/notification_screen.dart';
+import 'package:united102/features/notificationScreens/presentation/widgets/left_header_text.dart';
+
+import '../../model/notification_param_model.dart';
+import '../../model/notification_queue_model.dart';
+import '../widgets/build_notification_widget.dart';
+
+class NotificationScreen extends StatefulWidget {
   const NotificationScreen({Key? key}) : super(key: key);
 
   @override
+  State<NotificationScreen> createState() => _NotificationScreenState();
+}
+
+class _NotificationScreenState extends State<NotificationScreen> {
+  @override
   Widget build(BuildContext context) {
+    List<NotificationParam> items =
+        List.of(NotificationQueue.notificationQueue);
+
+    List<NotificationParam> newItems =
+        List.of(NotificationQueue.notificationActivity);
+
     return Scaffold(
       appBar: AppBar(
-        title: SvgPicture.asset("assets/appbar_rsk.svg"),
+        toolbarHeight: 80,
+        elevation: Theme.of(context).appBarTheme.elevation,
+        backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
+        centerTitle: Theme.of(context).appBarTheme.centerTitle,
+        title: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: SizedBox(
+            height: 180,
+            width: 150,
+            child: SvgPicture.asset(
+              'assets/appbar_rsk.svg',
+            ),
+          ),
+        ),
       ),
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 10.w),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            SizedBox(
-              height: 77.h,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                SizedBox(
-                  width: 10.w,
-                ),
-                Text(
-                  "Новые",
-                  style: TextStyle(fontSize: 18.sp, fontFamily: "Montserrat"),
-                ),
-              ],
-            ),
-            SizedBox(
-              height: 5.h,
-            ),
-            Expanded(
-              child: ListView.builder(
-                itemCount: 1,
-                itemBuilder: (context, index) {
-                  return Container(
-                    decoration: BoxDecoration(
-                        color: ColorHelper.blue07,
-                        borderRadius: BorderRadius.circular(8.r)),
-                    padding: EdgeInsets.symmetric(horizontal: 19.w),
-                    width: 410.w,
-                    height: 54.h,
-                    child: Row(
-                      children: [
-                        const Icon(
-                          Icons.access_alarm_sharp,
-                          size: 40,
-                          color: Colors.blue,
-                        ),
-                        SizedBox(
-                          width: 43.w,
-                        ),
-                        Text(
-                          "Ваша очередь началась",
-                          textAlign: TextAlign.center,
-                          style:
-                              TextStyle(color: Colors.white, fontSize: 16.sp),
-                        ),
-                        SizedBox(
-                          width: 65.w,
-                        ),
-                        Text(
-                          "08:42",
-                          textAlign: TextAlign.center,
-                          style:
-                              TextStyle(color: Colors.white, fontSize: 16.sp),
-                        ),
-                      ],
-                    ),
-                  );
-                },
-              ),
-            ),
-            SizedBox(height: 40.h),
-             Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                SizedBox(
-                  width: 10.w,
-                ),
-                Text(
-                  "Прочитанные",
-                  style: TextStyle(fontSize: 18.sp, fontFamily: "Montserrat"),
-                ),
-              ],
-            ),
-             Expanded(
-              child: ListView.builder(
-                itemCount: 1,
-                itemBuilder: (context, index) {
-                  return Container(
-                    
-                    decoration: BoxDecoration(
-                    
-                        borderRadius: BorderRadius.circular(8.r),
-                        border: Border.all(color: ColorHelper.grey1)),
-                    padding: EdgeInsets.symmetric(horizontal: 19.w),
-                    width: 410.w,
-                    height: 54.h,
-                    child: Row(
-                      children: [
-                        const Icon(
-                          Icons.access_alarm_sharp,
-                          size: 40,
-                          color: Colors.blue,
-                        ),
-                        SizedBox(
-                          width: 43.w,
-                        ),
-                        Text(
-                          "Ваша очередь началась",
-                          textAlign: TextAlign.center,
-                          style:
-                              TextStyle(color: ColorHelper.grey1, fontSize: 16.sp),
-                        ),
-                        SizedBox(
-                          width: 63.w,
-                        ),
-                        Text(
-                          "08:42",
-                          textAlign: TextAlign.center,
-                          style:
-                              TextStyle(color: ColorHelper.grey1, fontSize: 16.sp),
-                        ),
-                      ],
-                    ),
-                  );
-                },
-              ),
-            ),
-          ],
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+
+            children: [
+              leftHeaderText('Новые'),
+              ListView.builder(
+                  itemCount: newItems.length,
+                  shrinkWrap: true,
+                  itemBuilder: (context, index) {
+                    final newItem = newItems[index];
+                    return SwipeActionCell(
+                        key: ObjectKey(newItems[index]),
+                        trailingActions: [
+                          SwipeAction(
+                              content: Row(
+                                children: [
+                                  const Text(
+                                    'Удалить',
+                                    style: TextStyle(
+                                      color: Colors.red,
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 10,
+                                    width: 10,
+                                    child: SvgPicture.asset(
+                                        'assets/icons/remove.svg'),
+                                  )
+                                ],
+                              ),
+                              onTap: (CompletionHandler handler) async {
+                                await handler(true);
+                                newItems.removeAt;
+                                setState(() {});
+                              },
+                              color: Colors.white)
+                        ],
+                        child: BuildNotificationCard(item: newItem, isNew: true, ));
+                  }),
+
+
+              leftHeaderText('Прочитанные'),
+              ListView.builder(
+                  itemCount: items.length,
+                  shrinkWrap: true,
+                  itemBuilder: (context, index) {
+                    final item = items[index];
+                    return SwipeActionCell(
+                        key: ObjectKey(items[index]),
+                        trailingActions: [
+                          SwipeAction(
+                              content: Row(
+                                children: [
+                                  const Text(
+                                    'Удалить',
+                                    style: TextStyle(
+                                      color: Colors.red,
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 10,
+                                    width: 10,
+                                    child: SvgPicture.asset(
+                                        'assets/icons/remove.svg'),
+                                  )
+                                ],
+                              ),
+                              onTap: (CompletionHandler handler) async {
+                                await handler(true);
+                                items.removeAt;
+                                setState(() {});
+                              },
+                              color: Colors.white)
+                        ],
+                        child: BuildNotificationCard(  item: item, isNew: false,  ));
+                  }),
+
+
+
+            ],
+          ),
         ),
       ),
     );
