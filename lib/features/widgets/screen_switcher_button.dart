@@ -11,9 +11,7 @@ class ScreenSwitcherButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: (){
-        context.go(path);
-      },
+      onTap: ()=> context.go(path),
       child: Container(
         width: 266,
         height: 58,
