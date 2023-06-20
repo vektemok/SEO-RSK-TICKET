@@ -15,8 +15,6 @@ final ThemeData whiteTheme = ThemeData(
     size: 25
   ),
 
-  bottomNavigationBarTheme: BottomNavigationBarThemeData(
 
-  )
 
 );
