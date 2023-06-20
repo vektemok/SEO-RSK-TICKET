@@ -13,7 +13,7 @@ import '../../features/settingScreens/presentation/QASettingScreen/qa_setting_sc
 
 class AppRouter {
   static final GoRouter router = GoRouter(routes: [
-    GoRoute(path: '/', builder: (context, state) => const MainScreen()),
+    GoRoute(path: '/', builder: (context, state) => const AppNavigator()),
     GoRoute(
         path: Routes.settingRoute,
         builder: (context, state) => SettingScreen()),
