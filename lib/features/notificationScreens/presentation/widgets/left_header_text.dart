@@ -4,7 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 
 Widget leftHeaderText(String title) =>  Padding(
-  padding: const EdgeInsets.fromLTRB(0, 10, 0, 10 ),
+  padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
   child:   Text(title,textAlign: TextAlign.left,
 
 

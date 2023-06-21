@@ -57,8 +57,12 @@ class _UnifyingHistoryScreenState extends State<UnifyingHistoryScreen> {
               return Center(
                 child: Text('У вас пока нет забронированных талонов'),
               );
+
             }).toList(),
           ),
         ));
   }
 }
+
+
+
