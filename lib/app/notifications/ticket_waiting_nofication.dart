@@ -1,24 +1,30 @@
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:united102/main.dart';
 
-FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
-    FlutterLocalNotificationsPlugin();
-AndroidInitializationSettings initializationSettingsAndroid =
-    AndroidInitializationSettings('app_icon');
-
-InitializationSettings initializationSettings =
-    InitializationSettings(android: initializationSettingsAndroid);
+AndroidInitializationSettings androidInitializationSettings =
+AndroidInitializationSettings('@mipmap/ic_launcher');
 
 AndroidNotificationDetails androidNotificationDetails =
-    AndroidNotificationDetails('channelId', 'notification push');
-
-Future<void> showNotification() async {
-  flutterLocalNotificationsPlugin.show(
-      0, 'jdjdj', 'dkdkd', initializationSettings as NotificationDetails?);
-}
-
+AndroidNotificationDetails('ticketShow', 'ticketShowName',
+    priority: Priority.high, importance: Importance.max);
 NotificationDetails notificationDetails =
-    NotificationDetails(android: androidNotificationDetails);
+NotificationDetails(android: androidNotificationDetails);
 
-void pushNotification() {
-  flutterLocalNotificationsPlugin.show(0, 'ваше', 'fjfjf', notificationDetails);
+InitializationSettings initializationSettings =
+InitializationSettings(android: androidInitializationSettings);
+
+void showNotification() {
+  flutterLocalNotificationsPlugin.show(
+      0,
+      'Ваша очередь наступить через 15 минут поспешите',
+      'Топопись',
+      notificationDetails);
 }
+
+// Future<void> showTotification5Minute(DateTime dateTime) async {
+//   flutterLocalNotificationsPlugin.zonedSchedule(
+//       0, 'Ваша очередь насупит через пять минут', 'бегом',
+//       DateTime.now().add(Duration(seconds: 5)), notificationDetails,
+//       uiLocalNotificationDateInterpretation: UILocalNotificationDateInterpretation
+//           .absoluteTime);
+// }
