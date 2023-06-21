@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:united102/app/notifications/ticket_waiting_nofication.dart';
 import 'package:united102/features/logic/bloc/theme_bloc/theme_bloc.dart';
 
 import 'app/routes/app_routes.dart';
@@ -17,6 +18,7 @@ void main() async {
     await Firebase.initializeApp(
       options: DefaultFirebaseOptions.currentPlatform,
     );
+    flutterLocalNotificationsPlugin.initialize(initializationSettings);
     runApp(const MyApp());
   }, (error, stack) {
     print('Ошибка запуска $error');
@@ -27,16 +29,15 @@ class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) =>
-      MultiBlocProvider(
+  Widget build(BuildContext context) => MultiBlocProvider(
         providers: [
           BlocProvider(create: (BuildContext context) => ThemeBloc())
         ],
         child: BlocConsumer<ThemeBloc, ThemeState>(
           listener: (context, state) {
-         if(state is BlackThemeState){
-           debugPrint('$state');
-         }
+            if (state is BlackThemeState) {
+              debugPrint('$state');
+            }
           },
           builder: (context, state) {
             return ScreenUtilInit(
@@ -46,8 +47,8 @@ class MyApp extends StatelessWidget {
               builder: (context, child) {
                 return MaterialApp.router(
                   debugShowCheckedModeBanner: false,
-                 title: 'First Method',
-                 theme: state.currentTheme,
+                  title: 'First Method',
+                  theme: state.currentTheme,
                   routerConfig: AppRouter.router,
                   localizationsDelegates: const [
                     AppLocalizations.delegate,
@@ -60,7 +61,6 @@ class MyApp extends StatelessWidget {
                     Locale('kg'), // Kyrgyz
                     Locale('ru'), // Russian
                   ],
-
                 );
               },
             );

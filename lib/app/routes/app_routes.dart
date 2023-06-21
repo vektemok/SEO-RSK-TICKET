@@ -14,16 +14,17 @@ import 'package:united102/features/settingScreens/presentation/ThemeSettingScree
 import 'package:united102/features/appNavigator/AppNavigator/app_navigator.dart';
 
 import '../../features/appNavigator/mainScreen/main_screen.dart';
+import '../../features/serviceSelectionScreens/presentation/timeSelectScreen/time_select_screen.dart';
 import '../../features/settingScreens/presentation/QASettingScreen/qa_setting_screen.dart';
 
 class AppRouter {
   static final GoRouter router = GoRouter(routes: [
    
     
-    GoRoute(path: '/', builder: (context, state) => const MainScreen()),
+    GoRoute(path: '/', builder: (context, state) => const TimeSelectScreen()),
     GoRoute(
         path: Routes.settingRoute,
-        builder: (context, state) => SettingScreen()),
+        builder: (context, state) => const SettingScreen()),
     GoRoute(
       path: Routes.locationSettingRoute,
       builder: (context, state) => const LocationSettingScreen(),
