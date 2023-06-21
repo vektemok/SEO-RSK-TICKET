@@ -45,7 +45,7 @@ class _UnifyingHistoryScreenState extends State<UnifyingHistoryScreen> {
                 color: Colors.white,
                 boxShadow: [
                   BoxShadow(color: Colors.blueAccent, blurRadius: 2)
-                ]),
+                ]),                           
           ),
         ),
         body: TabBarView(children: [
