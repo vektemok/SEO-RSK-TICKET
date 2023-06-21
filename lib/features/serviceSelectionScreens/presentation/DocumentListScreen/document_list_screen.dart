@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:united102/features/pageListScreens/presentation/widgets/header_text_widget.dart';
 
 
@@ -18,7 +19,7 @@ class DocumentListScreen extends StatelessWidget {
         toolbarHeight: Theme.of(context).appBarTheme.toolbarHeight,
         leading: IconButton(
           onPressed: () {
-            Navigator.pop(context);
+            context.pop();
           },
           icon: Icon(
             CupertinoIcons.arrow_left,

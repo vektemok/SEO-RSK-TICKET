@@ -2,7 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:united102/app/routes/routes.dart';
 import 'package:united102/features/widgets/screen_switcher_button.dart';
 
 class ServiceSelectScreen extends StatefulWidget {
@@ -83,6 +85,7 @@ class _ServiceSelectListState extends State<_ServiceSelectList> {
   void _changeCategory(int index) {
     setState(() {
       _currentIndex = index;
+      context.go(Routes.serviceDescriptionScreen);
     });
   }
 
@@ -96,11 +99,11 @@ class _ServiceSelectListState extends State<_ServiceSelectList> {
             padding: const EdgeInsets.all(8.0),
             child: Center(
                 child: ConstrainedBox(
-                    constraints: const BoxConstraints(
-                        minHeight: 70,
-                        minWidth: 378,
-                        maxHeight: 70,
-                        maxWidth: 378),
+                    constraints:  BoxConstraints(
+                        minHeight: 70.h,
+                        minWidth: 378.w,
+                        maxHeight: 70.h,
+                        maxWidth: 378.w),
                     child: GestureDetector(
                       onTap: () => _changeCategory(index),
                       child: Container(

@@ -2,9 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:united102/features/pageListScreens/presentation/widgets/header_text_widget.dart';
 import 'package:united102/features/widgets/screen_switcher_button.dart';
+
+import '../../../../app/routes/routes.dart';
 
 class ServiceDescriptionScreen extends StatefulWidget {
   const ServiceDescriptionScreen({Key? key}) : super(key: key);
@@ -60,7 +63,7 @@ class _ServiceDescriptionScreenState extends State<ServiceDescriptionScreen> {
 
                 ElevatedButton.icon(
                     onPressed: () {
-                      Navigator.pushNamed(context, '/DocumentListScreen');
+                   context.go(Routes.documentListScreen);
                     },
                     style: ElevatedButton.styleFrom(
                         fixedSize: const Size(266, 58),

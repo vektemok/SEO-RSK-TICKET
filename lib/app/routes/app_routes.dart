@@ -2,6 +2,10 @@ import 'package:go_router/go_router.dart';
 import 'package:united102/app/routes/routes.dart';
 import 'package:united102/features/notificationScreens/presentation/NotificationScreen/notification_screen.dart';
 import 'package:united102/features/pageListScreens/presentation/screens/PageListScreen/page_list_screen.dart';
+import 'package:united102/features/serviceSelectionScreens/presentation/CategoriesSelectScreen/categories_select_screen.dart';
+import 'package:united102/features/serviceSelectionScreens/presentation/DocumentListScreen/document_list_screen.dart';
+import 'package:united102/features/serviceSelectionScreens/presentation/ServiceDescriptionScreen/service_description_screen.dart';
+import 'package:united102/features/serviceSelectionScreens/presentation/ServicePointsSelectionScreen/service_select_screen.dart';
 import 'package:united102/features/settingScreens/presentation/IntelligenceSettingScreen/intelligence_setting_screen.dart';
 import 'package:united102/features/settingScreens/presentation/LanguageSettingScreen/language_setting_screen.dart';
 import 'package:united102/features/settingScreens/presentation/SettingScreen/setting_screen.dart';
@@ -9,16 +13,18 @@ import 'package:united102/features/settingScreens/presentation/LocationSettingSc
 import 'package:united102/features/settingScreens/presentation/ThemeSettingScreen/theme_setting_screen.dart';
 import 'package:united102/features/appNavigator/AppNavigator/app_navigator.dart';
 
+import '../../features/appNavigator/mainScreen/main_screen.dart';
+import '../../features/serviceSelectionScreens/presentation/timeSelectScreen/time_select_screen.dart';
 import '../../features/settingScreens/presentation/QASettingScreen/qa_setting_screen.dart';
 
 class AppRouter {
   static final GoRouter router = GoRouter(routes: [
    
     
-    GoRoute(path: '/', builder: (context, state) => const AppNavigator()),
+    GoRoute(path: '/', builder: (context, state) => const MainScreen()),
     GoRoute(
         path: Routes.settingRoute,
-        builder: (context, state) => SettingScreen()),
+        builder: (context, state) => const SettingScreen()),
     GoRoute(
       path: Routes.locationSettingRoute,
       builder: (context, state) => const LocationSettingScreen(),
@@ -39,6 +45,10 @@ class AppRouter {
     builder: (context, state) => const QASettingScreen()
     ),
     GoRoute(path: Routes.appNavigator, builder: (context, state) =>  const AppNavigator(),),
+GoRoute(path: Routes.categoriesSelectScreen, builder: (context, state) => const CategoriesSelectScreen()),
+    GoRoute(path: Routes.serviceSelectScreen, builder: (context, state) => const ServiceSelectScreen()),
+    GoRoute(path: Routes.serviceDescriptionScreen, builder: (context, state)=> const ServiceDescriptionScreen()),
+    GoRoute(path: Routes.documentListScreen, builder: (context, state)=> const DocumentListScreen()),
 
   ]);
 }

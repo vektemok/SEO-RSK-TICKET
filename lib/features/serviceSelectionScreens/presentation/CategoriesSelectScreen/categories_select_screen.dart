@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:united102/features/widgets/screen_switcher_button.dart';
 
+import '../../../../app/routes/routes.dart';
 import '../../../widgets/icon_badge_widget.dart';
 
 class CategoriesSelectScreen extends StatefulWidget {
@@ -63,10 +65,16 @@ class _CategorySelectListState extends State<_CategorySelectList> {
     'Платежные карты'
   ];
 
+  List<String> pushPath = [
+    Routes.serviceSelectScreen,
+  ];
   int _currentIndex = 0;
 
   void _changeCategory(int index) {
     setState(() {
+      for (int i = 0; i < _categories.length; i++) {
+        context.go(Routes.serviceSelectScreen);
+      }
       _currentIndex = index;
     });
   }
