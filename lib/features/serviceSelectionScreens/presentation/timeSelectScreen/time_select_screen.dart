@@ -37,8 +37,11 @@ class _TimeSelectScreenState extends State<TimeSelectScreen> {
             ),
 
             ElevatedButton(onPressed: (){
-              pushNotification();
-            }, child: Text('pUsh notification'))
+showNotification();
+            }, child: Text('pUsh notification')),
+            ElevatedButton(onPressed: (){
+
+            }, child: Text('ddk'))
           ],
         ),
       ),

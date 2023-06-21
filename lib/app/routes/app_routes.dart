@@ -21,7 +21,7 @@ class AppRouter {
   static final GoRouter router = GoRouter(routes: [
    
     
-    GoRoute(path: '/', builder: (context, state) => const TimeSelectScreen()),
+    GoRoute(path: '/', builder: (context, state) => const MainScreen()),
     GoRoute(
         path: Routes.settingRoute,
         builder: (context, state) => const SettingScreen()),

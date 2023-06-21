@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:united102/app/notifications/ticket_waiting_nofication.dart';
 import 'package:united102/features/logic/bloc/theme_bloc/theme_bloc.dart';
@@ -11,6 +12,7 @@ import 'firebase/firebase_options.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
 void main() async {
   runZonedGuarded(() async {
     WidgetsFlutterBinding.ensureInitialized();
@@ -18,7 +20,12 @@ void main() async {
     await Firebase.initializeApp(
       options: DefaultFirebaseOptions.currentPlatform,
     );
-    flutterLocalNotificationsPlugin.initialize(initializationSettings);
+    await flutterLocalNotificationsPlugin.initialize(
+      InitializationSettings(
+        android: androidInitializationSettings
+      )
+    );
+
     runApp(const MyApp());
   }, (error, stack) {
     print('Ошибка запуска $error');
