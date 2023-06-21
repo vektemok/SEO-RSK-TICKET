@@ -22,6 +22,13 @@ TextStyle descriptionTextStyle = GoogleFonts.montserrat(
   fontSize: 18.sp,
 ));
 
+TextStyle ticketText = GoogleFonts.montserrat(
+    textStyle: TextStyle(
+  color: const Color.fromRGBO(51, 48, 48, 1) ,
+  fontWeight: FontWeight.w500,
+  fontSize: 18.sp,
+));
+
 
 
 TextStyle tooltipTextStyle = GoogleFonts.montserrat(
