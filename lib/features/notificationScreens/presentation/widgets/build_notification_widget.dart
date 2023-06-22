@@ -28,9 +28,9 @@ class _BuildNotificationCardState extends State<BuildNotificationCard> {
         padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
         decoration: BoxDecoration(
             // boxShadow: widget.boxShadow == true? Box,
-          color: widget.isNew == true? Color(0xb23993c3): Colors.white,
+          color: widget.isNew == true? const Color(0xb23993c3): Colors.white,
             boxShadow: widget.isNew == true? [
-              BoxShadow(
+           const   BoxShadow(
                 color:  Color(0x3f000000),
                 offset:  Offset(0, 2),
                 blurRadius: 2
@@ -63,7 +63,7 @@ class _BuildNotificationCardState extends State<BuildNotificationCard> {
                             fontSize: 16.sp))
                     : GoogleFonts.montserrat(
                         textStyle: TextStyle(
-                            color: Color.fromRGBO(116, 116, 116, 1),
+                            color: const Color.fromRGBO(116, 116, 116, 1),
                             fontWeight: FontWeight.w400,
                             fontSize: 16.sp)),
               ),

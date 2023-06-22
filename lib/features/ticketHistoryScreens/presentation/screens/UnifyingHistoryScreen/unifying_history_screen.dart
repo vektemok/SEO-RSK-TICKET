@@ -36,14 +36,14 @@ class _UnifyingHistoryScreenState extends State<UnifyingHistoryScreen> {
             splashBorderRadius: BorderRadius.circular(20),
             labelStyle: GoogleFonts.montserrat(
                 textStyle:
-                    TextStyle(fontSize: 10, fontWeight: FontWeight.w600)),
+                    TextStyle(fontSize: 10.sp, fontWeight: FontWeight.w600)),
             unselectedLabelColor: Colors.black,
             labelColor: Colors.blue,
-            indicatorPadding: EdgeInsets.all(8),
+            indicatorPadding: const EdgeInsets.all(8),
             indicator: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
                 color: Colors.white,
-                boxShadow: [
+                boxShadow: const [
                   BoxShadow(color: Colors.blueAccent, blurRadius: 2)
                 ]),
           ),
@@ -66,7 +66,7 @@ class _UnifyingHistoryScreenState extends State<UnifyingHistoryScreen> {
                           child: Container(
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.all(
-                                Radius.circular(15),
+                                Radius.circular(15.r),
                               ),
                               color: ColorHelper.lightGreen1,
                             ),
@@ -181,7 +181,7 @@ class _UnifyingHistoryScreenState extends State<UnifyingHistoryScreen> {
                           child: Container(
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.all(
-                                Radius.circular(15),
+                                Radius.circular(15.r),
                               ),
                               color: ColorHelper.lightGreen1,
                             ),
@@ -297,7 +297,7 @@ class _UnifyingHistoryScreenState extends State<UnifyingHistoryScreen> {
                           child: Container(
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.all(
-                                Radius.circular(15),
+                                Radius.circular(15.r),
                               ),
                               color: ColorHelper.lightGreen1,
                             ),
@@ -386,7 +386,6 @@ class _UnifyingHistoryScreenState extends State<UnifyingHistoryScreen> {
                         ),
                       );
                     },
-                    
                     separatorBuilder: (BuildContext context, int index) {
                       return SizedBox(
                         height: 30.h,
