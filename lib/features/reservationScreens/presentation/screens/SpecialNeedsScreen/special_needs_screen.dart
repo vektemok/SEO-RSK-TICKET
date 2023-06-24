@@ -128,7 +128,7 @@ class _SpecialNeedsScreenState extends State<SpecialNeedsScreen> {
                 SizedBox(
                   height: 20,
                 ),
-                ScreenSwitcherButton(path: '/TicketBookingSuccessScreen'),
+                ScreenSwitcherButton(path: '/TicketBookingSuccessScreen', text: 'Далее',),
                 SizedBox(
                   height: 40,
                 )

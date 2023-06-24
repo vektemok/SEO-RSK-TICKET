@@ -7,6 +7,7 @@ import '../../model/notification_param_model.dart';
 
 // Widget buildNotificationCard(NotificationParam item) =>
 
+// ignore: must_be_immutable
 class BuildNotificationCard extends StatefulWidget {
   NotificationParam item;
 

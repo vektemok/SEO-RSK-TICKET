@@ -86,7 +86,7 @@ class _ServiceDescriptionScreenState extends State<ServiceDescriptionScreen> {
                   height: 10.h,
                 ),
                 ScreenSwitcherButton(
-                  path: '/DataEntryScreen',
+                  path: '/DataEntryScreen', text: 'Далее',
                 )
               ],
             ),

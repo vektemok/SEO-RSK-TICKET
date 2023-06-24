@@ -41,11 +41,12 @@ class _UnifyingHistoryScreenState extends State<UnifyingHistoryScreen> {
             labelColor: Colors.blue,
             indicatorPadding: const EdgeInsets.all(8),
             indicator: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-                color: Colors.white,
-                boxShadow: const [
-                  BoxShadow(color: Colors.blueAccent, blurRadius: 2)
-                ]),
+              borderRadius: BorderRadius.circular(20),
+              color: Colors.white,
+              boxShadow: const [
+                BoxShadow(color: Colors.blueAccent, blurRadius: 2)
+              ],
+            ),
           ),
         ),
         body: TabBarView(
@@ -68,7 +69,7 @@ class _UnifyingHistoryScreenState extends State<UnifyingHistoryScreen> {
                               borderRadius: BorderRadius.all(
                                 Radius.circular(15.r),
                               ),
-                              color: ColorHelper.lightGreen1,
+                              color: ColorHelper.lightYellow,
                             ),
                             width: 200,
                             height: 250,
@@ -299,7 +300,7 @@ class _UnifyingHistoryScreenState extends State<UnifyingHistoryScreen> {
                               borderRadius: BorderRadius.all(
                                 Radius.circular(15.r),
                               ),
-                              color: ColorHelper.lightGreen1,
+                              color: ColorHelper.lightgrey1,
                             ),
                             width: 200,
                             height: 250,

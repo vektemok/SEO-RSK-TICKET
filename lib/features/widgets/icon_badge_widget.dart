@@ -8,7 +8,7 @@ class IconBadgeWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<String > _iconsPath = [
+    List<String > iconsPath = [
       'assets/icons/fiz_face.svg',
       'assets/icons/your_face.svg',
       'assets/icons/buy_card.svg'
@@ -18,7 +18,7 @@ class IconBadgeWidget extends StatelessWidget {
       width: 45,
       margin: const EdgeInsets.fromLTRB(0, 0, 5, 0),
       decoration: BoxDecoration(
-          color: Color.fromRGBO(188, 225, 248, 1.0),
+          color: const Color.fromRGBO(188, 225, 248, 1),
           borderRadius: BorderRadius.circular(14)
       ),
       child: Center(
@@ -34,7 +34,7 @@ class IconBadgeWidget extends StatelessWidget {
             child: SizedBox(
               height: 18.29,
               width: 22.86,
-              child: SvgPicture.asset(_iconsPath[index]),
+              child: SvgPicture.asset(iconsPath[index]),
             ),
           ),
         ),
