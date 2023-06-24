@@ -76,7 +76,7 @@ class _DataEntryScreenState extends State<DataEntryScreen> {
                     height: 20,
                   ),
                   ScreenSwitcherButton(
-                    path: '/SpecialNeedsScreen',
+                    path: '/SpecialNeedsScreen', text: 'Далее',
                   ),
                 ],
               ),

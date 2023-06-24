@@ -43,7 +43,7 @@ class _CategoriesSelectScreenState extends State<CategoriesSelectScreen> {
             SizedBox(
               height: 20,
             ),
-            ScreenSwitcherButton(path: '/ServiceSelectScreen'),
+            ScreenSwitcherButton(path: '/ServiceSelectScreen', text: 'Далее',),
           ],
         ),
       ),

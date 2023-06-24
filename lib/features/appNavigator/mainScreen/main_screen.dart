@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:united102/features/serviceSelectionScreens/presentation/CategoriesSelectScreen/categories_select_screen.dart';
+import '../../../iternal/helpers/color_helper.dart';
 import '../../notificationScreens/presentation/NotificationScreen/notification_screen.dart';
 import '../../settingScreens/presentation/SettingScreen/setting_screen.dart';
 import '../../ticketHistoryScreens/presentation/screens/UnifyingHistoryScreen/unifying_history_screen.dart';
@@ -44,6 +45,7 @@ class _MainScreenState extends State<MainScreen> {
               GButton(
                 icon: LineIcons.home,
                 text: 'Home',
+                iconActiveColor: ColorHelper.blue1,
               ),
               GButton(
                 icon: LineIcons.alternateTicket ,

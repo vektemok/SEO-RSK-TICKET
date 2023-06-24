@@ -124,7 +124,7 @@ language
                   );
                 }),
            SizedBox(height: 20,),
-           ScreenSwitcherButton(path: '/theme_select')
+           ScreenSwitcherButton(path: '/theme_select', text: '',)
           ],
         ),
       ),

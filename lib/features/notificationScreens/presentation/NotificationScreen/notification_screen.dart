@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_swipe_action_cell/core/cell.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:united102/features/notificationScreens/presentation/NotificationScreen/notification_screen.dart';
 import 'package:united102/features/notificationScreens/presentation/widgets/left_header_text.dart';
 
 import '../../model/notification_param_model.dart';

@@ -40,7 +40,7 @@ class CustomButtonCard extends StatelessWidget {
     return ElevatedButton(
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
-        backgroundColor: backColor,
+        
         fixedSize: Size(width, height),
         shape: RoundedRectangleBorder(
           side: BorderSide(

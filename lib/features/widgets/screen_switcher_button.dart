@@ -1,12 +1,18 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 // ignore: must_be_immutable
 class ScreenSwitcherButton extends StatelessWidget {
+  String text;
   String path;
   
-   ScreenSwitcherButton({Key? key, required this.path}) : super(key: key);
+  ScreenSwitcherButton({
+    Key? key,
+    required this.text,
+    required this.path,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +38,7 @@ class ScreenSwitcherButton extends StatelessWidget {
               child: Align(
                 alignment: Alignment.center,
                 child: Text(
-                  'Далее',
+                  text,
                   style: GoogleFonts.montserrat(
                       textStyle: const TextStyle(
                           color: Colors.white,
