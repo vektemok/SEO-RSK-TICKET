@@ -65,7 +65,7 @@ class _CategorySelectList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = context.read<CategoriesViewModel>();
+    final viewModel = Provider.of<CategoriesViewModel>(context);
     return ListView.builder(
         shrinkWrap: true,
         itemCount: viewModel.categories.length,
@@ -74,19 +74,19 @@ class _CategorySelectList extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: Center(
                 child: ConstrainedBox(
-                    constraints: const BoxConstraints(
+                    constraints:  BoxConstraints(
                         minHeight: 70,
                         minWidth: 378,
                         maxHeight: 70,
                         maxWidth: 378),
                     child: GestureDetector(
-                      onTap: () => viewModel.changeCategory(index, context),
+                      onTap: () => viewModel.changeCategory(index),
                       child: Container(
                         width: double.infinity,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(20),
                             gradient: index == viewModel.currentIndex
-                                ? const LinearGradient(
+                                ?   LinearGradient(
                                     begin: Alignment(0, -1),
                                     end: Alignment(0, 1),
                                     colors: <Color>[
@@ -95,7 +95,7 @@ class _CategorySelectList extends StatelessWidget {
                                     ],
                                     stops: <double>[0, 1],
                                   )
-                                : const LinearGradient(
+                                :  LinearGradient(
                                     colors: [Colors.white, Colors.white]),
                             border: Border.all(
                                 color: index == viewModel.currentIndex

@@ -15,10 +15,7 @@ class CategoriesViewModel extends ChangeNotifier {
   ];
   int _currentIndex = 0;
 
-  void changeCategory(int index, BuildContext context) {
-    for (int i = 0; i < _categories.length; i++) {
-      context.go(Routes.serviceSelectScreen);
-    }
+  void changeCategory(int index ) {
     _currentIndex = index;
     notifyListeners();
   }
