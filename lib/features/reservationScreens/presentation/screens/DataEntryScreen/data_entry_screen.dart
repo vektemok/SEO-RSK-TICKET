@@ -1,31 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:provider/provider.dart';
 import 'package:united102/iternal/helpers/style_helper.dart';
 import 'package:united102/features/pageListScreens/presentation/widgets/header_text_widget.dart';
 
 import '../../../../widgets/screen_switcher_button.dart';
+import 'data_entry_view_model.dart';
 
-class DataEntryScreen extends StatefulWidget {
+class DataEntryScreen extends StatelessWidget {
   const DataEntryScreen({Key? key}) : super(key: key);
 
   @override
-  State<DataEntryScreen> createState() => _DataEntryScreenState();
+  Widget build(BuildContext context) => ChangeNotifierProvider(
+        create: (context) => DataEntryViewModel(),
+        child: _BodyWidget(),
+      );
 }
 
-class _DataEntryScreenState extends State<DataEntryScreen> {
+class _BodyWidget extends StatelessWidget {
+  const _BodyWidget({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    const String headerText = 'Пожалуйста, укажите \n'
-        'следующие данные';
-
-    List<String> headerTextList = [
-      'Фамилия:',
-      'Имя:',
-      'Отчество:',
-      'Дата рождения:',
-      'ID пасспорт:',
-    ];
+    final viewModel = context.read<DataEntryViewModel>();
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -33,8 +31,6 @@ class _DataEntryScreenState extends State<DataEntryScreen> {
         elevation: Theme.of(context).appBarTheme.elevation,
         backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
         centerTitle: Theme.of(context).appBarTheme.centerTitle,
-
-
         title: Padding(
           padding: const EdgeInsets.all(8.0),
           child: SizedBox(
@@ -54,29 +50,30 @@ class _DataEntryScreenState extends State<DataEntryScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  HeaderTextWidget(title: headerText),
+                  HeaderTextWidget(title: viewModel.headerText),
                   SizedBox(
                     height: 20.h,
                   ),
-                  HeaderInputText(headerInputText: headerTextList[0]),
+                  HeaderInputText(headerInputText: viewModel.headerTextList[0]),
                   PatronymicInput(),
-                  HeaderInputText(headerInputText: headerTextList[1]),
+                  HeaderInputText(headerInputText: viewModel.headerTextList[1]),
                   NameInput(),
-                  HeaderInputText(headerInputText: headerTextList[2]),
+                  HeaderInputText(headerInputText: viewModel.headerTextList[2]),
                   SurnameInput(),
-                  HeaderInputText(headerInputText: headerTextList[3]),
+                  HeaderInputText(headerInputText: viewModel.headerTextList[3]),
                   DateOfBirthInput(),
-                  HeaderInputText(headerInputText: headerTextList[4]),
+                  HeaderInputText(headerInputText: viewModel.headerTextList[4]),
                   IdInput(),
                   SizedBox(
                     height: 20.h,
                   ),
                   TooltipWidget(),
-                  SizedBox(
+                const  SizedBox(
                     height: 20,
                   ),
                   ScreenSwitcherButton(
-                    path: '/SpecialNeedsScreen', text: 'Далее',
+                    path: '/SpecialNeedsScreen',
+                    text: 'Далее',
                   ),
                 ],
               ),
@@ -179,17 +176,13 @@ class HeaderInputText extends StatelessWidget {
   }
 }
 
-
-
 class TooltipWidget extends StatelessWidget {
   const TooltipWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Text(
-
       'Мы гарантируем конфиденциальность и безопасность ваших личных данных. Заполнение этих сведений поможет нам обеспечить более эффективное и индивидуальное обслуживание. Благодарим вас за ваше сотрудничество! ',
-
       style: tooltipTextStyle,
       textAlign: TextAlign.center,
     );
