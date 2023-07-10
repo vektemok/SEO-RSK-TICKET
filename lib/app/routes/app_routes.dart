@@ -4,6 +4,9 @@ import 'package:united102/features/notificationScreens/presentation/Notification
 import 'package:united102/features/pageListScreens/presentation/screens/PageListScreen/page_list_screen.dart';
 import 'package:united102/features/registrationScreens/presentation/screens/LoginScreen/login_screen.dart';
 import 'package:united102/features/registrationScreens/presentation/screens/RegistrationScreen/registration_screen.dart';
+import 'package:united102/features/reservationScreens/presentation/screens/SpecialNeedsScreen/special_needs_screen.dart';
+import 'package:united102/features/reservationScreens/presentation/screens/TicketBookingSuccessScreen/ticket_booking_success_screen.dart';
+import 'package:united102/features/reservationScreens/presentation/screens/TicketViewScreen/ticket_view_screen.dart';
 import 'package:united102/features/serviceSelectionScreens/presentation/CategoriesSelectScreen/categories_select_screen.dart';
 import 'package:united102/features/serviceSelectionScreens/presentation/DocumentListScreen/document_list_screen.dart';
 import 'package:united102/features/serviceSelectionScreens/presentation/ServiceDescriptionScreen/service_description_screen.dart';
@@ -16,6 +19,7 @@ import 'package:united102/features/settingScreens/presentation/ThemeSettingScree
 import 'package:united102/features/appNavigator/AppNavigator/app_navigator.dart';
 
 import '../../features/appNavigator/mainScreen/main_screen.dart';
+import '../../features/reservationScreens/presentation/screens/DataEntryScreen/data_entry_screen.dart';
 import '../../features/serviceSelectionScreens/presentation/timeSelectScreen/time_select_screen.dart';
 import '../../features/settingScreens/presentation/QASettingScreen/qa_setting_screen.dart';
 
@@ -64,5 +68,17 @@ class AppRouter {
     GoRoute(
         path: Routes.documentListScreen,
         builder: (context, state) => const DocumentListScreen()),
+    GoRoute(
+        path: Routes.dataEntryScreen,
+        builder: (context, state) => const DataEntryScreen()),
+    GoRoute(
+        path: Routes.specialNeedsScreen,
+        builder: (context, state) => const SpecialNeedsScreen()),
+    GoRoute(
+        path: Routes.ticketBookingSuccessScreen,
+        builder: (context, state) => const TicketBookingSuccessScreen()),
+    GoRoute(
+        path: Routes.ticketViewScreen,
+        builder: (context, state) => const TicketViewScreen()),
   ]);
 }

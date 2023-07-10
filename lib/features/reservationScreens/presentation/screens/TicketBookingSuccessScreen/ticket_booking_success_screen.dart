@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:united102/app/routes/routes.dart';
 import 'package:united102/iternal/helpers/style_helper.dart';
 
 class TicketBookingSuccessScreen extends StatefulWidget {
@@ -62,7 +64,10 @@ class _TicketBookingSuccessScreenState
               height: 10,
             ),
            _TicketActionList(),
-            SizedBox(height: 40.h,)
+            SizedBox(height: 40.h,),
+            ElevatedButton(onPressed: (){
+              context.pop();
+            }, child: const Text('pop'))
           ],
         ),
       ),
@@ -93,16 +98,11 @@ class _TicketActionListState extends State<_TicketActionList> {
   int _currentIndex = 0;
 
 
+
   void onTap(int index){
 
 
     setState(() {
-      switch(_currentIndex){
-        case 0:{
-Navigator.pushNamed(context, '/TicketViewScreen');
-        }
-        break;
-      }
 
       _currentIndex = index;
     });
@@ -131,7 +131,7 @@ Navigator.pushNamed(context, '/TicketViewScreen');
                                 : Colors.blue,
                             width: 1),
                         borderRadius: BorderRadius.circular(8.r),
-                        gradient:index == _currentIndex ? const LinearGradient(
+                        gradient:index == _currentIndex ?  LinearGradient(
                           begin: Alignment(0, -1),
                           end: Alignment(0, 1),
                           colors: <Color>[
@@ -139,7 +139,7 @@ Navigator.pushNamed(context, '/TicketViewScreen');
                             Color(0xff0174b1)
                           ],
                           stops: <double>[0, 1],
-                        ):  const LinearGradient(
+                        ):   LinearGradient(
                             colors: [Colors.white, Colors.white])
                     ),
                     child: Row(

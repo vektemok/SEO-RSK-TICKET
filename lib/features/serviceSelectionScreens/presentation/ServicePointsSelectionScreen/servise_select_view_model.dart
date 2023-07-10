@@ -10,13 +10,13 @@ class ServiceSelectViewModel extends ChangeNotifier {
     'Отрытие корпаративного счета',
     'Отрытие корпаративного счета',
   ];
-  int _currentIndex = 0;
+  int _currentIndex = 5;
 
   List<String> get categories => _categories;
 
   int get currentIndex => _currentIndex;
 
-  void _changeCategory(int index) {
+  void changeCategory(int index) {
     _currentIndex = index;
     notifyListeners();
   }
