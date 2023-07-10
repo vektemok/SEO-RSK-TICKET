@@ -60,10 +60,9 @@ class _ServiceDescriptionScreenState extends State<ServiceDescriptionScreen> {
                 SizedBox(
                   height: 40.h,
                 ),
-
                 ElevatedButton.icon(
                     onPressed: () {
-                   context.go(Routes.documentListScreen);
+                      context.go(Routes.documentListScreen);
                     },
                     style: ElevatedButton.styleFrom(
                         fixedSize: const Size(266, 58),
@@ -86,7 +85,8 @@ class _ServiceDescriptionScreenState extends State<ServiceDescriptionScreen> {
                   height: 10.h,
                 ),
                 ScreenSwitcherButton(
-                  path: '/DataEntryScreen', text: 'Далее',
+                  path: Routes.dataEntryScreen,
+                  text: 'Далее',
                 )
               ],
             ),

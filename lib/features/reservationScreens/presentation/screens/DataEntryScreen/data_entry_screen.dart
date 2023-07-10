@@ -68,7 +68,7 @@ class _BodyWidget extends StatelessWidget {
                     height: 20.h,
                   ),
                   TooltipWidget(),
-                const  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   ScreenSwitcherButton(

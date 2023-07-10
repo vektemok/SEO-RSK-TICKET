@@ -3,33 +3,59 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+import 'package:united102/app/routes/routes.dart';
+import 'package:united102/features/serviceSelectionScreens/presentation/ServiceSelectScreen/servise_select_view_model.dart';
 import 'package:united102/features/widgets/screen_switcher_button.dart';
 
 
-class ServiceSelectScreen extends StatefulWidget {
+class ServiceSelectScreen extends StatelessWidget {
   const ServiceSelectScreen({Key? key}) : super(key: key);
 
   @override
-  State<ServiceSelectScreen> createState() => _ServiceSelectScreenState();
+  Widget build(BuildContext context) =>
+      ChangeNotifierProvider(
+        create: (context) => ServiceSelectViewModel(), child: _BodyWidget(),);
 }
 
-class _ServiceSelectScreenState extends State<ServiceSelectScreen> {
+
+class _BodyWidget extends StatelessWidget {
+  const _BodyWidget({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
-        centerTitle: Theme.of(context).appBarTheme.centerTitle,
-        elevation: Theme.of(context).appBarTheme.elevation,
-        toolbarHeight: Theme.of(context).appBarTheme.toolbarHeight,
+        backgroundColor: Theme
+            .of(context)
+            .appBarTheme
+            .backgroundColor,
+        centerTitle: Theme
+            .of(context)
+            .appBarTheme
+            .centerTitle,
+        elevation: Theme
+            .of(context)
+            .appBarTheme
+            .elevation,
+        toolbarHeight: Theme
+            .of(context)
+            .appBarTheme
+            .toolbarHeight,
         leading: IconButton(
           onPressed: () {
             Navigator.pop(context);
           },
           icon: Icon(
             CupertinoIcons.arrow_left,
-            color: Theme.of(context).iconTheme.color,
-            size: Theme.of(context).iconTheme.size,
+            color: Theme
+                .of(context)
+                .iconTheme
+                .color,
+            size: Theme
+                .of(context)
+                .iconTheme
+                .size,
           ),
         ),
         title: SizedBox(
@@ -52,7 +78,8 @@ class _ServiceSelectScreenState extends State<ServiceSelectScreen> {
             SizedBox(
               height: 20,
             ),
-            ScreenSwitcherButton(path: '/ServiceDescriptionScreen', text: 'Далее',)
+            ScreenSwitcherButton(
+              path: Routes.serviceDescriptionScreen, text: 'Далее',)
           ],
         ),
       ),
@@ -69,29 +96,14 @@ class _ServiceSelectList extends StatefulWidget {
 }
 
 class _ServiceSelectListState extends State<_ServiceSelectList> {
-  List<String> _categories = [
-'Отрытие корпаративного счета',
-'Отрытие корпаративного счета',
-'Отрытие корпаративного счета',
-'Отрытие корпаративного счета',
-'Отрытие корпаративного счета',
-'Отрытие корпаративного счета',
 
-  ];
-
-  int _currentIndex = 0;
-
-  void _changeCategory(int index) {
-    setState(() {
-      _currentIndex = index;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
+    final viewModel = context.read<ServiceSelectViewModel>();
     return ListView.builder(
         shrinkWrap: true,
-        itemCount: _categories.length,
+        itemCount: viewModel.categories.length,
         itemBuilder: (context, index) {
           return Padding(
             padding: const EdgeInsets.all(8.0),
@@ -103,14 +115,14 @@ class _ServiceSelectListState extends State<_ServiceSelectList> {
                         maxHeight: 70,
                         maxWidth: 378),
                     child: GestureDetector(
-                      onTap: () => _changeCategory(index),
+                      onTap: () => (index),
                       child: Container(
                         // margin: const EdgeInsets.fromLTRB(20, 0, 0, 20),
 
                         width: double.infinity,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(20),
-                            gradient: index == _currentIndex
+                            gradient: index == viewModel.currentIndex
                                 ? const LinearGradient(
                               begin: Alignment(0, -1),
                               end: Alignment(0, 1),
@@ -123,7 +135,7 @@ class _ServiceSelectListState extends State<_ServiceSelectList> {
                                 : const LinearGradient(
                                 colors: [Colors.white, Colors.white]),
                             border: Border.all(
-                                color: index == _currentIndex
+                                color: index == viewModel.currentIndex
                                     ? Colors.blue
                                     : Colors.blue,
                                 width: 1)),
@@ -133,10 +145,10 @@ class _ServiceSelectListState extends State<_ServiceSelectList> {
                             children: [
 
                               Text(
-                                _categories[index],
+                                viewModel.categories[index],
                                 style: GoogleFonts.montserrat(
                                     textStyle: TextStyle(
-                                        color: index == _currentIndex
+                                        color: index == viewModel.currentIndex
                                             ? Colors.white
                                             : Colors.blue,
                                         fontWeight: FontWeight.w500)),
