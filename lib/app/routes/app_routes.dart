@@ -19,10 +19,11 @@ import '../../features/settingScreens/presentation/QASettingScreen/qa_setting_sc
 
 class AppRouter {
   static final GoRouter router = GoRouter(routes: [
-    GoRoute(path: "/", builder: (context, state) => MainScreen(),),
-      // GoRoute(path: "/", builder: (context, state) => (),),
-    // GoRoute(path: "/", builder: (context, state) => const LoginScreen (),),
-    // GoRoute(path: '/registration', builder: (context, state) => const RegistrationScreen ()),
+    GoRoute(path: '/', builder: (context, state) => const MainScreen()),
+    GoRoute(
+      path: "/registration",
+      builder: (context, state) => const RegistrationScreen(),
+    ),
     GoRoute(
         path: Routes.settingRoute,
         builder: (context, state) => const SettingScreen()),
@@ -42,14 +43,24 @@ class AppRouter {
     GoRoute(
         path: Routes.notificationSettingRoute,
         builder: (context, state) => const NotificationScreen()),
-    GoRoute(path: Routes.qaSettingRoute,
-    builder: (context, state) => const QASettingScreen()
+    GoRoute(
+        path: Routes.qaSettingRoute,
+        builder: (context, state) => const QASettingScreen()),
+    GoRoute(
+      path: Routes.appNavigator,
+      builder: (context, state) => const AppNavigator(),
     ),
-    GoRoute(path: Routes.appNavigator, builder: (context, state) =>  const AppNavigator(),),
-GoRoute(path: Routes.categoriesSelectScreen, builder: (context, state) => const CategoriesSelectScreen()),
-    GoRoute(path: Routes.serviceSelectScreen, builder: (context, state) => const ServiceSelectScreen()),
-    GoRoute(path: Routes.serviceDescriptionScreen, builder: (context, state)=> const ServiceDescriptionScreen()),
-    GoRoute(path: Routes.documentListScreen, builder: (context, state)=> const DocumentListScreen()),
-
+    GoRoute(
+        path: Routes.categoriesSelectScreen,
+        builder: (context, state) => const CategoriesSelectScreen()),
+    GoRoute(
+        path: Routes.serviceSelectScreen,
+        builder: (context, state) => const ServiceSelectScreen()),
+    GoRoute(
+        path: Routes.serviceDescriptionScreen,
+        builder: (context, state) => const ServiceDescriptionScreen()),
+    GoRoute(
+        path: Routes.documentListScreen,
+        builder: (context, state) => const DocumentListScreen()),
   ]);
 }
