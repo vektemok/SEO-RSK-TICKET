@@ -5,7 +5,7 @@ import 'package:dio/dio.dart';
 import 'catch_exception_helper.dart';
 
 class ApiRequester {
-  final String url = 'http://165.22.49.123:8000/api/';
+  final String url = 'http://35.184.55.194';
 
   
 

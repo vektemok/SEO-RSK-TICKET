@@ -56,10 +56,13 @@ dependencies:
 
 
     sdk: flutter
-  intl: any
+  intl: ^0.18.0
   flutter_local_notifications: ^14.1.1
   flutter_smart_dialog: ^4.9.2
   extended_masked_text: ^2.3.1
+  another_flushbar: ^1.12.30
+  injectable_generator: ^2.1.6
+  get_it: ^7.6.0
 
   
 
