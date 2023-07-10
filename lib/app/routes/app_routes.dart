@@ -1,9 +1,9 @@
 import 'package:go_router/go_router.dart';
 import 'package:united102/app/routes/routes.dart';
+import 'package:united102/features/appNavigator/mainScreen/main_screen.dart';
 import 'package:united102/features/notificationScreens/presentation/NotificationScreen/notification_screen.dart';
-import 'package:united102/features/pageListScreens/presentation/screens/PageListScreen/page_list_screen.dart';
-import 'package:united102/features/registrationScreens/presentation/screens/LoginScreen/login_screen.dart';
 import 'package:united102/features/registrationScreens/presentation/screens/RegistrationScreen/registration_screen.dart';
+import 'package:united102/features/registrationScreens/presentation/screens/LoginScreen/login_screen.dart';
 import 'package:united102/features/serviceSelectionScreens/presentation/CategoriesSelectScreen/categories_select_screen.dart';
 import 'package:united102/features/serviceSelectionScreens/presentation/DocumentListScreen/document_list_screen.dart';
 import 'package:united102/features/serviceSelectionScreens/presentation/ServiceDescriptionScreen/service_description_screen.dart';
@@ -15,16 +15,14 @@ import 'package:united102/features/settingScreens/presentation/LocationSettingSc
 import 'package:united102/features/settingScreens/presentation/ThemeSettingScreen/theme_setting_screen.dart';
 import 'package:united102/features/appNavigator/AppNavigator/app_navigator.dart';
 
-import '../../features/appNavigator/mainScreen/main_screen.dart';
-import '../../features/serviceSelectionScreens/presentation/timeSelectScreen/time_select_screen.dart';
 import '../../features/settingScreens/presentation/QASettingScreen/qa_setting_screen.dart';
 
 class AppRouter {
   static final GoRouter router = GoRouter(routes: [
-   
-    
-    GoRoute(path: '/', builder: (context, state) => const LoginScreen()),
-    GoRoute(path: "/registration", builder: (context, state) => const RegistrationScreen(),),
+    GoRoute(path: "/", builder: (context, state) => MainScreen(),),
+      // GoRoute(path: "/", builder: (context, state) => (),),
+    // GoRoute(path: "/", builder: (context, state) => const LoginScreen (),),
+    // GoRoute(path: '/registration', builder: (context, state) => const RegistrationScreen ()),
     GoRoute(
         path: Routes.settingRoute,
         builder: (context, state) => const SettingScreen()),

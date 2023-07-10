@@ -3,9 +3,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:united102/features/registrationScreens/presentation/screens/RegistrationScreen/registration_screen.dart';
-import 'package:united102/iternal/helpers/color_helper.dart';
+import 'package:united102/app/routes/routes.dart';
 
+import '../../../../../iternal/helpers/color_helper.dart';
 import '../../../../widgets/screen_switcher_button.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -43,7 +43,7 @@ class _LoginScreenState extends State<LoginScreen> {
           children: [
             SizedBox(height: 129.h),
             Text(
-              "Регистрация",
+              "Войти",
               style: GoogleFonts.montserrat(
                   fontSize: 22, fontWeight: FontWeight.w600),
             ),
@@ -61,12 +61,14 @@ class _LoginScreenState extends State<LoginScreen> {
                 decoration: InputDecoration(
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(15.r)),
-                      hintText: "Логин",
-                   suffixIcon: SizedBox(
+                  hintText: "Логин",
+                  suffixIcon: SizedBox(
                       width: 4.5,
                       height: 9,
-                      child: Icon(Icons.arrow_forward_ios_rounded, color: ColorHelper.blue1,)
-                    ),
+                      child: Icon(
+                        Icons.arrow_forward_ios_rounded,
+                        color: ColorHelper.blue1,
+                      )),
                 ),
               ),
             ),
@@ -82,30 +84,52 @@ class _LoginScreenState extends State<LoginScreen> {
             SizedBox(
               child: TextField(
                 decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(15.r)),
-                    hintText: "Пароль",
-                    suffixIcon: SizedBox(
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(15.r)),
+                  hintText: "Пароль",
+                  suffixIcon: SizedBox(
                       width: 4.5,
                       height: 9,
-                      child: Icon(Icons.arrow_forward_ios_rounded, color: ColorHelper.blue1,)
-                    ),),
+                      child: Icon(
+                        Icons.arrow_forward_ios_rounded,
+                        color: ColorHelper.blue1,
+                      )),
+                ),
               ),
             ),
             SizedBox(height: 40.h),
-            ScreenSwitcherButton(
-              path: "/registration",
-              text: "Войти",
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ScreenSwitcherButton(
+                  path: Routes.appNavigator,
+                  text: "Войти",
+                ),
+              ],
             ),
             SizedBox(height: 20.h),
-            Row(mainAxisAlignment: MainAxisAlignment.center,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text( "Уже зарегистрированы? ", style: GoogleFonts.montserrat(fontSize: 17.sp, ),),
-
-                InkWell(onTap: (){
-                  context.go("/registration");
-                }, child: Text( "Войдите", style: GoogleFonts.montserrat(fontSize: 17.sp,color: ColorHelper.blue1),))
-            ],)
+                Text(
+                  "У вас нету аккаунта? ",
+                  style: GoogleFonts.montserrat(
+                    fontSize: 17.sp,
+                  ),
+                ),
+                InkWell(
+                  onTap: () {
+                    context.go("/registration");
+                  },
+                  
+                  child: Text(
+                    "Зарегистрируйтесь",
+                    style: GoogleFonts.montserrat(
+                        fontSize: 17.sp, color: ColorHelper.blue1),
+                  ),
+                )
+              ],
+            )
           ],
         ),
       ),
