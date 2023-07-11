@@ -12,7 +12,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'features/widgets/custom_progress_indicator.dart';
 import 'firebase/firebase_options.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
 void main() async {
@@ -62,17 +62,17 @@ class MyApp extends StatelessWidget {
                   title: 'First Method',
                   theme: state.currentTheme,
                   routerConfig: AppRouter.router,
-                  localizationsDelegates: const [
-                    AppLocalizations.delegate,
-                    GlobalMaterialLocalizations.delegate,
-                    GlobalWidgetsLocalizations.delegate,
-                    GlobalCupertinoLocalizations.delegate,
-                  ],
-                  supportedLocales: const [
-                    Locale('en'), // English
-                    Locale('kg'), // Kyrgyz
-                    Locale('ru'), // Russian
-                  ],
+                  // localizationsDelegates: const [
+                  //   AppLocalizations.delegate,
+                  //   GlobalMaterialLocalizations.delegate,
+                  //   GlobalWidgetsLocalizations.delegate,
+                  //   GlobalCupertinoLocalizations.delegate,
+                  // ],
+                  // supportedLocales: const [
+                  //   Locale('en'), // English
+                  //   Locale('kg'), // Kyrgyz
+                  //   Locale('ru'), // Russian
+                  // ],
                 );
               },
             );
@@ -82,8 +82,3 @@ class MyApp extends StatelessWidget {
 }
 
 
-
-// branches region get reques
-// brances region id region brances  передать ид региона
-//
-//
