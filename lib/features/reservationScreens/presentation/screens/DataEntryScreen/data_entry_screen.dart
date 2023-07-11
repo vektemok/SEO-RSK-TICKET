@@ -147,7 +147,7 @@ class _DataEntrySTFState extends State<DataEntrySTF> {
                               name: nameController.text,
                               patronymic: patronymicController.text,
                               dateOfBirth: dateOfBirthController.text,
-                              pasport: pasportController.text));
+                              pasport: pasportController.text),);
                         },
                         path: Routes.ticketBookingSuccessScreen,
                         text: 'Далее',
