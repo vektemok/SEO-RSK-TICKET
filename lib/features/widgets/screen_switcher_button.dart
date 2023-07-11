@@ -9,9 +9,10 @@ class ScreenSwitcherButton extends StatelessWidget {
   String path;
   
   ScreenSwitcherButton({
+
     Key? key,
     required this.text,
-    required this.path,
+    required this.path, required Null Function() onPressed, 
   }) : super(key: key);
 
   @override

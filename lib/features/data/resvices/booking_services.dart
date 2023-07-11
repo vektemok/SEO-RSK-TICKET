@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 
-import '../../reservationScreens/presentation/screens/DataEntryScreen/model/booking_model.dart';
+import '../../reservationScreens/data/model/booking_model.dart';
 
 class HttpService {
   String baseUrl = 'http://35.184.55.194/booking/';
