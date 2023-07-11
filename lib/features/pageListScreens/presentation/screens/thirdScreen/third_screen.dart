@@ -32,7 +32,7 @@ class _ThirdScreenState extends State<ThirdScreen> {
             Container(
               child: Column(
                 children: [
-                  ScreenSwitcherButton(path: Routes.appNavigator, text: 'Далее',)
+                  ScreenSwitcherButton(path: Routes.appNavigator, text: 'Далее', onPressed: () {  },)
                 ],
               ),
             )

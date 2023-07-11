@@ -86,7 +86,7 @@ class _ServiceDescriptionScreenState extends State<ServiceDescriptionScreen> {
                 ),
                 ScreenSwitcherButton(
                   path: Routes.dataEntryScreen,
-                  text: 'Далее',
+                  text: 'Далее', onPressed: () {  },
                 )
               ],
             ),

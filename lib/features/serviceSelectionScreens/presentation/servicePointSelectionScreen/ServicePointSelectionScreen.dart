@@ -40,7 +40,7 @@ class _ServicePointSelectionScreenState extends State<ServicePointSelectionScree
                );
              })),
            ),
-              ScreenSwitcherButton(path: '', text: 'Далее',)
+              ScreenSwitcherButton(path: '', text: 'Далее', onPressed: () {  },)
             ],
           ),
         ),

@@ -103,7 +103,7 @@ class _LoginScreenState extends State<LoginScreen> {
               children: [
                 ScreenSwitcherButton(
                   path: Routes.appNavigator,
-                  text: "Войти",
+                  text: "Войти", onPressed: () {  },
                 ),
               ],
             ),
