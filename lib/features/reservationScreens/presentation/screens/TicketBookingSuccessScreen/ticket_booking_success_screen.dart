@@ -65,9 +65,7 @@ class _TicketBookingSuccessScreenState
             ),
            _TicketActionList(),
             SizedBox(height: 40.h,),
-            ElevatedButton(onPressed: (){
-              context.pop();
-            }, child: const Text('pop'))
+           
           ],
         ),
       ),
