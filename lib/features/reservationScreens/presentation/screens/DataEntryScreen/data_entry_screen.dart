@@ -7,6 +7,7 @@ import 'package:provider/provider.dart';
 import 'package:united102/iternal/helpers/style_helper.dart';
 import 'package:united102/features/pageListScreens/presentation/widgets/header_text_widget.dart';
 
+import '../../../../../app/routes/routes.dart';
 import '../../../../../iternal/getIt/getIt.dart';
 import '../../../../widgets/custom_flushbar.dart';
 import '../../../../widgets/screen_switcher_button.dart';
@@ -148,15 +149,10 @@ class _DataEntrySTFState extends State<DataEntrySTF> {
                               dateOfBirth: dateOfBirthController.text,
                               pasport: pasportController.text));
                         },
-                        path: '/SpecialNeedsScreen',
+                        path: Routes.ticketBookingSuccessScreen,
                         text: 'Далее',
                       ),
                     ),
-
-                    //                   ScreenSwitcherButton(
-                    //   path: '/SpecialNeedsScreen',
-                    //   text: 'Далее',
-                    // ),),
                   ),
                 ],
               ),
