@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -14,6 +15,8 @@ import 'firebase/firebase_options.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 
+import 'iternal/getIt/getIt.dart';
+
 FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
 void main() async {
   runZonedGuarded(() async {
@@ -27,6 +30,12 @@ void main() async {
         android: androidInitializationSettings
       )
     );
+
+    WidgetsFlutterBinding.ensureInitialized();
+  configureDependencies();
+  await SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+  ]);
 
     runApp(const MyApp());
   }, (error, stack) {

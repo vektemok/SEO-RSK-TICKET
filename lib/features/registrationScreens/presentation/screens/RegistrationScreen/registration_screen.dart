@@ -131,7 +131,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
             SizedBox(height: 40.h),
             ScreenSwitcherButton(
               path: "/registration",
-              text: "Регистрация",
+              text: "Регистрация", onPressed: () {  },
             ),
             SizedBox(height: 20.h),
             Row(

@@ -1,25 +1,50 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 import 'package:united102/iternal/helpers/style_helper.dart';
 import 'package:united102/features/pageListScreens/presentation/widgets/header_text_widget.dart';
 
+import '../../../../../app/routes/routes.dart';
+import '../../../../../iternal/getIt/getIt.dart';
+import '../../../../widgets/custom_flushbar.dart';
 import '../../../../widgets/screen_switcher_button.dart';
-import 'data_entry_view_model.dart';
+import '../logic/bloc/data_entry_bloc.dart';
 
 class DataEntryScreen extends StatelessWidget {
-  const DataEntryScreen({Key? key}) : super(key: key);
+  DataEntryScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) => ChangeNotifierProvider(
         create: (context) => DataEntryViewModel(),
-        child: _BodyWidget(),
+        child: DataEntrySTF(),
       );
 }
 
-class _BodyWidget extends StatelessWidget {
-  const _BodyWidget({Key? key}) : super(key: key);
+class DataEntrySTF extends StatefulWidget {
+  const DataEntrySTF({super.key});
+
+  @override
+  State<DataEntrySTF> createState() => _DataEntrySTFState();
+}
+
+class _DataEntrySTFState extends State<DataEntrySTF> {
+  ValueNotifier<bool> enabledButton = ValueNotifier<bool>(false);
+  final TextEditingController surnameController = TextEditingController();
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController patronymicController = TextEditingController();
+  final TextEditingController dateOfBirthController = TextEditingController();
+  final TextEditingController pasportController = TextEditingController();
+
+  late DataEntryBloc bloc;
+
+  @override
+  void initState() {
+    bloc = getIt<DataEntryBloc>();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -55,25 +80,79 @@ class _BodyWidget extends StatelessWidget {
                     height: 20.h,
                   ),
                   HeaderInputText(headerInputText: viewModel.headerTextList[0]),
-                  PatronymicInput(),
+                  CustomTextField(
+                    controller: surnameController.text,
+                  ),
                   HeaderInputText(headerInputText: viewModel.headerTextList[1]),
-                  NameInput(),
+                  CustomTextField(
+                    controller: nameController.text,
+                  ),
                   HeaderInputText(headerInputText: viewModel.headerTextList[2]),
-                  SurnameInput(),
+                  CustomTextField(
+                    controller: patronymicController.text,
+                  ),
                   HeaderInputText(headerInputText: viewModel.headerTextList[3]),
-                  DateOfBirthInput(),
+                  CustomTextField(
+                    controller: dateOfBirthController.text,
+                  ),
                   HeaderInputText(headerInputText: viewModel.headerTextList[4]),
-                  IdInput(),
+                  CustomTextField(
+                    controller: pasportController.text,
+                  ),
                   SizedBox(
                     height: 20.h,
                   ),
-                  TooltipWidget(),
+                  const TooltipWidget(),
                   const SizedBox(
                     height: 20,
                   ),
-                  ScreenSwitcherButton(
-                    path: '/SpecialNeedsScreen',
-                    text: 'Далее',
+                  MultiBlocListener(
+                    listeners: [
+                      BlocListener<DataEntryBloc, DataEntryState>(
+                          bloc: bloc,
+                          listener: (context, state) {
+                            if (state is DataEntryLoadingState) {
+                              SmartDialog.showLoading(msg: 'Загрузка...');
+                            }
+
+                            if (state is DataEntryLoadeddState) {
+                              SmartDialog.dismiss();
+
+                              bloc.add(DateTextFields(
+                                  dateOfBirth: dateOfBirthController.text,
+                                  name: '',
+                                  pasport: '',
+                                  patronymic: '',
+                                  surname: ''));
+                            }
+
+                            if (state is DataEntryFailedState) {
+                              SmartDialog.dismiss();
+
+                              Exceptions.showFlushbar(
+                                state.error.message.toString(),
+                                context: context,
+                              );
+                            }
+                          }),
+                    ],
+                    child: ValueListenableBuilder<bool>(
+                      valueListenable: enabledButton,
+                      builder:
+                          (BuildContext context, bool value, Widget? child) =>
+                              ScreenSwitcherButton(
+                        onPressed: () {
+                          bloc.add(DateTextFields(
+                              surname: surnameController.text,
+                              name: nameController.text,
+                              patronymic: patronymicController.text,
+                              dateOfBirth: dateOfBirthController.text,
+                              pasport: pasportController.text));
+                        },
+                        path: Routes.ticketBookingSuccessScreen,
+                        text: 'Далее',
+                      ),
+                    ),
                   ),
                 ],
               ),
@@ -85,71 +164,16 @@ class _BodyWidget extends StatelessWidget {
   }
 }
 
-class SurnameInput extends StatelessWidget {
-  const SurnameInput({Key? key}) : super(key: key);
+class CustomTextField extends StatelessWidget {
+  final String controller;
+  const CustomTextField({Key? key, required this.controller}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
       child: TextField(
-        decoration: InputDecoration(
-            isCollapsed: true, hintText: 'Введите', hintStyle: hintTextStyle),
-      ),
-    );
-  }
-}
-
-class NameInput extends StatelessWidget {
-  const NameInput({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
-      child: TextField(
-        decoration: InputDecoration(
-            isCollapsed: true, hintText: 'Введите', hintStyle: hintTextStyle),
-      ),
-    );
-  }
-}
-
-class PatronymicInput extends StatelessWidget {
-  const PatronymicInput({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return TextField(
-      decoration: InputDecoration(
-          isCollapsed: true, hintText: 'Введите', hintStyle: hintTextStyle),
-    );
-  }
-}
-
-class IdInput extends StatelessWidget {
-  const IdInput({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
-      child: TextField(
-        decoration: InputDecoration(
-            isCollapsed: true, hintText: 'Введите', hintStyle: hintTextStyle),
-      ),
-    );
-  }
-}
-
-class DateOfBirthInput extends StatelessWidget {
-  const DateOfBirthInput({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
-      child: TextField(
+        controller: TextEditingController(text: controller),
         decoration: InputDecoration(
             isCollapsed: true, hintText: 'Введите', hintStyle: hintTextStyle),
       ),
@@ -189,8 +213,7 @@ class TooltipWidget extends StatelessWidget {
   }
 }
 
-
-class DataEntryViewModel extends ChangeNotifier{
+class DataEntryViewModel extends ChangeNotifier {
   final String _headerText = 'Пожалуйста, укажите \n'
       'следующие данные';
 
@@ -198,13 +221,10 @@ class DataEntryViewModel extends ChangeNotifier{
     'Фамилия:',
     'Имя:',
     'Отчество:',
-    'Дата рождения:',
+    'Номер телефона:',
     'ID пасспорт:',
   ];
 
-
-
   List<String> get headerTextList => _headerTextList;
   String get headerText => _headerText;
-
 }

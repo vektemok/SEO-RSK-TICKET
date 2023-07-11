@@ -51,7 +51,7 @@ class _BodyWidget extends StatelessWidget {
             ),
             ScreenSwitcherButton(
               path: '/ServiceSelectScreen',
-              text: 'Далее',
+              text: 'Далее', onPressed: () {  },
             ),
           ],
         ),

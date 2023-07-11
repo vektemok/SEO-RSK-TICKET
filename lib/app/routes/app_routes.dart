@@ -25,7 +25,7 @@ import '../../features/settingScreens/presentation/QASettingScreen/qa_setting_sc
 
 class AppRouter {
   static final GoRouter router = GoRouter(routes: [
-    GoRoute(path: '/', builder: (context, state) => const MainScreen()),
+    GoRoute(path: '/', builder: (context, state) =>  DataEntryScreen()),
     GoRoute(
       path: "/registration",
       builder: (context, state) => const RegistrationScreen(),
@@ -70,7 +70,7 @@ class AppRouter {
         builder: (context, state) => const DocumentListScreen()),
     GoRoute(
         path: Routes.dataEntryScreen,
-        builder: (context, state) => const DataEntryScreen()),
+        builder: (context, state) =>  DataEntryScreen()),
     GoRoute(
         path: Routes.specialNeedsScreen,
         builder: (context, state) => const SpecialNeedsScreen()),

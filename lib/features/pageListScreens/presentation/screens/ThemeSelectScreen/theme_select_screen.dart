@@ -51,7 +51,7 @@ class _ThemeSelectScreenState extends State<ThemeSelectScreen> {
                 height: 30,
               ),
               ScreenSwitcherButton(
-                path: '/location_select', text: '',
+                path: '/location_select', text: '', onPressed: () {  },
               )
             ],
           ),
