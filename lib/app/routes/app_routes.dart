@@ -25,7 +25,7 @@ import '../../features/settingScreens/presentation/QASettingScreen/qa_setting_sc
 
 class AppRouter {
   static final GoRouter router = GoRouter(routes: [
-    GoRoute(path: '/', builder: (context, state) => const MainScreen()),
+    GoRoute(path: '/', builder: (context, state) => const TimeSelectScreen()),
     GoRoute(
       path: "/registration",
       builder: (context, state) => const RegistrationScreen(),
