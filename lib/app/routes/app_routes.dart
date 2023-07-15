@@ -70,7 +70,7 @@ class AppRouter {
         builder: (context, state) => const DocumentListScreen()),
     GoRoute(
         path: Routes.dataEntryScreen,
-        builder: (context, state) => const DataEntryScreen()),
+        builder: (context, state) =>  DataEntryScreen()),
     GoRoute(
         path: Routes.specialNeedsScreen,
         builder: (context, state) => const SpecialNeedsScreen()),
