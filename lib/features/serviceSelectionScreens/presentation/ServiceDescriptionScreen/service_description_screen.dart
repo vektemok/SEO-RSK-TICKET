@@ -1,16 +1,26 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:united102/features/pageListScreens/presentation/widgets/header_text_widget.dart';
+import 'package:united102/features/serviceSelectionScreens/presentation/DocumentListScreen/document_list_screen.dart';
+import 'package:united102/features/serviceSelectionScreens/presentation/timeSelectScreen/time_select_screen.dart';
+import 'package:united102/features/widgets/my_elevated_button.dart';
 import 'package:united102/features/widgets/screen_switcher_button.dart';
 
 import '../../../../app/routes/routes.dart';
+import '../../../logic/bloc/service_description_bloc/service_description_bloc.dart';
 
 class ServiceDescriptionScreen extends StatefulWidget {
-  const ServiceDescriptionScreen({Key? key}) : super(key: key);
+  int branchId;
+  int serviceId;
+
+  ServiceDescriptionScreen(
+      {Key? key, required this.serviceId, required this.branchId})
+      : super(key: key);
 
   @override
   State<ServiceDescriptionScreen> createState() =>
@@ -21,7 +31,6 @@ class _ServiceDescriptionScreenState extends State<ServiceDescriptionScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).backgroundColor,
       appBar: AppBar(
         backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
         centerTitle: Theme.of(context).appBarTheme.centerTitle,
@@ -44,52 +53,87 @@ class _ServiceDescriptionScreenState extends State<ServiceDescriptionScreen> {
         ),
       ),
       body: SafeArea(
-        child: Center(
-          child: Padding(
-            padding: const EdgeInsets.fromLTRB(14, 0, 14, 0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                HeaderTextWidget(
-                    title: 'Операция по \n'
-                        ' корпоративному счету'),
-                SizedBox(
-                  height: 20.h,
-                ),
-                DescriptionService(),
-                SizedBox(
-                  height: 40.h,
-                ),
-                ElevatedButton.icon(
-                    onPressed: () {
-                      context.go(Routes.documentListScreen);
-                    },
-                    style: ElevatedButton.styleFrom(
-                        fixedSize: const Size(266, 58),
-                        backgroundColor: Colors.white,
-                        elevation: 0),
-                    icon: SizedBox(
-                      height: 17,
-                      width: 17,
-                      child: SvgPicture.asset('assets/icons/document.svg'),
+        child: BlocProvider<ServiceDescriptionBloc>(
+          create: (context) => ServiceDescriptionBloc()
+            ..add(ServiceDescriptionFetch(
+                serviceId: widget.serviceId, branchId: widget.branchId)),
+          child: BlocBuilder<ServiceDescriptionBloc, ServiceDescriptionState>(
+            builder: (context, state) {
+              if (state is ServiceDescriptionLoaded) {
+                final serviceDescription = state.serviceDescription[0];
+                return Center(
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(14, 0, 14, 0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        HeaderTextWidget(
+                            title: 'Операция  \n'
+                                ' ${serviceDescription.name}'),
+                        SizedBox(
+                          height: 20.h,
+                        ),
+                        DescriptionService(
+                          descriptionText: serviceDescription.description,
+                        ),
+                        SizedBox(
+                          height: 40.h,
+                        ),
+                        ElevatedButton.icon(
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => DocumentListScreen(
+                                          documents:
+                                              serviceDescription.documents,
+                                          optionalDocument: serviceDescription
+                                              .optionalDocuments)));
+                            },
+                            style: ElevatedButton.styleFrom(
+                                fixedSize: const Size(266, 58),
+                                backgroundColor: Colors.white,
+                                elevation: 0),
+                            icon: SizedBox(
+                              height: 17,
+                              width: 17,
+                              child:
+                                  SvgPicture.asset('assets/icons/document.svg'),
+                            ),
+                            label: Text(
+                              'Требуемые документы',
+                              style: GoogleFonts.montserrat(
+                                color: Color.fromRGBO(57, 147, 195, 1),
+                                fontWeight: FontWeight.w400,
+                                fontSize: 16,
+                              ),
+                            )),
+                        SizedBox(
+                          height: 10.h,
+                        ),
+                        MyElevatedButton(
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          TimeSelectScreen(queue: serviceDescription.id,)));
+                            },
+                            child: const Text('Далее'))
+                      ],
                     ),
-                    label: Text(
-                      'Требуемые документы',
-                      style: GoogleFonts.montserrat(
-                        color: Color.fromRGBO(57, 147, 195, 1),
-                        fontWeight: FontWeight.w400,
-                        fontSize: 16,
-                      ),
-                    )),
-                SizedBox(
-                  height: 10.h,
-                ),
-                ScreenSwitcherButton(
-                  path: Routes.dataEntryScreen,
-                  text: 'Далее', onPressed: () {  },
-                )
-              ],
-            ),
+                  ),
+                );
+              } else if (state is ServiceDescriptionError) {
+                return const Center(
+                  child: Text('Error'),
+                );
+              } else {
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
+              }
+            },
           ),
         ),
       ),
@@ -98,12 +142,14 @@ class _ServiceDescriptionScreenState extends State<ServiceDescriptionScreen> {
 }
 
 class DescriptionService extends StatelessWidget {
-  const DescriptionService({Key? key}) : super(key: key);
+  String descriptionText;
+
+  DescriptionService({Key? key, required this.descriptionText})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-        'Операции по корпоративному счету включают финансовые транзакции: открытие/закрытие счета, банковские переводы, операции с валютой, платежи, документы.',
+    return Text(descriptionText,
         style: GoogleFonts.montserrat(
           textStyle: TextStyle(
             color: Color.fromRGBO(0, 0, 0, 0.6),

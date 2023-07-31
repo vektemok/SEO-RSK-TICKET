@@ -4,15 +4,19 @@ import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:united102/features/pageListScreens/presentation/widgets/header_text_widget.dart';
 
-
 class DocumentListScreen extends StatelessWidget {
-  const DocumentListScreen({Key? key}) : super(key: key);
+  String optionalDocument;
+  String documents;
+
+  DocumentListScreen(
+      {Key? key, required this.documents, required this.optionalDocument})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
-      appBar:  AppBar(
+      appBar: AppBar(
         backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
         elevation: Theme.of(context).appBarTheme.elevation,
         centerTitle: Theme.of(context).appBarTheme.centerTitle,
@@ -43,16 +47,12 @@ class DocumentListScreen extends StatelessWidget {
             SizedBox(
               height: 15,
             ),
-            Expanded(
-              child: ListView.builder(
-
-                  itemCount: 10,
-                  itemBuilder: (context,index){
-                return Center(
-                  child: Text(' -ID pasport'),
-                );
-              }),
-            )
+            Text(documents),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: HeaderTextWidget(title: 'Не обязательные'),
+            ),
+            Text(optionalDocument)
           ],
         ),
       ),

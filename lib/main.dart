@@ -6,18 +6,23 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:united102/app/notifications/ticket_waiting_nofication.dart';
+import 'package:united102/app/routes/routes.dart';
+import 'package:united102/features/appNavigator/mainScreen/main_screen.dart';
 import 'package:united102/features/logic/bloc/theme_bloc/theme_bloc.dart';
-
-import 'app/routes/app_routes.dart';
+import 'package:united102/features/pageListScreens/presentation/screens/LocationSelectScreen/location_select_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:united102/features/reservationScreens/presentation/screens/SerivcePointScreen/service_point_screen.dart';
+import 'features/reservationScreens/presentation/screens/DataEntryScreen/data_entry_screen.dart';
+import 'features/serviceSelectionScreens/presentation/ServiceSelectScreen/service_select_screen.dart';
 import 'features/widgets/custom_progress_indicator.dart';
 import 'firebase/firebase_options.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
-
 import 'iternal/getIt/getIt.dart';
 
-FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
+FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+    FlutterLocalNotificationsPlugin();
+
 void main() async {
   runZonedGuarded(() async {
     WidgetsFlutterBinding.ensureInitialized();
@@ -26,16 +31,13 @@ void main() async {
       options: DefaultFirebaseOptions.currentPlatform,
     );
     await flutterLocalNotificationsPlugin.initialize(
-      InitializationSettings(
-        android: androidInitializationSettings
-      )
-    );
+        InitializationSettings(android: androidInitializationSettings));
 
     WidgetsFlutterBinding.ensureInitialized();
-  configureDependencies();
-  await SystemChrome.setPreferredOrientations([
-    DeviceOrientation.portraitUp,
-  ]);
+    configureDependencies();
+    await SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+    ]);
 
     runApp(const MyApp());
   }, (error, stack) {
@@ -63,14 +65,15 @@ class MyApp extends StatelessWidget {
               minTextAdapt: true,
               splitScreenMode: true,
               builder: (context, child) {
-                return MaterialApp.router(
+                return MaterialApp(
                   builder: FlutterSmartDialog.init(
-            loadingBuilder: (String msg) => CustomProgressIndicator(msg: msg),
-          ),
+                    loadingBuilder: (String msg) =>
+                        CustomProgressIndicator(msg: msg),
+                  ),
                   debugShowCheckedModeBanner: false,
                   title: 'First Method',
                   theme: state.currentTheme,
-                  routerConfig: AppRouter.router,
+                  initialRoute: Routes.regionSelectScreen,
                   // localizationsDelegates: const [
                   //   AppLocalizations.delegate,
                   //   GlobalMaterialLocalizations.delegate,
@@ -82,6 +85,10 @@ class MyApp extends StatelessWidget {
                   //   Locale('kg'), // Kyrgyz
                   //   Locale('ru'), // Russian
                   // ],
+
+                  routes: {
+                    Routes.regionSelectScreen: (context) => MainScreen()
+                  },
                 );
               },
             );
@@ -89,5 +96,3 @@ class MyApp extends StatelessWidget {
         ),
       );
 }
-
-

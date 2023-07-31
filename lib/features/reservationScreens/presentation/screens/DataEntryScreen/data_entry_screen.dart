@@ -1,230 +1,217 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:provider/provider.dart';
-import 'package:united102/iternal/helpers/style_helper.dart';
 import 'package:united102/features/pageListScreens/presentation/widgets/header_text_widget.dart';
+import 'package:united102/features/reservationScreens/presentation/screens/TicketBookingSuccessScreen/ticket_booking_success_screen.dart';
+import 'package:united102/features/widgets/my_elevated_button.dart';
+import 'package:united102/iternal/helpers/style_helper.dart';
 
-import '../../../../../app/routes/routes.dart';
-import '../../../../../iternal/getIt/getIt.dart';
-import '../../../../widgets/custom_flushbar.dart';
-import '../../../../widgets/screen_switcher_button.dart';
-import '../logic/bloc/data_entry_bloc.dart';
+import '../../../../logic/bloc/booking_bloc/booking_bloc.dart';
+import '../../../data/model/booking_model.dart';
 
-class DataEntryScreen extends StatelessWidget {
-  DataEntryScreen({Key? key}) : super(key: key);
+class DataEntryScreen extends StatefulWidget {
+  int queue;
+  String data;
+  String time;
+
+  DataEntryScreen(
+      {super.key, required this.queue, required this.data, required this.time});
 
   @override
-  Widget build(BuildContext context) => ChangeNotifierProvider(
-        create: (context) => DataEntryViewModel(),
-        child: DataEntrySTF(),
-      );
+  State<DataEntryScreen> createState() => _DataEntryScreenState();
 }
 
-class DataEntrySTF extends StatefulWidget {
-  const DataEntrySTF({super.key});
-
-  @override
-  State<DataEntrySTF> createState() => _DataEntrySTFState();
-}
-
-class _DataEntrySTFState extends State<DataEntrySTF> {
-  ValueNotifier<bool> enabledButton = ValueNotifier<bool>(false);
-  final TextEditingController surnameController = TextEditingController();
-  final TextEditingController nameController = TextEditingController();
-  final TextEditingController patronymicController = TextEditingController();
-  final TextEditingController dateOfBirthController = TextEditingController();
-  final TextEditingController pasportController = TextEditingController();
-
-  late DataEntryBloc bloc;
-
-  @override
-  void initState() {
-    bloc = getIt<DataEntryBloc>();
-    super.initState();
-  }
+class _DataEntryScreenState extends State<DataEntryScreen> {
+  final formKey = GlobalKey<FormState>();
+  TextEditingController nameController = TextEditingController();
+  TextEditingController lastNameController = TextEditingController();
+  TextEditingController surnameController = TextEditingController();
+  TextEditingController passportController = TextEditingController();
+  TextEditingController phoneNumberController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = context.read<DataEntryViewModel>();
-    return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-        toolbarHeight: 80,
-        elevation: Theme.of(context).appBarTheme.elevation,
-        backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
-        centerTitle: Theme.of(context).appBarTheme.centerTitle,
-        title: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: SizedBox(
-            height: 180,
-            width: 150,
-            child: SvgPicture.asset(
-              'assets/appbar_rsk.svg',
-            ),
-          ),
-        ),
-      ),
-      body: SafeArea(
-        child: Center(
-          child: Padding(
-            padding: const EdgeInsets.fromLTRB(30, 0, 30, 0),
-            child: SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  HeaderTextWidget(title: viewModel.headerText),
-                  SizedBox(
-                    height: 20.h,
-                  ),
-                  HeaderInputText(headerInputText: viewModel.headerTextList[0]),
-                  CustomTextField(
-                    controller: surnameController.text,
-                  ),
-                  HeaderInputText(headerInputText: viewModel.headerTextList[1]),
-                  CustomTextField(
-                    controller: nameController.text,
-                  ),
-                  HeaderInputText(headerInputText: viewModel.headerTextList[2]),
-                  CustomTextField(
-                    controller: patronymicController.text,
-                  ),
-                  HeaderInputText(headerInputText: viewModel.headerTextList[3]),
-                  CustomTextField(
-                    controller: dateOfBirthController.text,
-                  ),
-                  HeaderInputText(headerInputText: viewModel.headerTextList[4]),
-                  CustomTextField(
-                    controller: pasportController.text,
-                  ),
-                  SizedBox(
-                    height: 20.h,
-                  ),
-                  const TooltipWidget(),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  MultiBlocListener(
-                    listeners: [
-                      BlocListener<DataEntryBloc, DataEntryState>(
-                          bloc: bloc,
-                          listener: (context, state) {
-                            if (state is DataEntryLoadingState) {
-                              SmartDialog.showLoading(msg: 'Загрузка...');
-                            }
+    final Booking booking = Booking(
+        firstName: 'Egor',
+        lastName: 'lolo',
+        surname: 'one',
+        pasport: 'a12323232',
+        phoneNumber: '99766126262',
+        time: '14:00:00',
+        date: '2023-08-13',
+        queue: '9');
 
-                            if (state is DataEntryLoadeddState) {
-                              SmartDialog.dismiss();
+// loly  istanbul1
 
-                              bloc.add(DateTextFields(
-                                  dateOfBirth: dateOfBirthController.text,
-                                  name: '',
-                                  pasport: '',
-                                  patronymic: '',
-                                  surname: ''));
-                            }
-
-                            if (state is DataEntryFailedState) {
-                              SmartDialog.dismiss();
-
-                              Exceptions.showFlushbar(
-                                state.error.message.toString(),
-                                context: context,
-                              );
-                            }
-                          }),
-                    ],
-                    child: ValueListenableBuilder<bool>(
-                      valueListenable: enabledButton,
-                      builder:
-                          (BuildContext context, bool value, Widget? child) =>
-                              ScreenSwitcherButton(
-                        onPressed: () {
-                          bloc.add(DateTextFields(
-                              surname: surnameController.text,
-                              name: nameController.text,
-                              patronymic: patronymicController.text,
-                              dateOfBirth: dateOfBirthController.text,
-                              pasport: pasportController.text),);
-                        },
-                        path: Routes.ticketBookingSuccessScreen,
-                        text: 'Далее',
+    return BlocProvider<BookingBloc>(
+      create: (context) => BookingBloc(),
+      child: BlocBuilder<BookingBloc, BookingState>(
+        builder: (context, state) {
+          return Form(
+              key: formKey,
+              child: Scaffold(
+                backgroundColor: Colors.white,
+                appBar: AppBar(
+                  centerTitle: Theme.of(context).appBarTheme.centerTitle,
+                  backgroundColor:
+                      Theme.of(context).appBarTheme.backgroundColor,
+                  title: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: SizedBox(
+                      height: 51,
+                      width: 166,
+                      child: SvgPicture.asset(
+                        'assets/appbar_rsk.svg',
                       ),
                     ),
                   ),
-                ],
-              ),
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-}
+                ),
+                body: SafeArea(
+                  child: SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(70, 20, 70, 10),
+                          child: HeaderTextWidget(
+                              title: 'Пожалуйста, укажите следующие данные'),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(37, 40, 37, 20),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              HeaderInputText(text: 'Имя:'),
+                              TextFormField(
+                                decoration: InputDecoration(
+                                    hintText: 'Введите',
+                                    hintStyle: hintTextStyle,
+                                    isCollapsed: false),
+                                controller: nameController,
+                                validator: (value) {
+                                  if (value == null || value.isEmpty) {
+                                    return 'Пожалуйста,  укажите имя';
+                                  } else {
+                                    return null;
+                                  }
+                                },
+                              ),
+                              HeaderInputText(text: 'Фамилия:'),
+                              TextFormField(
+                                decoration: InputDecoration(
+                                    hintText: 'Введите',
+                                    hintStyle: hintTextStyle,
+                                    isCollapsed: false),
+                                controller: lastNameController,
+                                validator: (value) {
+                                  if (value == null || value.isEmpty) {
+                                    return 'Пожалуйста, укажите фамилию';
+                                  } else {
+                                    return null;
+                                  }
+                                },
+                              ),
+                              HeaderInputText(text: 'Отчество:'),
+                              TextFormField(
+                                decoration: InputDecoration(
+                                    hintText: 'Введите',
+                                    hintStyle: hintTextStyle,
+                                    isCollapsed: false),
+                                controller: surnameController,
+                                validator: (value) {
+                                  if (value == null || value.isEmpty) {
+                                    return 'Пожалуйста, укажите отчество';
+                                  } else {
+                                    return null;
+                                  }
+                                },
+                              ),
+                              HeaderInputText(text: 'Номер:'),
+                              TextFormField(
+                                decoration: InputDecoration(
+                                    hintText: 'Введите',
+                                    hintStyle: hintTextStyle,
+                                    isCollapsed: false),
+                                controller: phoneNumberController,
+                                validator: (value) {
+                                  if (value == null || value.isEmpty) {
+                                    return 'Пожалуйста, укажите номер';
+                                  } else {
+                                    return null;
+                                  }
+                                },
+                              ),
+                              HeaderInputText(text: 'Паспорт:'),
+                              TextFormField(
+                                decoration: InputDecoration(
+                                    hintText: 'Введите',
+                                    hintStyle: hintTextStyle,
+                                    isCollapsed: false),
+                                controller: passportController,
+                                validator: (value) {
+                                  if (value == null || value.isEmpty) {
+                                    return 'Пожалуйста, укажите паспорт';
+                                  } else {
+                                    return null;
+                                  }
+                                },
+                              ),
+                              const SizedBox(
+                                height: 10,
+                              ),
+                              Text(
+                                  textAlign: TextAlign.center,
+                                  style: tooltipTextStyle,
+                                  'Мы гарантируем конфиденциальность и безопасность ваших личных данных. Заполнение этих сведений поможет нам обеспечить более эффективное и индивидуальное обслуживание. Благодарим вас за ваше сотрудничество!')
+                            ],
+                          ),
+                        ),
+                        MyElevatedButton(
+                            onPressed: () {
+                              if (formKey.currentState!.validate()) {
+                                context.read<BookingBloc>().add(
+                                    PostBookingEvent(
+                                        firstName: nameController.text,
+                                        lastName: lastNameController.text,
+                                        surname: surnameController.text,
+                                        phoneNumber: phoneNumberController.text,
+                                        time: widget.time,
+                                        passport: passportController.text,
+                                        queue: widget.queue.toString(),
+                                        date: widget.data));
+                              }
 
-class CustomTextField extends StatelessWidget {
-  final String controller;
-  const CustomTextField({Key? key, required this.controller}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
-      child: TextField(
-        controller: TextEditingController(text: controller),
-        decoration: InputDecoration(
-            isCollapsed: true, hintText: 'Введите', hintStyle: hintTextStyle),
+                              Future.delayed(
+                                  const Duration(seconds: 5),
+                                  () => MaterialPageRoute(
+                                      builder: (context) =>
+                                          const TicketBookingSuccessScreen()));
+                            },
+                            child: const Text('Далее'))
+                      ],
+                    ),
+                  ),
+                ),
+              ));
+        },
       ),
     );
   }
 }
 
 class HeaderInputText extends StatelessWidget {
-  final String headerInputText;
+  final String text;
 
-  const HeaderInputText({Key? key, required this.headerInputText})
-      : super(key: key);
+  const HeaderInputText({super.key, required this.text});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(0, 5, 0, 5),
+      padding: const EdgeInsets.fromLTRB(0, 5, 0, 0),
       child: Text(
-        headerInputText,
-        style: descriptionTextStyle,
-        textAlign: TextAlign.end,
+        textAlign: TextAlign.start,
+        text,
+        style: ticketText,
       ),
     );
   }
-}
-
-class TooltipWidget extends StatelessWidget {
-  const TooltipWidget({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      'Мы гарантируем конфиденциальность и безопасность ваших личных данных. Заполнение этих сведений поможет нам обеспечить более эффективное и индивидуальное обслуживание. Благодарим вас за ваше сотрудничество! ',
-      style: tooltipTextStyle,
-      textAlign: TextAlign.center,
-    );
-  }
-}
-
-class DataEntryViewModel extends ChangeNotifier {
-  final String _headerText = 'Пожалуйста, укажите \n'
-      'следующие данные';
-
-  List<String> _headerTextList = [
-    'Фамилия:',
-    'Имя:',
-    'Отчество:',
-    'Номер телефона:',
-    'ID пасспорт:',
-  ];
-
-  List<String> get headerTextList => _headerTextList;
-  String get headerText => _headerText;
 }

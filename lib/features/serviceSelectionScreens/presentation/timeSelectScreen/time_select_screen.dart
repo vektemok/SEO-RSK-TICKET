@@ -82,13 +82,23 @@
 // }
 //
 import 'package:flutter/material.dart';
+import 'package:united102/features/reservationScreens/presentation/screens/DataEntryScreen/data_entry_screen.dart';
 
 class TimeSelectScreen extends StatelessWidget {
-  const TimeSelectScreen({Key? key}) : super(key: key);
+  int queue;
+
+  TimeSelectScreen({Key? key, required this.queue}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      body: Center(
+        child: TextButton(
+            onPressed: () {
+      Navigator.push(context, MaterialPageRoute(builder: (context) => DataEntryScreen(queue: queue, data: 'data', time: 'time')));
+            },
+            child: const Text('print')),
+      ),
+    );
   }
 }
-
