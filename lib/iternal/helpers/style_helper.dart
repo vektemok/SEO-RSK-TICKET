@@ -35,7 +35,7 @@ TextStyle buttonTextStyle = GoogleFonts.montserrat(
   fontSize: 18.sp,
 ));
 
-TextStyle tooltipTextStyle = GoogleFonts.montserrat(
+  TextStyle tooltipTextStyle = GoogleFonts.montserrat(
     textStyle: TextStyle(
         color: const Color.fromRGBO(0, 0, 0, 0.5),
         fontWeight: FontWeight.w300,

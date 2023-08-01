@@ -6,6 +6,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:united102/app/routes/routes.dart';
 import 'package:united102/iternal/helpers/style_helper.dart';
 
+import '../../../../appNavigator/mainScreen/main_screen.dart';
+
 class TicketBookingSuccessScreen extends StatefulWidget {
   const TicketBookingSuccessScreen({Key? key}) : super(key: key);
 
@@ -16,9 +18,6 @@ class TicketBookingSuccessScreen extends StatefulWidget {
 
 class _TicketBookingSuccessScreenState
     extends State<TicketBookingSuccessScreen> {
-
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,7 +39,8 @@ class _TicketBookingSuccessScreenState
         ),
       ),
       body: SafeArea(
-        child: Column(mainAxisAlignment: MainAxisAlignment.center,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SizedBox(
               height: 96.h,
@@ -63,9 +63,10 @@ class _TicketBookingSuccessScreenState
             SizedBox(
               height: 10,
             ),
-           _TicketActionList(),
-            SizedBox(height: 40.h,),
-           
+            _TicketActionList(),
+            SizedBox(
+              height: 40.h,
+            ),
           ],
         ),
       ),
@@ -81,7 +82,6 @@ class _TicketActionList extends StatefulWidget {
 }
 
 class _TicketActionListState extends State<_TicketActionList> {
-
   List<String> titleList = [
     'Посмотреть талон',
     'Изменить бронь',
@@ -95,19 +95,19 @@ class _TicketActionListState extends State<_TicketActionList> {
   ];
   int _currentIndex = 0;
 
-
-
-  void onTap(int index){
-
-
+  void onTap(int index) {
     setState(() {
-
       _currentIndex = index;
+      if (_currentIndex == 2) {
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => MainScreen()));
+      }
     });
   }
+
   @override
   Widget build(BuildContext context) {
-    return  ListView.builder(
+    return ListView.builder(
         itemCount: 3,
         shrinkWrap: true,
         itemBuilder: (context, index) {
@@ -115,10 +115,9 @@ class _TicketActionListState extends State<_TicketActionList> {
             child: Padding(
               padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
               child: ConstrainedBox(
-                constraints:
-                BoxConstraints(maxHeight: 54.h, maxWidth: 266.w),
+                constraints: BoxConstraints(maxHeight: 54.h, maxWidth: 266.w),
                 child: InkWell(
-                  onTap: ()=> onTap(index),
+                  onTap: () => onTap(index),
                   child: Container(
                     width: 266,
                     height: 54,
@@ -129,23 +128,23 @@ class _TicketActionListState extends State<_TicketActionList> {
                                 : Colors.blue,
                             width: 1),
                         borderRadius: BorderRadius.circular(8.r),
-                        gradient:index == _currentIndex ?  LinearGradient(
-                          begin: Alignment(0, -1),
-                          end: Alignment(0, 1),
-                          colors: <Color>[
-                            Color(0xfc4097c5),
-                            Color(0xff0174b1)
-                          ],
-                          stops: <double>[0, 1],
-                        ):   LinearGradient(
-                            colors: [Colors.white, Colors.white])
-                    ),
+                        gradient: index == _currentIndex
+                            ? LinearGradient(
+                                begin: Alignment(0, -1),
+                                end: Alignment(0, 1),
+                                colors: <Color>[
+                                  Color(0xfc4097c5),
+                                  Color(0xff0174b1)
+                                ],
+                                stops: <double>[0, 1],
+                              )
+                            : LinearGradient(
+                                colors: [Colors.white, Colors.white])),
                     child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           SizedBox(
-                            child: SvgPicture.asset(
-                                svgAssets[index]),
+                            child: SvgPicture.asset(svgAssets[index]),
                             height: 24.h,
                             width: 24.w,
                           ),
@@ -154,9 +153,10 @@ class _TicketActionListState extends State<_TicketActionList> {
                           ),
                           Text(titleList[index],
                               style: GoogleFonts.montserrat(
-                                  color: _currentIndex == index ? Colors.white: Colors.blue))
+                                  color: _currentIndex == index
+                                      ? Colors.white
+                                      : Colors.blue))
                         ]),
-
                   ),
                 ),
               ),
@@ -165,4 +165,3 @@ class _TicketActionListState extends State<_TicketActionList> {
         });
   }
 }
-

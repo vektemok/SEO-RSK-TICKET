@@ -8,13 +8,15 @@ class EndpointsKeyShared {
     print(prefs.get('regionId'));
   }
 
-  Future<String> regionId() async {
+  Future<int> regionId() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
 
-    final String region = prefs.get('regionId').toString();
+    final int? region = prefs.getInt('regionId');
 
-    return region;
+    return region!;
   }
+
+
 
   void saveUserToken(String token) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();

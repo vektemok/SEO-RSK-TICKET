@@ -64,6 +64,8 @@ dependencies:
   injectable_generator: ^2.1.6
   get_it: ^7.6.0
 
+  flutter_datetime_picker: ^1.5.1
+
   
 
 dev_dependencies:

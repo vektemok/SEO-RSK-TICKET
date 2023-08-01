@@ -3,8 +3,14 @@ import 'package:flutter_svg/svg.dart';
 
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:united102/features/reservationScreens/presentation/screens/SerivcePointScreen/service_point_screen.dart';
 import 'package:united102/features/serviceSelectionScreens/presentation/CategoriesSelectScreen/categories_view_model.dart';
+import 'package:united102/features/serviceSelectionScreens/presentation/ServiceSelectScreen/service_select_screen.dart';
+import 'package:united102/features/widgets/my_elevated_button.dart';
 import 'package:united102/features/widgets/screen_switcher_button.dart';
+import 'package:united102/iternal/helpers/enpoints.dart';
+import 'package:united102/iternal/helpers/shared_preferencies_helper.dart';
 
 import '../../../widgets/icon_badge_widget.dart';
 
@@ -49,10 +55,18 @@ class _BodyWidget extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-            ScreenSwitcherButton(
-              path: '/ServiceSelectScreen',
-              text: 'Далее', onPressed: () {  },
-            ),
+            MyElevatedButton(
+                onPressed: () async {
+                  final SharedPreferences prefs =
+                      await SharedPreferences.getInstance();
+                  final int? region = prefs.getInt('regionId');
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              ServicePointScreen(regionId: region!)));
+                },
+                child: const Text('Далее'))
           ],
         ),
       ),
@@ -74,7 +88,7 @@ class _CategorySelectList extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: Center(
                 child: ConstrainedBox(
-                    constraints:  BoxConstraints(
+                    constraints: BoxConstraints(
                         minHeight: 70,
                         minWidth: 378,
                         maxHeight: 70,
@@ -86,7 +100,7 @@ class _CategorySelectList extends StatelessWidget {
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(20),
                             gradient: index == viewModel.currentIndex
-                                ?   LinearGradient(
+                                ? LinearGradient(
                                     begin: Alignment(0, -1),
                                     end: Alignment(0, 1),
                                     colors: <Color>[
@@ -95,7 +109,7 @@ class _CategorySelectList extends StatelessWidget {
                                     ],
                                     stops: <double>[0, 1],
                                   )
-                                :  LinearGradient(
+                                : LinearGradient(
                                     colors: [Colors.white, Colors.white]),
                             border: Border.all(
                                 color: index == viewModel.currentIndex

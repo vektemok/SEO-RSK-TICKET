@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:united102/features/pageListScreens/presentation/widgets/header_text_widget.dart';
 import 'package:united102/features/reservationScreens/presentation/screens/TicketBookingSuccessScreen/ticket_booking_success_screen.dart';
@@ -31,21 +32,22 @@ class _DataEntryScreenState extends State<DataEntryScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final Booking booking = Booking(
-        firstName: 'Egor',
-        lastName: 'lolo',
-        surname: 'one',
-        pasport: 'a12323232',
-        phoneNumber: '99766126262',
-        time: '14:00:00',
-        date: '2023-08-13',
-        queue: '9');
+
 
 // loly  istanbul1
 
     return BlocProvider<BookingBloc>(
       create: (context) => BookingBloc(),
-      child: BlocBuilder<BookingBloc, BookingState>(
+      child: BlocConsumer<BookingBloc, BookingState>(
+        listener: (context, state) {
+          if (state is BookingError) {
+            SmartDialog.showNotify(
+                msg: 'Запрос обработан сервером неверно, попробуйте снова',
+                notifyType: NotifyType.error);
+            Future.delayed(const Duration(seconds: 5));
+            SmartDialog.dismiss();
+          }
+        },
         builder: (context, state) {
           return Form(
               key: formKey,
@@ -166,7 +168,12 @@ class _DataEntryScreenState extends State<DataEntryScreen> {
                           ),
                         ),
                         MyElevatedButton(
-                            onPressed: () {
+                            onPressed: () async {
+                              SmartDialog.showLoading(msg: 'Ожидайте');
+                              await Future.delayed(const Duration(seconds: 3));
+                              SmartDialog.dismiss();
+                              await Future.delayed(
+                                  const Duration(milliseconds: 300));
                               if (formKey.currentState!.validate()) {
                                 context.read<BookingBloc>().add(
                                     PostBookingEvent(
@@ -178,13 +185,15 @@ class _DataEntryScreenState extends State<DataEntryScreen> {
                                         passport: passportController.text,
                                         queue: widget.queue.toString(),
                                         date: widget.data));
-                              }
 
-                              Future.delayed(
-                                  const Duration(seconds: 5),
-                                  () => MaterialPageRoute(
-                                      builder: (context) =>
-                                          const TicketBookingSuccessScreen()));
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            TicketBookingSuccessScreen()));
+                              }
+                              if (state is BookingRequestCompleted) {
+                              }
                             },
                             child: const Text('Далее'))
                       ],
