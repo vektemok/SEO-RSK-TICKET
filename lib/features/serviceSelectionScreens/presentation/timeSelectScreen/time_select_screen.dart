@@ -68,7 +68,7 @@ class _TimeSelectScreenState extends State<TimeSelectScreen> {
             MaterialPageRoute(
                 builder: (context) => DataEntryScreen(
                       queue: widget.queue,
-                      time: '12:30:00',
+                      time: '14:30:00',
                       data:formattedDate ,
                     )));
       }
