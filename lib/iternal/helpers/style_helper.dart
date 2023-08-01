@@ -17,27 +17,29 @@ TextStyle hintTextStyle = GoogleFonts.inter(
 ));
 TextStyle descriptionTextStyle = GoogleFonts.montserrat(
     textStyle: TextStyle(
-  color: const Color.fromRGBO(51, 48, 48, 1) ,
+  color: const Color.fromRGBO(51, 48, 48, 1),
   fontWeight: FontWeight.w500,
   fontSize: 18.sp,
 ));
 
 TextStyle ticketText = GoogleFonts.montserrat(
     textStyle: TextStyle(
-  color: const Color.fromRGBO(51, 48, 48, 1) ,
+  color: const Color.fromRGBO(51, 48, 48, 1),
+  fontWeight: FontWeight.w500,
+  fontSize: 18.sp,
+));
+TextStyle buttonTextStyle = GoogleFonts.montserrat(
+    textStyle: TextStyle(
+  color: Colors.white,
   fontWeight: FontWeight.w500,
   fontSize: 18.sp,
 ));
 
-
-
 TextStyle tooltipTextStyle = GoogleFonts.montserrat(
-  textStyle: TextStyle(
-    color: const Color.fromRGBO(0, 0, 0, 0.5),
-    fontWeight: FontWeight.w300,
-    fontSize: 12.sp
-  )
-);
+    textStyle: TextStyle(
+        color: const Color.fromRGBO(0, 0, 0, 0.5),
+        fontWeight: FontWeight.w300,
+        fontSize: 12.sp));
 
 final TextStyle settingTextStyle =
-GoogleFonts.montserrat(textStyle: const TextStyle(color: Colors.black));
+    GoogleFonts.montserrat(textStyle: const TextStyle(color: Colors.black));

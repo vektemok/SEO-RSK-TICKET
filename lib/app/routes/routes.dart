@@ -12,10 +12,11 @@ class Routes {
   static const String serviceSelectScreen = '/serviceSelectScreen';
   static const String serviceDescriptionScreen = '/serviceDescriptionScreen';
   static const String documentListScreen = '/documentListScreen';
-
   static const String dataEntryScreen = '/dataEntryScreen';
   static const String specialNeedsScreen = '/specialNeedsScreen';
-  static const String ticketBookingSuccessScreen = '/ticketBookingSuccessScreen';
-  static const String  ticketViewScreen = '/ticketViewScreen';
+  static const String ticketBookingSuccessScreen =
+      '/ticketBookingSuccessScreen';
+  static const String ticketViewScreen = '/ticketViewScreen';
 
+  static const String regionSelectScreen = '/regionSelectScreen';
 }

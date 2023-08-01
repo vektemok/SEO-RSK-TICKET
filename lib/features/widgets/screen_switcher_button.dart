@@ -7,18 +7,18 @@ import 'package:google_fonts/google_fonts.dart';
 class ScreenSwitcherButton extends StatelessWidget {
   String text;
   String path;
-  
+
   ScreenSwitcherButton({
 
     Key? key,
     required this.text,
-    required this.path, required Null Function() onPressed, 
+    required this.path, required Null Function() onPressed,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: ()=> context.go(path),
+
       child: Container(
         width: 266,
         height: 58,

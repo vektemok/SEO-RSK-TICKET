@@ -43,3 +43,42 @@ class IconBadgeWidget extends StatelessWidget {
   }
 }
 
+
+class LocationIcon extends StatelessWidget {
+
+ const LocationIcon({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+
+    return  Container(
+      height: 45,
+      width: 45,
+      margin: const EdgeInsets.fromLTRB(0, 0, 5, 0),
+      decoration: BoxDecoration(
+          color: const Color.fromRGBO(188, 225, 248, 1),
+          borderRadius: BorderRadius.circular(14)
+      ),
+      child: Center(
+        child: Container(
+          width: 30,
+          height: 30,
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(12),
+              color: Color.fromRGBO(255, 255, 255, 1)
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(5.0),
+            child: SizedBox(
+              height: 7,
+              width: 6,
+              child: SvgPicture.asset('assets/setting_icons/map.svg'),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+
