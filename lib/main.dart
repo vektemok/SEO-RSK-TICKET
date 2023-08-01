@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 
 import 'features/registrationScreens/presentation/screens/LoginScreen/login_screen.dart';
+import 'features/splashScreen/presentation/screens/SplashScreen/splash_screen.dart';
 import 'features/widgets/custom_progress_indicator.dart';
 import 'iternal/getIt/getIt.dart';
 
@@ -49,7 +50,7 @@ class _MyAppState extends State<MyApp> {
             ),
           ),
           // ignore: prefer_const_constructors
-          home: LoginScreen(),
+          home: SplashScreen(),
         );
       },
     );

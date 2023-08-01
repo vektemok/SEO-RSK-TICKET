@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:united102/features/pageListScreens/presentation/screens/LocationSelectScreen/location_select_screen.dart';
 
 import '../../../../../iternal/getIt/getIt.dart';
 import '../../../../../iternal/helpers/color_helper.dart';
@@ -133,7 +134,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
                     if (state is SuccessLogInState) {
                       SmartDialog.dismiss();
-                      customPushAndRemoveUntil(context, MainScreen());
+                      customPushAndRemoveUntil(context, LocationSelectScreen());
                     }
 
                     if (state is AuthErrorState) {
@@ -150,6 +151,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       if (emailController.text.isNotEmpty &&
                           passwordController.text.isNotEmpty) {
                         bloc.add(
+
                           LogInEvent(
                               email: emailController.text,
                               password: passwordController.text),

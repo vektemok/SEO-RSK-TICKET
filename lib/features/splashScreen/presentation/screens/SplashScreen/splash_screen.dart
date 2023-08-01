@@ -3,7 +3,10 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:united102/features/pageListScreens/presentation/screens/LocationSelectScreen/location_select_screen.dart';
 import 'package:united102/features/pageListScreens/presentation/screens/PageListScreen/page_list_screen.dart';
+import 'package:united102/features/registrationScreens/presentation/screens/LoginScreen/login_screen.dart';
 
 import '../../../../../iternal/helpers/utils.dart';
 
@@ -22,10 +25,18 @@ class _SplashScreenState extends State<SplashScreen> {
 
   Future navigatorHelper() async {
     await Future.delayed(const Duration(seconds: 3));
+    final SharedPreferences prefs =await SharedPreferences.getInstance();
+    final String token = prefs.get('token').toString();
+    
+    if(token.isEmpty){
+        Timer(const Duration(seconds: 3), () {
 
-    Timer(const Duration(seconds: 3), () {
-      customPushAndRemoveUntil(context, const PageListScreen());
+      customPushAndRemoveUntil(context, LoginScreen());
     });
+    } else {
+     customPushAndRemoveUntil(context, LocationSelectScreen());
+    }
+   
   }
 
   @override
