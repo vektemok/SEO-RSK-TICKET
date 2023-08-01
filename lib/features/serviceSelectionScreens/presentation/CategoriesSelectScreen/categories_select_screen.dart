@@ -106,7 +106,7 @@ class _CategorySelectList extends StatelessWidget {
                                     end: Alignment(0, 1),
                                     colors: <Color>[
                                       Color(0xfc4097c5),
-                                      Color(0xff0174b1)
+                                      Color(0xff0174b1),
                                     ],
                                     stops: <double>[0, 1],
                                   )

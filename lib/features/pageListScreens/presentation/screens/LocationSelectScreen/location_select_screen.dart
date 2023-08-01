@@ -38,8 +38,8 @@ class _BodyWidgetState extends State<_BodyWidget> {
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
-          backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
-          centerTitle: Theme.of(context).appBarTheme.centerTitle,
+          backgroundColor: Colors.white,
+          centerTitle: true,
           elevation: Theme.of(context).appBarTheme.elevation,
           leading: IconButton(
             onPressed: () {

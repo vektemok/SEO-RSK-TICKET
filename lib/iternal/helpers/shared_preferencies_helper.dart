@@ -20,7 +20,10 @@ class EndpointsKeyShared {
 
   void saveUserToken(String token) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    final String token = prefs.get('token').toString();
     await prefs.setString('token', token);
+
   }
 
   Future<String> userToken() async {

@@ -1,8 +1,7 @@
 import 'dart:developer';
-
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
-
+import 'package:united102/iternal/helpers/shared_preferencies_helper.dart';
 import '../../../../iternal/api_requester.dart';
 import '../../../../iternal/catch_exception_helper.dart';
 import '../../domain/repositories/auth_repositories.dart';
@@ -25,11 +24,12 @@ class AuthRepositoryImpl implements AuthRepository {
       );
 
       if (response.statusCode == 200) {
+         log(response.data.toString());
         LoginModel model = LoginModel.fromJson(response.data);
-
+        EndpointsKeyShared().saveUserToken(response.data["access"]);
         return model;
       }
-      log(response.data);
+     
       throw response;
     } catch (e) {
       throw CatchException.convertException(e);
