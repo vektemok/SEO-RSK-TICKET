@@ -15,7 +15,7 @@ class Exceptions {
     FlushbarPosition? flushbarPosition,
   }) {
     Flushbar(
-      backgroundColor: isSuccess ? ColorHelper.blue1 : Colors.red,
+      backgroundColor: isSuccess ? ColorHelper.blue1 : Color.fromRGBO(231, 81, 81, 1),
       borderRadius: BorderRadius.circular(10.r),
       margin: EdgeInsets.symmetric(
         vertical: 16.h,

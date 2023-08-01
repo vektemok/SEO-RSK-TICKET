@@ -66,11 +66,11 @@ class _SpecialNeedsScreenState extends State<SpecialNeedsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        centerTitle: Theme.of(context).appBarTheme.centerTitle,
-        backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
+       appBar: AppBar(
+        toolbarHeight: 80,
         elevation: Theme.of(context).appBarTheme.elevation,
-        toolbarHeight: Theme.of(context).appBarTheme.toolbarHeight,
+        backgroundColor: Colors.white,
+        centerTitle: true,
         title: Padding(
           padding: const EdgeInsets.all(8.0),
           child: SizedBox(

@@ -12,9 +12,9 @@
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
 
-import '../../features/registrationScreens/domain/repositories/auth_repositories.dart'
+import '../../features/registrationScreens/data/repositories/auth_repository_impl.dart'
     as _i4;
-import '../../features/registrationScreens/domain/use_cases/auth_use_case.dart'
+import '../../features/registrationScreens/domain/repositories/auth_repositories.dart'
     as _i3;
 
 // ignore_for_file: unnecessary_lambdas
