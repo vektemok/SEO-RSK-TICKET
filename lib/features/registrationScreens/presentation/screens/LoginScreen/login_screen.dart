@@ -1,12 +1,19 @@
+import 'dart:developer';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:united102/app/routes/routes.dart';
 
+import '../../../../../iternal/getIt/getIt.dart';
 import '../../../../../iternal/helpers/color_helper.dart';
-import '../../../../widgets/screen_switcher_button.dart';
+import '../../../../../iternal/helpers/utils.dart';
+import '../../../../appNavigator/mainScreen/main_screen.dart';
+import '../../../../widgets/custom_buttom.dart';
+import '../../../../widgets/custom_flushbar.dart';
+import '../../logic/bloc/auth_bloc.dart';
+import '../RegistrationScreen/registration_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -16,6 +23,18 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  final TextEditingController passwordController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+  ValueNotifier<bool> enabledButton = ValueNotifier<bool>(false);
+
+  late AuthBloc bloc;
+
+  @override
+  void initState() {
+    bloc = getIt<AuthBloc>();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,8 +42,8 @@ class _LoginScreenState extends State<LoginScreen> {
       appBar: AppBar(
         toolbarHeight: 80,
         elevation: Theme.of(context).appBarTheme.elevation,
-        backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
-        centerTitle: Theme.of(context).appBarTheme.centerTitle,
+        backgroundColor: Colors.white,
+        centerTitle: true,
         title: Padding(
           padding: const EdgeInsets.all(8.0),
           child: SizedBox(
@@ -58,17 +77,19 @@ class _LoginScreenState extends State<LoginScreen> {
             SizedBox(height: 5.h),
             SizedBox(
               child: TextField(
+                controller: emailController,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(15.r)),
                   hintText: "Логин",
                   suffixIcon: SizedBox(
-                      width: 4.5,
-                      height: 9,
-                      child: Icon(
-                        Icons.arrow_forward_ios_rounded,
-                        color: ColorHelper.blue1,
-                      )),
+                    width: 4.5,
+                    height: 9,
+                    child: Icon(
+                      Icons.arrow_forward_ios_rounded,
+                      color: ColorHelper.blue1,
+                    ),
+                  ),
                 ),
               ),
             ),
@@ -83,6 +104,7 @@ class _LoginScreenState extends State<LoginScreen> {
             SizedBox(height: 5.h),
             SizedBox(
               child: TextField(
+                controller: passwordController,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(15.r)),
@@ -101,9 +123,46 @@ class _LoginScreenState extends State<LoginScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                ScreenSwitcherButton(
-                  path: Routes.appNavigator,
-                  text: "Войти", onPressed: () {  },
+                BlocListener<AuthBloc, AuthState>(
+                  bloc: bloc,
+                  listener: (context, state) {
+                    log(state.toString());
+                    if (state is AuthLoadingState) {
+                      SmartDialog.showLoading(msg: "Загрузка...");
+                    }
+
+                    if (state is SuccessLogInState) {
+                      SmartDialog.dismiss();
+                      customPushAndRemoveUntil(context, MainScreen());
+                    }
+
+                    if (state is AuthErrorState) {
+                      SmartDialog.dismiss();
+
+                      Exceptions.showFlushbar(
+                        state.error.message.toString(),
+                        context: context,
+                      );
+                    }
+                  },
+                  child: CustomButtom(
+                    onPressed: () {
+                      if (emailController.text.isNotEmpty &&
+                          passwordController.text.isNotEmpty) {
+                        bloc.add(
+                          LogInEvent(
+                              email: emailController.text,
+                              password: passwordController.text),
+                        );
+                      } else {
+                        Exceptions.showFlushbar(
+                          'Заполните все поля',
+                          context: context,
+                        );
+                      }
+                    },
+                    text: 'Войти', height: 18.h, width: 90.w,
+                  ),
                 ),
               ],
             ),
@@ -114,18 +173,17 @@ class _LoginScreenState extends State<LoginScreen> {
                 Text(
                   "У вас нету аккаунта? ",
                   style: GoogleFonts.montserrat(
-                    fontSize: 17.sp,
+                    fontSize: 15.sp,
                   ),
                 ),
                 InkWell(
                   onTap: () {
-                    context.go("/registration");
+                    customPushAndRemoveUntil(context, RegistrationScreen());
                   },
-                  
                   child: Text(
                     "Зарегистрируйтесь",
                     style: GoogleFonts.montserrat(
-                        fontSize: 17.sp, color: ColorHelper.blue1),
+                        fontSize: 15.sp, color: ColorHelper.blue1),
                   ),
                 )
               ],

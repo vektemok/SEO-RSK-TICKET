@@ -28,8 +28,8 @@ class _NotificationScreenState extends State<NotificationScreen> {
       appBar: AppBar(
         toolbarHeight: 80,
         elevation: Theme.of(context).appBarTheme.elevation,
-        backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
-        centerTitle: Theme.of(context).appBarTheme.centerTitle,
+        backgroundColor: Colors.white,
+        centerTitle: true,
         title: Padding(
           padding: const EdgeInsets.all(8.0),
           child: SizedBox(

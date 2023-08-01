@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:united102/features/profileScreen/presentation/screens/profileScreen/profileScreen.dart';
+import 'package:united102/iternal/helpers/utils.dart';
 
 import '../../../../app/routes/routes.dart';
 import '../../../../iternal/helpers/style_helper.dart';
@@ -51,10 +53,13 @@ class SettingScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
       appBar: AppBar(
+        actions: [InkWell(onTap: () {
+          customPush(context, ProfileScreen());
+        }, child: SvgPicture.asset("assets/icons/icon_user.svg")), SizedBox(width: 16.w,)],
         toolbarHeight: 80,
         elevation: Theme.of(context).appBarTheme.elevation,
-        backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
-        centerTitle: Theme.of(context).appBarTheme.centerTitle,
+        backgroundColor: Colors.white,
+        centerTitle: true,
         title: Padding(
           padding: const EdgeInsets.all(8.0),
           child: SizedBox(

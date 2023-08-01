@@ -1,98 +1,57 @@
-import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
-import 'package:united102/app/notifications/ticket_waiting_nofication.dart';
-import 'package:united102/features/logic/bloc/theme_bloc/theme_bloc.dart';
 
-import 'app/routes/app_routes.dart';
-import 'package:firebase_core/firebase_core.dart';
+import 'features/registrationScreens/presentation/screens/LoginScreen/login_screen.dart';
 import 'features/widgets/custom_progress_indicator.dart';
-import 'firebase/firebase_options.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
 import 'iternal/getIt/getIt.dart';
 
-FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
 void main() async {
-  runZonedGuarded(() async {
-    WidgetsFlutterBinding.ensureInitialized();
-    await ScreenUtil.ensureScreenSize();
-    await Firebase.initializeApp(
-      options: DefaultFirebaseOptions.currentPlatform,
-    );
-    await flutterLocalNotificationsPlugin.initialize(
-      InitializationSettings(
-        android: androidInitializationSettings
-      )
-    );
+  await ScreenUtil.ensureScreenSize();
 
-    WidgetsFlutterBinding.ensureInitialized();
+ WidgetsFlutterBinding.ensureInitialized();
   configureDependencies();
   await SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
   ]);
-
-    runApp(const MyApp());
-  }, (error, stack) {
-    print('Ошибка запуска $error');
-  });
+  runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class MyApp extends StatefulWidget {
+  const MyApp({super.key});
 
   @override
-  Widget build(BuildContext context) => MultiBlocProvider(
-        providers: [
-          BlocProvider(create: (BuildContext context) => ThemeBloc())
-        ],
-        child: BlocConsumer<ThemeBloc, ThemeState>(
-          listener: (context, state) {
-            if (state is BlackThemeState) {
-              debugPrint('$state');
-            }
-          },
-          builder: (context, state) {
-            return ScreenUtilInit(
-              designSize: const Size(430, 932),
-              minTextAdapt: true,
-              splitScreenMode: true,
-              builder: (context, child) {
-                return MaterialApp.router(
-                  builder: FlutterSmartDialog.init(
-            loadingBuilder: (String msg) => CustomProgressIndicator(msg: msg),
-          ),
-                  debugShowCheckedModeBanner: false,
-                  title: 'First Method',
-                  theme: state.currentTheme,
-                  routerConfig: AppRouter.router,
-                  localizationsDelegates: const [
-                    AppLocalizations.delegate,
-                    GlobalMaterialLocalizations.delegate,
-                    GlobalWidgetsLocalizations.delegate,
-                    GlobalCupertinoLocalizations.delegate,
-                  ],
-                  supportedLocales: const [
-                    Locale('en'), // English
-                    Locale('kg'), // Kyrgyz
-                    Locale('ru'), // Russian
-                  ],
-                );
-              },
-            );
-          },
-        ),
-      );
+  State<MyApp> createState() => _MyAppState();
 }
 
-
-
-// branches region get reques
-// brances region id region brances  передать ид региона
-//
-//
+class _MyAppState extends State<MyApp> {
+  @override
+  Widget build(BuildContext context) {
+    return
+    ScreenUtilInit(
+      designSize: const Size(375, 812),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      builder: (context, child) {
+        return MaterialApp(
+          builder: FlutterSmartDialog.init(
+            loadingBuilder: (String msg) => CustomProgressIndicator(msg: msg),
+          ),
+          debugShowCheckedModeBanner: false,
+          title: 'First Method',
+          theme: ThemeData(
+            fontFamily: 'Lato',
+            primarySwatch: Colors.blue,
+            textTheme: Typography.englishLike2018.apply(
+              fontSizeFactor: 1.sp,
+              bodyColor: Colors.black,
+            ),
+          ),
+          // ignore: prefer_const_constructors
+          home: LoginScreen(),
+        );
+      },
+    );
+  }
+}

@@ -1,10 +1,17 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 part of 'auth_bloc.dart';
 
 @immutable
 abstract class AuthState {}
 
 class AuthInitial extends AuthState {}
+
+class SuccessLogInState extends AuthState {
+  final LoginModel loginModel;
+
+  SuccessLogInState({
+    required this.loginModel,
+  });
+}
 
 class AuthLoadingState extends AuthState {}
 
@@ -14,17 +21,7 @@ class AuthErrorState extends AuthState {
   AuthErrorState({required this.error});
 }
 
-class SuccessLogInState extends AuthState {
-  final LoginModel loginmodel;
+class SuccessLogoutState extends AuthState {}
 
-  SuccessLogInState({required this.loginmodel});
-}
+class SuccessRegistatrionLoadedState extends AuthState {}
 
-class SuccessRegistrationState extends AuthState {
-  final ClientModel regModel;
-
-  SuccessRegistrationState({required this.regModel});
-}
-
-
-class SuccessRegistrationLoadedState extends AuthState {}

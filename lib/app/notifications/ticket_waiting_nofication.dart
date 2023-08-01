@@ -13,13 +13,13 @@ NotificationDetails(android: androidNotificationDetails);
 InitializationSettings initializationSettings =
 InitializationSettings(android: androidInitializationSettings);
 
-void showNotification() {
-  flutterLocalNotificationsPlugin.show(
-      0,
-      'Ваша очередь наступить через 15 минут поспешите',
-      'Топопись',
-      notificationDetails);
-}
+// void showNotification() {
+//   flutterLocalNotificationsPlugin.show(
+//       0,
+//       'Ваша очередь наступить через 15 минут поспешите',
+//       'Топопись',
+//       notificationDetails);
+// }
 
 // Future<void> showTotification5Minute(DateTime dateTime) async {
 //   flutterLocalNotificationsPlugin.zonedSchedule(

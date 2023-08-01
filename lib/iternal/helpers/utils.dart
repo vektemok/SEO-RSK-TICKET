@@ -57,3 +57,14 @@ class CustomButtonCard extends StatelessWidget {
     );
   }
 }
+
+Future<dynamic> customPush(BuildContext context, Widget widget) {
+  return Navigator.push(
+    context,
+    PageRouteBuilder(
+      pageBuilder: (context, _, __) => widget,
+      transitionDuration: const Duration(microseconds: 300),
+      transitionsBuilder: (_, a, __, c) => FadeTransition(opacity: a, child: c),
+    ),
+  );
+}

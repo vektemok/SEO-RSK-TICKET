@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../../../iternal/helpers/color_helper.dart';
@@ -31,6 +32,21 @@ class _UnifyingHistoryScreenState extends State<UnifyingHistoryScreen> {
       length: ticketTab.length,
       child: Scaffold(
         appBar: AppBar(
+          backgroundColor: Colors.white,
+          
+        toolbarHeight: 80,
+        elevation: Theme.of(context).appBarTheme.elevation,
+        centerTitle: true,
+        title: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: SizedBox(
+            height: 180,
+            width: 150,
+            child: SvgPicture.asset(
+              'assets/appbar_rsk.svg',
+            ),
+          ),
+        ),
           bottom: TabBar(
             tabs: ticketTab,
             splashBorderRadius: BorderRadius.circular(20),
@@ -63,7 +79,7 @@ class _UnifyingHistoryScreenState extends State<UnifyingHistoryScreen> {
                         padding: EdgeInsets.symmetric(horizontal: 75.w),
                         child: ClipPath(
                           clipper:
-                              DolDurmaClipper(right: 105.w, holeRadius: 70.r),
+                              DolDurmaClipper(right: 75.w, holeRadius: 70.r),
                           child: Container(
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.all(

@@ -28,7 +28,7 @@ class AppRouter {
     GoRoute(path: '/', builder: (context, state) =>  DataEntryScreen()),
     GoRoute(
       path: "/registration",
-      builder: (context, state) => const RegistrationScreen(),
+      builder: (context, state) =>  RegistrationScreen(),
     ),
     GoRoute(
         path: Routes.settingRoute,
