@@ -16,6 +16,10 @@ import '../../features/registrationScreens/data/repositories/auth_repository_imp
     as _i4;
 import '../../features/registrationScreens/domain/repositories/auth_repositories.dart'
     as _i3;
+import '../../features/registrationScreens/domain/use_cases/auth_use_case.dart'
+    as _i5;
+import '../../features/registrationScreens/presentation/logic/bloc/auth_bloc.dart'
+    as _i6;
 
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: lines_longer_than_80_chars
@@ -30,7 +34,9 @@ _i1.GetIt $initGetIt(
     environment,
     environmentFilter,
   );
-  gh.factory<_i3.AuthUseCase>(
-      () => _i3.AuthUseCase(authRepository: gh<_i4.AuthRepository>()));
+  gh.factory<_i3.AuthRepository>(() => _i4.AuthRepositoryImpl());
+  gh.factory<_i5.AuthUseCase>(
+      () => _i5.AuthUseCase(authRepository: gh<_i3.AuthRepository>()));
+  gh.factory<_i6.AuthBloc>(() => _i6.AuthBloc(gh<_i5.AuthUseCase>()));
   return getIt;
 }
