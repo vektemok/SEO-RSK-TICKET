@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../../app/routes/routes.dart';
+
 
 class CategoriesViewModel extends ChangeNotifier {
   final List<String> _categories = [
@@ -11,7 +11,7 @@ class CategoriesViewModel extends ChangeNotifier {
   ];
 
   final List<String> _pushPath = [
-    Routes.serviceSelectScreen,
+
   ];
   int _currentIndex = 0;
 

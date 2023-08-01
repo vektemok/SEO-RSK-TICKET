@@ -28,6 +28,8 @@ class _MainScreenState extends State<MainScreen> {
     NotificationScreen(),
     SettingScreen()
   ];
+
+
   int _currentIndex = 0;
 
 

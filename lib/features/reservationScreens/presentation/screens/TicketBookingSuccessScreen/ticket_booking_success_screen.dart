@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:united102/app/routes/routes.dart';
+
 import 'package:united102/iternal/helpers/style_helper.dart';
 
 import '../../../../appNavigator/mainScreen/main_screen.dart';

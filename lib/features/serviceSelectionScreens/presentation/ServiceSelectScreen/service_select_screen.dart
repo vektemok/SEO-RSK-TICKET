@@ -5,7 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:united102/app/routes/routes.dart';
+
 import 'package:united102/features/serviceSelectionScreens/presentation/ServiceDescriptionScreen/service_description_screen.dart';
 import 'package:united102/features/serviceSelectionScreens/presentation/ServiceSelectScreen/servise_select_view_model.dart';
 import 'package:united102/features/widgets/my_elevated_button.dart';
@@ -200,7 +200,7 @@ class _BodyWidget extends StatelessWidget {
               height: 20,
             ),
             ScreenSwitcherButton(
-              path: Routes.serviceDescriptionScreen,
+              path: '',
               text: 'Далее',
               onPressed: () {},
             )

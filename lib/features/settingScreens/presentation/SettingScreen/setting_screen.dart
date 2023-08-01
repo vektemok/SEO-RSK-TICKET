@@ -5,7 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:united102/features/profileScreen/presentation/screens/profileScreen/profileScreen.dart';
 import 'package:united102/iternal/helpers/utils.dart';
 
-import '../../../../app/routes/routes.dart';
+
 import '../../../../iternal/helpers/style_helper.dart';
 
 class SettingScreen extends StatelessWidget {
@@ -31,20 +31,12 @@ class SettingScreen extends StatelessWidget {
       'assets/setting_icons/notification.svg',
     ];
 
-    List<String> pushPath = [
-      Routes.locationSettingRoute,
-      Routes.languageSettingRoute,
-      Routes.themeSettingRoute,
-      Routes.qaSettingRoute,
-      Routes.intelligenceSettingRoute,
-      Routes.notificationSettingRoute,
-    ];
 
 
     void pushScreen(int index){
   for(int i =0; i <= settingName.length; i++ ){
     if(i == index){
-      context.go(pushPath[index]);
+
     }
   }
     }
